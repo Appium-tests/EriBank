@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
+import qa.pageobject.homeview.HomeView;
 import qa.pageobject.loginview.LoginView;
 import qa.testdataproviders.TestDataProviders;
 import qa.utils.Credentials;
@@ -38,7 +39,9 @@ public class LoginTest extends BaseTest {
     public void correctCredentials(Credentials credentials) {
 
         setCredentials(credentials);
-        validateAlertFrame();
+        HomeView homeView = new HomeView(getDriver());
+
+        Assert.assertTrue(homeView.isDisplayed());
     }
 
     @Test(dataProvider = "CR_incorrectUsername", dataProviderClass = TestDataProviders.class)
