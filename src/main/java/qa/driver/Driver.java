@@ -26,7 +26,7 @@ public class Driver {
         return capabilities;
     }
 
-    private AndroidDriver createDriver() throws MalformedURLException {
+    public static AndroidDriver createDriver() throws MalformedURLException {
 
         return new AndroidDriver(uri.toURL(), getCapabilities());
     }
