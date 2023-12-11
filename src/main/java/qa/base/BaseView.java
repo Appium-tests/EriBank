@@ -9,8 +9,8 @@ public class BaseView {
     private final AndroidDriver driver;
 
     public BaseView(AndroidDriver driver) {
-        this.driver = driver;
 
+        this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 }

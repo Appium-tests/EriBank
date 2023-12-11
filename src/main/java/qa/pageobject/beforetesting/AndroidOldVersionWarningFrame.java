@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import qa.base.BaseView;
 
 public class AndroidOldVersionWarningFrame extends BaseView {
+
     public AndroidOldVersionWarningFrame(AndroidDriver driver) {
+
         super(driver);
     }
 
@@ -14,6 +16,7 @@ public class AndroidOldVersionWarningFrame extends BaseView {
     WebElement buttonOK;
 
     public void tapButtonOK() {
+
         buttonOK.click();
     }
 }

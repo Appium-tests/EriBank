@@ -16,7 +16,7 @@ public class JSONReader {
 
     private static JSONArray getJSONArray(String key, String node) {
 
-        Object object = jsonObject.getJSONArray(key);
+        Object object = jsonObject.get(key);
         JSONObject jsonObject1 = (JSONObject) object;
 
         return jsonObject1.getJSONArray(node);
