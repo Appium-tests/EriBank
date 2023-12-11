@@ -13,8 +13,4 @@ public class BaseView {
 
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
-
-    public AndroidDriver getDriver() {
-        return driver;
-    }
 }
