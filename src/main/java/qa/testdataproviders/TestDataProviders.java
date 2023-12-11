@@ -17,6 +17,18 @@ public class TestDataProviders {
         return JSONReader.getCredentials("incorrectUsername");
     }
 
+    @DataProvider(name = "CR_correctUsernameWithUppercase")
+    public Object[] CR_correctUsernameWithUppercase() {
+
+        return JSONReader.getCredentials("correctUsernameWithUppercase");
+    }
+
+    @DataProvider(name = "CR_correctPasswordWithUppercase")
+    public Object[] CR_correctPasswordWithUppercase() {
+
+        return JSONReader.getCredentials("correctPasswordWithUppercase");
+    }
+
     @DataProvider(name = "CR_blankUsernameField")
     public Object[] CR_blankUsernameField() {
 
