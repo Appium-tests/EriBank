@@ -9,6 +9,22 @@
             }
         ],
 
+        "correctUsernameWithUppercase": [
+
+            {
+                "username": "CoMPanY",
+                "password": "company"
+            }
+        ],
+
+        "correctPasswordWithUppercase": [
+
+            {
+                "username": "company",
+                "password": "cOMpaNy"
+            }
+        ],
+
         "incorrectUsername": [
 
             {
