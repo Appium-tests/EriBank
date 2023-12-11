@@ -1,0 +1,144 @@
+{
+    "login": {
+
+        "correctCredentials": [
+
+            {
+                "username": "company",
+                "password": "company"
+            }
+        ],
+
+        "incorrectUsername": [
+
+            {
+                "username": "badCompany",
+                "password": "company"
+            }
+        ],
+
+        "blankUsernameField": [
+
+            {
+                "username": "",
+                "password": "company"
+            }
+        ],
+
+        "incorrectPassword": [
+
+            {
+                "username": "company",
+                "password": "badCompany"
+            }
+        ],
+
+        "blankPasswordField": [
+
+            {
+                "username": "company",
+                "password": ""
+            }
+        ]
+    },
+
+    "payment": {
+
+        "correctPaymentData": [
+
+            {
+                "phone": "234543654",
+                "name": "Pawel",
+                "amount": "1",
+                "country": "Poland"
+            },
+
+            {
+                "phone": "234543654",
+                "name": "Pawel",
+                "amount": "2147483647",
+                "country": "Poland"
+            }
+        ],
+
+        "incorrectPhone": [
+
+            {
+                "phone": "$$#^56er%",
+                "name": "Pawel",
+                "amount": "1",
+                "country": "Poland"
+            }
+        ],
+
+        "blankPhoneField": [
+
+            {
+                "phone": "",
+                "name": "Pawel",
+                "amount": "1",
+                "country": "Poland"
+            }
+        ],
+
+        "incorrectName": [
+
+            {
+                "phone": "123345567",
+                "name": "@@#53Alex",
+                "amount": "1",
+                "country": "Poland"
+            }
+        ],
+
+        "blankNameField": [
+
+            {
+                "phone": "123345567",
+                "name": "",
+                "amount": "1",
+                "country": "Poland"
+            }
+        ],
+
+        "incorrectAmount": [
+
+            {
+                "phone": "123345567",
+                "name": "Pawel",
+                "amount": "$$35ffds!123",
+                "country": "Poland"
+            }
+        ],
+
+        "blankAmountField": [
+
+            {
+                "phone": "123345567",
+                "name": "Pawel",
+                "amount": "",
+                "country": "Poland"
+            }
+        ],
+
+        "incorrectCountry": [
+
+            {
+                "phone": "123345567",
+                "name": "Pawel",
+                "amount": "100",
+                "country": "__Zoo()sa!"
+            }
+        ],
+
+        "blankCountryField": [
+
+            {
+                "phone": "123345567",
+                "name": "Pawel",
+                "amount": "100",
+                "country": ""
+            }
+        ]
+    }
+}
