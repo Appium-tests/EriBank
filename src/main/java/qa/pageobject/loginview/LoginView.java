@@ -6,9 +6,13 @@ import org.openqa.selenium.WebElement;
 import qa.base.BaseView;
 
 public class LoginView extends BaseView {
+
+    private final AlertFrame alertFrame;
+
     public LoginView(AndroidDriver driver) {
 
         super(driver);
+        alertFrame = new AlertFrame(driver);
     }
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/usernameTextField")
@@ -33,5 +37,10 @@ public class LoginView extends BaseView {
     public void tapLoginButton() {
 
         loginButton.click();
+    }
+
+    public AlertFrame getAlertFrame() {
+
+        return alertFrame;
     }
 }
