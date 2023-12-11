@@ -44,6 +44,24 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(homeView.isDisplayed());
     }
 
+    @Test(dataProvider = "CR_correctUsernameWithUppercase", dataProviderClass = TestDataProviders.class)
+    public void correctUsernameWithUppercase(Credentials credentials) {
+
+        setCredentials(credentials);
+
+        validateAlertFrame();
+        loginView.getAlertFrame().tapButton();
+    }
+
+    @Test(dataProvider = "CR_correctPasswordWithUppercase", dataProviderClass = TestDataProviders.class)
+    public void correctPasswordWithUppercase(Credentials credentials) {
+
+        setCredentials(credentials);
+
+        validateAlertFrame();
+        loginView.getAlertFrame().tapButton();
+    }
+
     @Test(dataProvider = "CR_incorrectUsername", dataProviderClass = TestDataProviders.class)
     public void incorrectUsername(Credentials credentials) {
 
