@@ -29,10 +29,14 @@ public class LoginTest extends BaseTest {
 
     private void validateAlertFrame() {
 
-        Assert.assertTrue(loginView.getAlertFrame().isDisplayed(), "The alert frame is not displayed");
-        Assert.assertEquals(loginView.getAlertFrame().getTitle(), "Alert", "Incorrect title");
-        Assert.assertEquals(loginView.getAlertFrame().getMessage(), "Invalid username or password!", "Incorrect message");
-        Assert.assertTrue(loginView.getAlertFrame().isButtonDisplayed(), "The \"Close\" button is not displayed");
+        Assert.assertTrue(loginView.getAlertFrame().isDisplayed(),
+                "The alert frame is not displayed");
+        Assert.assertEquals(loginView.getAlertFrame().getTitle(),
+                "Alert", "Incorrect title");
+        Assert.assertEquals(loginView.getAlertFrame().getMessage(),
+                "Invalid username or password!", "Incorrect message content");
+        Assert.assertTrue(loginView.getAlertFrame().isButtonDisplayed(),
+                "The \"Close\" button is not displayed");
     }
 
     @Test(dataProvider = "CR_correct", dataProviderClass = TestDataProviders.class)
