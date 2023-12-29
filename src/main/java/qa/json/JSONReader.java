@@ -4,6 +4,7 @@ import com.google.common.io.Resources;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import qa.utils.Credentials;
+import qa.utils.Payment;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,5 +38,19 @@ public class JSONReader {
                         jsonArray.getJSONObject(i).getString("password")
                 ))
                 .toArray(Credentials[]::new);
+    }
+
+    public static Payment[] getPayments(String node) {
+
+        JSONArray jsonArray = getJSONArray("payment", node);
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new Payment(
+                        jsonArray.getJSONObject(i).getString("phone"),
+                        jsonArray.getJSONObject(i).getString("name"),
+                        jsonArray.getJSONObject(i).getString("amount"),
+                        jsonArray.getJSONObject(i).getString("country")
+                ))
+                .toArray(Payment[]::new);
     }
 }
