@@ -52,4 +52,16 @@ public class TestDataProviders {
 
         return JSONReader.getPayments("correct");
     }
+
+    @DataProvider(name = "PM_incorrectPhone")
+    public Object[] CR_incorrectPhone() {
+
+        return JSONReader.getPayments("incorrectPhone");
+    }
+
+    @DataProvider(name = "PM_blankPhoneField")
+    public Object[] CR_blankPhoneField() {
+
+        return JSONReader.getPayments("blankPhoneField");
+    }
 }
