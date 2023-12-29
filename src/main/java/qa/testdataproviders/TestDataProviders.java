@@ -46,4 +46,10 @@ public class TestDataProviders {
 
         return JSONReader.getCredentials("blankPasswordField");
     }
+
+    @DataProvider(name = "PM_correct")
+    public Object[] PM_correct() {
+
+        return JSONReader.getPayments("correct");
+    }
 }
