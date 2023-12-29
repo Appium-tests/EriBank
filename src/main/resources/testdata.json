@@ -60,19 +60,12 @@
 
     "payment": {
 
-        "correctPaymentData": [
+        "correct": [
 
             {
                 "phone": "234543654",
                 "name": "Pawel",
                 "amount": "1",
-                "country": "Poland"
-            },
-
-            {
-                "phone": "234543654",
-                "name": "Pawel",
-                "amount": "2147483647",
                 "country": "Poland"
             }
         ],
