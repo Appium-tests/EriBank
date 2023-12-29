@@ -4,14 +4,21 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 import qa.base.BaseView;
+import qa.pageobject.loginview.AlertFrame;
 
 import java.util.List;
 
 public class MakePaymentView extends BaseView {
 
+    public final QuestionFrame questionFrame;
+    public final AlertFrame alertFrame;
+
     public MakePaymentView(AndroidDriver driver) {
 
         super(driver);
+
+        questionFrame = new QuestionFrame(driver);
+        alertFrame = new AlertFrame(driver);
     }
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/makePaymentView")
@@ -55,6 +62,11 @@ public class MakePaymentView extends BaseView {
         countryField.sendKeys(country);
     }
 
+    public boolean isSendPaymentButtonEnabled() {
+
+        return sendPaymentButton.isEnabled();
+    }
+
     public void tapSendPaymentButton() {
 
         sendPaymentButton.click();
@@ -68,5 +80,15 @@ public class MakePaymentView extends BaseView {
     public boolean isDisplayed() {
 
         return !parent.isEmpty();
+    }
+
+    public QuestionFrame getQuestionFrame() {
+
+        return questionFrame;
+    }
+
+    public AlertFrame getAlertFrame() {
+
+        return alertFrame;
     }
 }
