@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
 import qa.helpers.Authentication;
+import qa.pageobject.advancedactionsview.AdvancedActionsView;
 import qa.pageobject.expensereportview.ExpenseReportView;
 import qa.pageobject.homeview.HomeView;
 import qa.pageobject.loginview.LoginView;
@@ -28,7 +29,8 @@ public class HomeViewTest extends BaseTest {
         homeView.tapMakePaymentButton();
         MakePaymentView makePaymentView = new MakePaymentView(getDriver());
 
-        Assert.assertTrue(makePaymentView.isDisplayed(), "The \"Make payment\" view is not displayed");
+        Assert.assertTrue(makePaymentView.isDisplayed(),
+                "The \"Make payment\" view is not displayed");
     }
 
     @Test
@@ -37,7 +39,8 @@ public class HomeViewTest extends BaseTest {
         homeView.tapMortageRequestButton();
         MortageRequestView mortageRequestView = new MortageRequestView(getDriver());
 
-        Assert.assertTrue(mortageRequestView.isDisplayed(), "The \"Mortage request\" view is not displayed");
+        Assert.assertTrue(mortageRequestView.isDisplayed(),
+                "The \"Mortage request\" view is not displayed");
     }
 
     @Test
@@ -46,7 +49,18 @@ public class HomeViewTest extends BaseTest {
         homeView.tapExpenseReportButton();
         ExpenseReportView expenseReportView = new ExpenseReportView(getDriver());
 
-        Assert.assertTrue(expenseReportView.isDisplayed(), "The \"Expense report\" view is not displayed");
+        Assert.assertTrue(expenseReportView.isDisplayed(),
+                "The \"Expense report\" view is not displayed");
+    }
+
+    @Test
+    public void advancedActionsButton() {
+
+        homeView.tapAdvancedActionsButton();
+        AdvancedActionsView advancedActionsView = new AdvancedActionsView(getDriver());
+
+        Assert.assertTrue(advancedActionsView.isDisplayed(),
+                "The \"Advanced Actions\" view is not displayed");
     }
 
     @Test
@@ -55,6 +69,7 @@ public class HomeViewTest extends BaseTest {
         homeView.tapLogoutButton();
         LoginView loginView = new LoginView(getDriver());
 
-        Assert.assertTrue(loginView.isDisplayed());
+        Assert.assertTrue(loginView.isDisplayed(),
+                "The user is not logged out");
     }
 }
