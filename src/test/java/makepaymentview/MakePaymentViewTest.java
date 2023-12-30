@@ -32,6 +32,27 @@ public class MakePaymentViewTest extends BaseTest {
         makePaymentView.setCountry(payment.getCountry());
     }
 
+    public void alertFrameValidation(Payment payment) {
+
+        Assert.assertTrue(makePaymentView.getAlertFrame().isDisplayed(),
+                "The alert frame is not displayed");
+        Assert.assertEquals(makePaymentView.getQuestionFrame().getTitle(), payment.getAlertTitle(),
+                "Incorrect title");
+        Assert.assertEquals(makePaymentView.getAlertFrame().getMessage(), payment.getAlertMessage(),
+                "Incorrect message content");
+        Assert.assertTrue(makePaymentView.getAlertFrame().isButtonDisplayed(),
+                "The \"Close\" button is not displayed");
+    }
+
+    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
+    public void sendPaymentButtonStatusWhenDataIsCorrect(Payment payment) {
+
+        fill(payment);
+
+        Assert.assertTrue(makePaymentView.isSendPaymentButtonEnabled(),
+                "The \"Make payment\" button is disabled");
+    }
+
     @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
     public void questionFrameVisibility(Payment payment) {
 
@@ -85,15 +106,7 @@ public class MakePaymentViewTest extends BaseTest {
         fill(payment);
 
         makePaymentView.tapSendPaymentButton();
-
-        Assert.assertTrue(makePaymentView.getAlertFrame().isDisplayed(),
-                "The alert frame is not displayed");
-        Assert.assertEquals(makePaymentView.getQuestionFrame().getTitle(), "Alert",
-                "Incorrect title");
-        Assert.assertEquals(makePaymentView.getAlertFrame().getMessage(),
-                "Invalid phone number!", "Incorrect message content");
-        Assert.assertTrue(makePaymentView.getAlertFrame().isButtonDisplayed(),
-                "The \"Close\" button is not displayed");
+        alertFrameValidation(payment);
     }
 
     @Test(dataProvider = "PM_blankPhoneField", dataProviderClass = TestDataProviders.class)
@@ -102,6 +115,54 @@ public class MakePaymentViewTest extends BaseTest {
         fill(payment);
 
         Assert.assertFalse(makePaymentView.isSendPaymentButtonEnabled(),
-                "The 'Send payment' button is enabled");
+                "The \"Make payment\" button is enabled");
+    }
+
+    @Test(dataProvider = "PM_incorrectName", dataProviderClass = TestDataProviders.class)
+    public void incorrectName(Payment payment) {
+
+        fill(payment);
+        alertFrameValidation(payment);
+    }
+
+    @Test(dataProvider = "PM_blankNameField", dataProviderClass = TestDataProviders.class)
+    public void blankNameField(Payment payment) {
+
+        fill(payment);
+
+        Assert.assertFalse(makePaymentView.isSendPaymentButtonEnabled(),
+                "The \"Make payment\" button is enabled");
+    }
+
+    @Test(dataProvider = "PM_incorrectAmount", dataProviderClass = TestDataProviders.class)
+    public void incorrectAmount(Payment payment) {
+
+        fill(payment);
+        alertFrameValidation(payment);
+    }
+
+    @Test(dataProvider = "PM_blankAmountField", dataProviderClass = TestDataProviders.class)
+    public void blankAmountField(Payment payment) {
+
+        fill(payment);
+
+        Assert.assertFalse(makePaymentView.isSendPaymentButtonEnabled(),
+                "The \"Make payment\" button is enabled");
+    }
+
+    @Test(dataProvider = "PM_incorrectCountry", dataProviderClass = TestDataProviders.class)
+    public void incorrectCountry(Payment payment) {
+
+        fill(payment);
+        alertFrameValidation(payment);
+    }
+
+    @Test(dataProvider = "PM_blankCountryField", dataProviderClass = TestDataProviders.class)
+    public void blankCountryField(Payment payment) {
+
+        fill(payment);
+
+        Assert.assertFalse(makePaymentView.isSendPaymentButtonEnabled(),
+                "The \"Make payment\" button is enabled");
     }
 }
