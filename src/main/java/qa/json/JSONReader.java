@@ -49,7 +49,9 @@ public class JSONReader {
                         jsonArray.getJSONObject(i).getString("phone"),
                         jsonArray.getJSONObject(i).getString("name"),
                         jsonArray.getJSONObject(i).getString("amount"),
-                        jsonArray.getJSONObject(i).getString("country")
+                        jsonArray.getJSONObject(i).getString("country"),
+                        jsonArray.getJSONObject(i).getString("alertTitle"),
+                        jsonArray.getJSONObject(i).getString("alertMessage")
                 ))
                 .toArray(Payment[]::new);
     }
