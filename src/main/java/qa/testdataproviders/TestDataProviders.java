@@ -64,4 +64,40 @@ public class TestDataProviders {
 
         return JSONReader.getPayments("blankPhoneField");
     }
+
+    @DataProvider(name = "PM_incorrectName")
+    public Object[] CR_incorrectName() {
+
+        return JSONReader.getPayments("incorrectName");
+    }
+
+    @DataProvider(name = "PM_blankNameField")
+    public Object[] CR_blankNameField() {
+
+        return JSONReader.getPayments("blankNameField");
+    }
+
+    @DataProvider(name = "PM_incorrectAmount")
+    public Object[] CR_incorrectAmount() {
+
+        return JSONReader.getPayments("incorrectAmount");
+    }
+
+    @DataProvider(name = "PM_blankAmountField")
+    public Object[] CR_blankAmountField() {
+
+        return JSONReader.getPayments("blankAmountField");
+    }
+
+    @DataProvider(name = "PM_incorrectCountry")
+    public Object[] CR_incorrectCountry() {
+
+        return JSONReader.getPayments("incorrectCountry");
+    }
+
+    @DataProvider(name = "PM_blankCountryField")
+    public Object[] CR_blankCountryField() {
+
+        return JSONReader.getPayments("blankCountryField");
+    }
 }
