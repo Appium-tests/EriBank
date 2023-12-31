@@ -149,6 +149,18 @@ public class TestDataProviders {
         return JSONReader.getMortageRequests("blankAgeField");
     }
 
+    @DataProvider(name = "MR_incorrectAddress")
+    public Object[] MR_incorrectAddress() {
+
+        return JSONReader.getMortageRequests("incorrectAddress");
+    }
+
+    @DataProvider(name = "MR_blankAddressField")
+    public Object[] MR_blankAddressField() {
+
+        return JSONReader.getMortageRequests("blankAddressField");
+    }
+
     @DataProvider(name = "MR_incorrectCountry")
     public Object[] MR_incorrectCountry() {
 
