@@ -49,6 +49,7 @@ public class MortageRequestViewTest extends BaseTest {
     public void correct(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
+        mortageRequestView.tapNextButton();
         checkWhenDataIsCorrect();
     }
 
@@ -56,6 +57,7 @@ public class MortageRequestViewTest extends BaseTest {
     public void blankSecondAddressField(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
+        mortageRequestView.tapNextButton();
         checkWhenDataIsCorrect();
     }
 
@@ -63,6 +65,7 @@ public class MortageRequestViewTest extends BaseTest {
     public void incorrectFirstName(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
+        mortageRequestView.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
@@ -77,6 +80,7 @@ public class MortageRequestViewTest extends BaseTest {
     public void incorrectLastName(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
+        mortageRequestView.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
@@ -91,6 +95,7 @@ public class MortageRequestViewTest extends BaseTest {
     public void incorrectAge(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
+        mortageRequestView.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
@@ -105,6 +110,7 @@ public class MortageRequestViewTest extends BaseTest {
     public void incorrectAddress(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
+        mortageRequestView.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
@@ -119,6 +125,7 @@ public class MortageRequestViewTest extends BaseTest {
     public void incorrectCountry(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
+        mortageRequestView.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
