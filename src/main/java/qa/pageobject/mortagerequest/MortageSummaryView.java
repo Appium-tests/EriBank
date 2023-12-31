@@ -23,12 +23,10 @@ public class MortageSummaryView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/typeOfOccupationListView")
     List<WebElement> typeOfOccupationListView;
 
-    @AndroidFindBy(id = "com.experitest.ExperiBank:id/yearlyIncomeListView")
-    List<WebElement> yearlyIncomeListView;
-
     public boolean isDisplayed() {
 
-        return !typeOfLoanListView.isEmpty() && !numberOfYearsListView.isEmpty() &&
-               !typeOfOccupationListView.isEmpty() && !yearlyIncomeListView.isEmpty();
+        return !typeOfLoanListView.isEmpty() &&
+               !numberOfYearsListView.isEmpty() &&
+               !typeOfOccupationListView.isEmpty();
     }
 }
