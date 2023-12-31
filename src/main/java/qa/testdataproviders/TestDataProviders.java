@@ -100,4 +100,64 @@ public class TestDataProviders {
 
         return JSONReader.getPayments("blankCountryField");
     }
+
+    @DataProvider(name = "MR_correct")
+    public Object[] MR_correct() {
+
+        return JSONReader.getMortageRequests("correct");
+    }
+
+    @DataProvider(name = "MR_blankSecondAddressField")
+    public Object[] MR_blankSecondAddressField() {
+
+        return JSONReader.getMortageRequests("blankSecondAddressField");
+    }
+
+    @DataProvider(name = "MR_incorrectFirstName")
+    public Object[] MR_incorrectFirstName() {
+
+        return JSONReader.getMortageRequests("incorrectFirstName");
+    }
+
+    @DataProvider(name = "MR_blankFirstNameField")
+    public Object[] MR_blankFirstNameField() {
+
+        return JSONReader.getMortageRequests("blankFirstNameField");
+    }
+
+    @DataProvider(name = "MR_incorrectLastName")
+    public Object[] MR_incorrectLastName() {
+
+        return JSONReader.getMortageRequests("incorrectLastName");
+    }
+
+    @DataProvider(name = "MR_blankLastNameField")
+    public Object[] MR_blankLastNameField() {
+
+        return JSONReader.getMortageRequests("blankLastNameField");
+    }
+
+    @DataProvider(name = "MR_incorrectAge")
+    public Object[] MR_incorrectAge() {
+
+        return JSONReader.getMortageRequests("incorrectAge");
+    }
+
+    @DataProvider(name = "MR_blankAgeField")
+    public Object[] MR_blankAgeField() {
+
+        return JSONReader.getMortageRequests("blankAgeField");
+    }
+
+    @DataProvider(name = "MR_incorrectCountry")
+    public Object[] MR_incorrectCountry() {
+
+        return JSONReader.getMortageRequests("incorrectCountry");
+    }
+
+    @DataProvider(name = "MR_blankCountryField")
+    public Object[] MR_blankCountryField() {
+
+        return JSONReader.getMortageRequests("blankCountryField");
+    }
 }
