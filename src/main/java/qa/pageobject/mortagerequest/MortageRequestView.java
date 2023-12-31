@@ -61,7 +61,7 @@ public class MortageRequestView extends BaseView {
         addressField1.sendKeys(address);
     }
 
-    public void setAddressField2(String address) {
+    public void setAddress2(String address) {
 
         addressField2.sendKeys(address);
     }
