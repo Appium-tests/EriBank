@@ -167,5 +167,176 @@
                 "alertMessage": ""
             }
         ]
+    },
+
+    "mortageRequest": {
+
+        "correct": [
+
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": "40",
+                "address1": "3529 Sharon Lane",
+                "address2": "Indiana",
+                "country": "United States",
+                "title": "",
+                "message": ""
+            }
+        ],
+
+        "blankSecondAddressField": [
+
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": "40",
+                "address1": "3529 Sharon Lane",
+                "address2": "",
+                "country": "United States",
+                "title": "",
+                "message": ""
+            }
+        ],
+
+        "incorrectFirstName": [
+
+            {
+                "firstName": "J@!_n",
+                "lastName": "Doe",
+                "age": "40",
+                "address1": "3529 Sharon Lane",
+                "address2": "Indiana",
+                "country": "United States",
+                "title": "Alert",
+                "message": "Invalid first name"
+            }
+        ],
+
+        "blankFirstNameField": [
+
+            {
+                "firstName": "",
+                "lastName": "Doe",
+                "age": "40",
+                "address1": "3529 Sharon Lane",
+                "address2": "Indiana",
+                "country": "United States",
+                "title": "",
+                "message": ""
+            }
+        ],
+
+        "incorrectLastName": [
+
+            {
+                "firstName": "John",
+                "lastName": "__D.o,e",
+                "age": "40",
+                "address1": "3529 Sharon Lane",
+                "address2": "Indiana",
+                "country": "United States",
+                "title": "Alert",
+                "message": "Invalid last name"
+            }
+        ],
+
+        "blankLastNameField": [
+
+            {
+                "firstName": "John",
+                "lastName": "",
+                "age": "40",
+                "address1": "3529 Sharon Lane",
+                "address2": "Indiana",
+                "country": "United States",
+                "title": "",
+                "message": ""
+            }
+        ],
+
+        "incorrectAge": [
+
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": "40",
+                "address1": "3529 Sharon Lane",
+                "address2": "Indiana",
+                "country": "United States",
+                "title": "Alert",
+                "message": "Invalid age"
+            }
+        ],
+
+        "blankAgeField": [
+
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": "",
+                "address1": "3529 Sharon Lane",
+                "address2": "Indiana",
+                "country": "United States",
+                "title": "",
+                "message": ""
+            }
+        ],
+
+        "incorrectAddress": [
+
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": "40",
+                "address1": "___my_address_?",
+                "address2": "Indiana",
+                "country": "United States",
+                "title": "Alert",
+                "message": "Invalid address"
+            }
+        ],
+
+        "blankAddressField": [
+
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": "40",
+                "address1": "",
+                "address2": "",
+                "country": "United States",
+                "title": "",
+                "message": ""
+            }
+        ],
+
+        "incorrectCountry": [
+
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": "40",
+                "address1": "3529 Sharon Lane",
+                "address2": "Indiana",
+                "country": "My country",
+                "title": "Alert",
+                "message": "Invalid country"
+            }
+        ],
+
+        "blankCountryField": [
+
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": "40",
+                "address1": "3529 Sharon Lane",
+                "address2": "Indiana",
+                "country": "",
+                "title": "",
+                "message": ""
+            }
+        ]
     }
 }
