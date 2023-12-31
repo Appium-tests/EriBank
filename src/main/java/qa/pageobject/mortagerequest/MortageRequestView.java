@@ -4,14 +4,19 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 import qa.base.BaseView;
+import qa.pageobject.loginview.AlertFrame;
 
 import java.util.List;
 
 public class MortageRequestView extends BaseView {
 
+    private final AlertFrame alertFrame;
+
     public MortageRequestView(AndroidDriver driver) {
 
         super(driver);
+
+        alertFrame = new AlertFrame(driver);
     }
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/makePaymentView")
@@ -20,7 +25,7 @@ public class MortageRequestView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/nameTextField")
     WebElement firstNameField;
 
-    @AndroidFindBy(id = "com.experitest.ExperiBank:id/nameTextField")
+    @AndroidFindBy(id = "com.experitest.ExperiBank:id/lastNameTextField")
     WebElement lastNameField;
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/ageTextField")
@@ -76,6 +81,11 @@ public class MortageRequestView extends BaseView {
         nextButton.click();
     }
 
+    public boolean isNextButtonEnabled() {
+
+        return nextButton.isEnabled();
+    }
+
     public void tapCancelButton() {
 
         cancelButton.click();
@@ -84,5 +94,10 @@ public class MortageRequestView extends BaseView {
     public boolean isDisplayed() {
 
         return !parent.isEmpty();
+    }
+
+    public AlertFrame getAlertFrame() {
+
+        return alertFrame;
     }
 }
