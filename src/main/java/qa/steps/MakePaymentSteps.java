@@ -31,6 +31,12 @@ public class MakePaymentSteps {
         makePaymentView.setAmount(amount);
     }
 
+    @Step("Tap the \"Select\" button")
+    public void tapSelectButton() {
+
+        makePaymentView.tapCountryButton();
+    }
+
     @Step("Set country")
     public void setCountry(String country) {
 
