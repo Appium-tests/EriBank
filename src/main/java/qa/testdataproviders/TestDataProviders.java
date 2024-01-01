@@ -104,72 +104,72 @@ public class TestDataProviders {
     @DataProvider(name = "MR_correct")
     public Object[] MR_correct() {
 
-        return JSONReader.getMortageRequests("correct");
+        return JSONReader.getMortgageRequests("correct");
     }
 
     @DataProvider(name = "MR_blankSecondAddressField")
     public Object[] MR_blankSecondAddressField() {
 
-        return JSONReader.getMortageRequests("blankSecondAddressField");
+        return JSONReader.getMortgageRequests("blankSecondAddressField");
     }
 
     @DataProvider(name = "MR_incorrectFirstName")
     public Object[] MR_incorrectFirstName() {
 
-        return JSONReader.getMortageRequests("incorrectFirstName");
+        return JSONReader.getMortgageRequests("incorrectFirstName");
     }
 
     @DataProvider(name = "MR_blankFirstNameField")
     public Object[] MR_blankFirstNameField() {
 
-        return JSONReader.getMortageRequests("blankFirstNameField");
+        return JSONReader.getMortgageRequests("blankFirstNameField");
     }
 
     @DataProvider(name = "MR_incorrectLastName")
     public Object[] MR_incorrectLastName() {
 
-        return JSONReader.getMortageRequests("incorrectLastName");
+        return JSONReader.getMortgageRequests("incorrectLastName");
     }
 
     @DataProvider(name = "MR_blankLastNameField")
     public Object[] MR_blankLastNameField() {
 
-        return JSONReader.getMortageRequests("blankLastNameField");
+        return JSONReader.getMortgageRequests("blankLastNameField");
     }
 
     @DataProvider(name = "MR_incorrectAge")
     public Object[] MR_incorrectAge() {
 
-        return JSONReader.getMortageRequests("incorrectAge");
+        return JSONReader.getMortgageRequests("incorrectAge");
     }
 
     @DataProvider(name = "MR_blankAgeField")
     public Object[] MR_blankAgeField() {
 
-        return JSONReader.getMortageRequests("blankAgeField");
+        return JSONReader.getMortgageRequests("blankAgeField");
     }
 
     @DataProvider(name = "MR_incorrectAddress")
     public Object[] MR_incorrectAddress() {
 
-        return JSONReader.getMortageRequests("incorrectAddress");
+        return JSONReader.getMortgageRequests("incorrectAddress");
     }
 
     @DataProvider(name = "MR_blankAddressField")
     public Object[] MR_blankAddressField() {
 
-        return JSONReader.getMortageRequests("blankAddressField");
+        return JSONReader.getMortgageRequests("blankAddressField");
     }
 
     @DataProvider(name = "MR_incorrectCountry")
     public Object[] MR_incorrectCountry() {
 
-        return JSONReader.getMortageRequests("incorrectCountry");
+        return JSONReader.getMortgageRequests("incorrectCountry");
     }
 
     @DataProvider(name = "MR_blankCountryField")
     public Object[] MR_blankCountryField() {
 
-        return JSONReader.getMortageRequests("blankCountryField");
+        return JSONReader.getMortgageRequests("blankCountryField");
     }
 }
