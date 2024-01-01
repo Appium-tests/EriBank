@@ -81,6 +81,7 @@
                 "name": "Pawel",
                 "amount": "1",
                 "country": "Poland",
+                "question": "Are you sure you want to send payment?",
                 "title": "",
                 "message": ""
             }
@@ -93,6 +94,7 @@
                 "name": "Pawel",
                 "amount": "1",
                 "country": "Poland",
+                "question": "",
                 "title": "Alert",
                 "message": "Invalid phone number"
             }
@@ -105,6 +107,7 @@
                 "name": "Pawel",
                 "amount": "1",
                 "country": "Poland",
+                "question": "",
                 "title": "",
                 "message": ""
             }
@@ -117,6 +120,7 @@
                 "name": "@@#53Alex",
                 "amount": "1",
                 "country": "Poland",
+                "question": "",
                 "title": "Alert",
                 "message": "Invalid name"
             }
@@ -129,6 +133,7 @@
                 "name": "",
                 "amount": "1",
                 "country": "Poland",
+                "question": "",
                 "title": "",
                 "message": ""
             }
@@ -141,6 +146,7 @@
                 "name": "Pawel",
                 "amount": "$$35ffds!123",
                 "country": "Poland",
+                "question": "",
                 "title": "Alert",
                 "message": "Incorrect amount"
             }
@@ -154,6 +160,7 @@
                 "amount": "",
                 "country": "Poland",
                 "title": "",
+                "question": "",
                 "message": ""
             }
         ],
@@ -165,6 +172,7 @@
                 "name": "Pawel",
                 "amount": "100",
                 "country": "__Zoo()sa!",
+                "question": "",
                 "title": "Alert",
                 "message": "Incorrect country"
             }
@@ -177,6 +185,7 @@
                 "name": "Pawel",
                 "amount": "100",
                 "country": "",
+                "question": "",
                 "title": "",
                 "message": ""
             }
