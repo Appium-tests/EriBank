@@ -7,14 +7,14 @@ import qa.base.BaseTest;
 import qa.helpers.Authentication;
 import qa.helpers.TestHelper;
 import qa.pageobject.homeview.HomeView;
-import qa.pageobject.makepaymentview.MakePaymentView;
+import qa.steps.MakePaymentSteps;
 import qa.testdataproviders.TestDataProviders;
 import qa.utils.Payment;
 
 public class MakePaymentViewTest extends BaseTest {
 
+    private MakePaymentSteps makePaymentSteps;
     private TestHelper testHelper;
-    private MakePaymentView makePaymentView;
 
     @BeforeMethod
     public void create() {
@@ -23,19 +23,42 @@ public class MakePaymentViewTest extends BaseTest {
         HomeView homeView = new HomeView(getDriver());
         homeView.tapMakePaymentButton();
 
-        makePaymentView = new MakePaymentView(getDriver());
+        makePaymentSteps = new MakePaymentSteps(getDriver());
         testHelper = new TestHelper();
     }
 
     public void fill(Payment payment) {
 
-        makePaymentView.setPhone(payment.getPhone());
-        makePaymentView.setName(payment.getName());
-        makePaymentView.setAmount(payment.getAmount());
-        makePaymentView.setCountry(payment.getCountry());
+        makePaymentSteps.setPhone(payment.getPhone());
+        makePaymentSteps.setName(payment.getName());
+        makePaymentSteps.setAmount(payment.getAmount());
+        makePaymentSteps.setCountry(payment.getCountry());
     }
 
-    private void checkIfDataIsCorrect() {
+    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
+    public void sendPaymentButtonStatusWhenDataIsCorrect(Payment payment) {
+
+        fill(payment);
+
+        Assert.assertTrue(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
+                "The \"Make payment\" button is disabled");
+    }
+
+    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
+    public void questionFrameVisibility(Payment payment) {
+
+        fill(payment);
+        makePaymentSteps.tapSendPaymentButton();
+        testHelper.checkQuestionMessage(makePaymentSteps.getMakePaymentView().getQuestionFrame(),
+                payment.getQuestion());
+    }
+
+    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
+    public void correct(Payment payment) {
+
+        fill(payment);
+        makePaymentSteps.getMakePaymentView().tapSendPaymentButton();
+        makePaymentSteps.getMakePaymentView().getQuestionFrame().tapButtonYES();
 
         HomeView homeView = new HomeView(getDriver());
 
@@ -44,49 +67,12 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
-    public void sendPaymentButtonStatusWhenDataIsCorrect(Payment payment) {
-
-        fill(payment);
-
-        Assert.assertTrue(makePaymentView.isSendPaymentButtonEnabled(),
-                "The \"Make payment\" button is disabled");
-    }
-
-    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
-    public void questionFrameVisibility(Payment payment) {
-
-        fill(payment);
-
-        makePaymentView.tapSendPaymentButton();
-
-        Assert.assertTrue(makePaymentView.getQuestionFrame().isDisplayed(),
-                "The question frame is not displayed");
-        Assert.assertTrue(makePaymentView.getQuestionFrame().isButtonYESDisplayed(),
-                "The 'Yes' button is not displayed");
-        Assert.assertTrue(makePaymentView.getQuestionFrame().isButtonNODisplayed(),
-                "The 'No' button is not displayed");
-        Assert.assertEquals(makePaymentView.getQuestionFrame().getTitle(), "EriBank",
-                "Incorrect title");
-        Assert.assertEquals(makePaymentView.questionFrame.getMessage(), "Are you sure you want to send payment?",
-                "Incorrect message content");
-    }
-
-    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
-    public void correct(Payment payment) {
-
-        fill(payment);
-        makePaymentView.tapSendPaymentButton();
-        makePaymentView.getQuestionFrame().tapButtonYES();
-        checkIfDataIsCorrect();
-    }
-
-    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
     public void cancellation(Payment payment) {
 
         fill(payment);
 
-        makePaymentView.tapSendPaymentButton();
-        makePaymentView.getQuestionFrame().tapButtonNO();
+        makePaymentSteps.getMakePaymentView().tapSendPaymentButton();
+        makePaymentSteps.getMakePaymentView().getQuestionFrame().tapButtonNO();
 
         HomeView homeView = new HomeView(getDriver());
 
@@ -98,56 +84,64 @@ public class MakePaymentViewTest extends BaseTest {
     public void incorrectPhone(Payment payment) {
 
         fill(payment);
-        makePaymentView.tapSendPaymentButton();
-        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getTitle(), payment.getMessage());
+        makePaymentSteps.getMakePaymentView().tapSendPaymentButton();
+        testHelper.checkWhenDataIsIncorrect(makePaymentSteps.getMakePaymentView().getAlertFrame(),
+                payment.getTitle(), payment.getMessage());
     }
 
     @Test(dataProvider = "PM_blankPhoneField", dataProviderClass = TestDataProviders.class)
     public void blankPhoneField(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenFieldIsBlank(makePaymentView.isSendPaymentButtonEnabled(), "Make payment");
+        testHelper.checkWhenFieldIsBlank(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
+                "Make payment");
     }
 
     @Test(dataProvider = "PM_incorrectName", dataProviderClass = TestDataProviders.class)
     public void incorrectName(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getTitle(), payment.getMessage());
+        testHelper.checkWhenDataIsIncorrect(makePaymentSteps.getMakePaymentView().getAlertFrame(),
+                payment.getTitle(), payment.getMessage());
     }
 
     @Test(dataProvider = "PM_blankNameField", dataProviderClass = TestDataProviders.class)
     public void blankNameField(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenFieldIsBlank(makePaymentView.isSendPaymentButtonEnabled(), "Make payment");
+        testHelper.checkWhenFieldIsBlank(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
+                "Make payment");
     }
 
     @Test(dataProvider = "PM_incorrectAmount", dataProviderClass = TestDataProviders.class)
     public void incorrectAmount(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getTitle(), payment.getMessage());
+        testHelper.checkWhenDataIsIncorrect(makePaymentSteps.getMakePaymentView().getAlertFrame(),
+                payment.getTitle(), payment.getMessage());
     }
 
     @Test(dataProvider = "PM_blankAmountField", dataProviderClass = TestDataProviders.class)
     public void blankAmountField(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenFieldIsBlank(makePaymentView.isSendPaymentButtonEnabled(), "Make payment");
+        testHelper.checkWhenFieldIsBlank(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
+                "Make payment");
     }
 
     @Test(dataProvider = "PM_incorrectCountry", dataProviderClass = TestDataProviders.class)
     public void incorrectCountry(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getTitle(), payment.getMessage());
+        testHelper.checkWhenDataIsIncorrect(makePaymentSteps.getMakePaymentView().getAlertFrame(),
+                payment.getTitle(), payment.getMessage());
     }
 
     @Test(dataProvider = "PM_blankCountryField", dataProviderClass = TestDataProviders.class)
     public void blankCountryField(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenFieldIsBlank(makePaymentView.isSendPaymentButtonEnabled(), "Make payment");
+        testHelper.checkWhenFieldIsBlank(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
+                "Make payment");
     }
 }
