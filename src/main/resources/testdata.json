@@ -5,7 +5,9 @@
 
             {
                 "username": "company",
-                "password": "company"
+                "password": "company",
+                "title": "",
+                "message": ""
             }
         ],
 
@@ -13,7 +15,9 @@
 
             {
                 "username": "CoMPanY",
-                "password": "company"
+                "password": "company",
+                "title": "Alert",
+                "message": "Invalid username or password!"
             }
         ],
 
@@ -21,7 +25,9 @@
 
             {
                 "username": "company",
-                "password": "cOMpaNy"
+                "password": "cOMpaNy",
+                "title": "Alert",
+                "message": "Invalid username or password!"
             }
         ],
 
@@ -29,7 +35,9 @@
 
             {
                 "username": "badCompany",
-                "password": "company"
+                "password": "company",
+                "title": "Alert",
+                "message": "Invalid username or password!"
             }
         ],
 
@@ -37,7 +45,9 @@
 
             {
                 "username": "",
-                "password": "company"
+                "password": "company",
+                "title": "Alert",
+                "message": "Invalid username or password!"
             }
         ],
 
@@ -45,7 +55,9 @@
 
             {
                 "username": "company",
-                "password": "badCompany"
+                "password": "badCompany",
+                "title": "Alert",
+                "message": "Invalid username or password!"
             }
         ],
 
@@ -53,7 +65,9 @@
 
             {
                 "username": "company",
-                "password": ""
+                "password": "",
+                "title": "Alert",
+                "message": "Invalid username or password!"
             }
         ]
     },
@@ -67,8 +81,8 @@
                 "name": "Pawel",
                 "amount": "1",
                 "country": "Poland",
-                "alertTitle": "",
-                "alertMessage": ""
+                "title": "",
+                "message": ""
             }
         ],
 
@@ -79,8 +93,8 @@
                 "name": "Pawel",
                 "amount": "1",
                 "country": "Poland",
-                "alertTitle": "Alert",
-                "alertMessage": "Invalid phone number"
+                "title": "Alert",
+                "message": "Invalid phone number"
             }
         ],
 
@@ -91,8 +105,8 @@
                 "name": "Pawel",
                 "amount": "1",
                 "country": "Poland",
-                "alertTitle": "",
-                "alertMessage": ""
+                "title": "",
+                "message": ""
             }
         ],
 
@@ -103,8 +117,8 @@
                 "name": "@@#53Alex",
                 "amount": "1",
                 "country": "Poland",
-                "alertTitle": "Alert",
-                "alertMessage": "Invalid name"
+                "title": "Alert",
+                "message": "Invalid name"
             }
         ],
 
@@ -115,8 +129,8 @@
                 "name": "",
                 "amount": "1",
                 "country": "Poland",
-                "alertTitle": "",
-                "alertMessage": ""
+                "title": "",
+                "message": ""
             }
         ],
 
@@ -127,8 +141,8 @@
                 "name": "Pawel",
                 "amount": "$$35ffds!123",
                 "country": "Poland",
-                "alertTitle": "Alert",
-                "alertMessage": "Incorrect amount"
+                "title": "Alert",
+                "message": "Incorrect amount"
             }
         ],
 
@@ -139,8 +153,8 @@
                 "name": "Pawel",
                 "amount": "",
                 "country": "Poland",
-                "alertTitle": "",
-                "alertMessage": ""
+                "title": "",
+                "message": ""
             }
         ],
 
@@ -151,8 +165,8 @@
                 "name": "Pawel",
                 "amount": "100",
                 "country": "__Zoo()sa!",
-                "alertTitle": "Alert",
-                "alertMessage": "Incorrect country"
+                "title": "Alert",
+                "message": "Incorrect country"
             }
         ],
 
@@ -163,8 +177,8 @@
                 "name": "Pawel",
                 "amount": "100",
                 "country": "",
-                "alertTitle": "",
-                "alertMessage": ""
+                "title": "",
+                "message": ""
             }
         ]
     },
