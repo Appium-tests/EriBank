@@ -33,6 +33,9 @@ public class MakePaymentView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/amountTextField")
     WebElement amountField;
 
+    @AndroidFindBy(id = "com.experitest.ExperiBank:id/countryButton")
+    WebElement countryButton;
+
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/countryTextField")
     WebElement countryField;
 
@@ -67,6 +70,11 @@ public class MakePaymentView extends BaseView {
         return sendPaymentButton.isEnabled();
     }
 
+    public void tapCountryButton() {
+
+        countryButton.click();
+    }
+
     public void tapSendPaymentButton() {
 
         sendPaymentButton.click();
@@ -75,6 +83,11 @@ public class MakePaymentView extends BaseView {
     public void tapCancelButton() {
 
         cancelButton.click();
+    }
+
+    public String getCountryNameFromCountryField() {
+
+        return countryField.getText();
     }
 
     public boolean isDisplayed() {
