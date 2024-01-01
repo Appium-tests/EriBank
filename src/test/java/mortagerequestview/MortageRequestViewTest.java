@@ -7,14 +7,14 @@ import qa.base.BaseTest;
 import qa.helpers.Authentication;
 import qa.helpers.TestHelper;
 import qa.pageobject.homeview.HomeView;
-import qa.pageobject.mortagerequest.MortageRequestView;
 import qa.pageobject.mortagerequest.MortageSummaryView;
+import qa.steps.MortageRequestSteps;
 import qa.testdataproviders.TestDataProviders;
 import qa.utils.MortageRequest;
 
 public class MortageRequestViewTest extends BaseTest {
 
-    private MortageRequestView mortageRequestView;
+    private MortageRequestSteps mortageRequestSteps;
     private TestHelper testHelper;
 
     @BeforeMethod
@@ -24,18 +24,18 @@ public class MortageRequestViewTest extends BaseTest {
         HomeView homeView = new HomeView(getDriver());
         homeView.tapMortageRequestButton();
 
-        mortageRequestView = new MortageRequestView(getDriver());
+        mortageRequestSteps = new MortageRequestSteps(getDriver());
         testHelper = new TestHelper();
     }
 
     private void fill(MortageRequest mortageRequest) {
 
-        mortageRequestView.setFirstName(mortageRequest.getFirstName());
-        mortageRequestView.setLastName(mortageRequest.getLastName());
-        mortageRequestView.setAge(mortageRequest.getAge());
-        mortageRequestView.setAddress1(mortageRequest.getAddress1());
-        mortageRequestView.setAddress2(mortageRequest.getAddress2());
-        mortageRequestView.setCountry(mortageRequest.getCountry());
+        mortageRequestSteps.setFirstName(mortageRequest.getFirstName());
+        mortageRequestSteps.setLastName(mortageRequest.getLastName());
+        mortageRequestSteps.setAge(mortageRequest.getAge());
+        mortageRequestSteps.setAddress(mortageRequest.getAddress1());
+        mortageRequestSteps.fillSecondAddressField(mortageRequest.getAddress2());
+        mortageRequestSteps.setCountry(mortageRequest.getCountry());
     }
 
     private void checkWhenDataIsCorrect() {
@@ -49,7 +49,7 @@ public class MortageRequestViewTest extends BaseTest {
     public void correct(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        mortageRequestView.tapNextButton();
+        mortageRequestSteps.tapButtonNext();
         checkWhenDataIsCorrect();
     }
 
@@ -57,7 +57,7 @@ public class MortageRequestViewTest extends BaseTest {
     public void blankSecondAddressField(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        mortageRequestView.tapNextButton();
+        mortageRequestSteps.tapButtonNext();
         checkWhenDataIsCorrect();
     }
 
@@ -65,74 +65,84 @@ public class MortageRequestViewTest extends BaseTest {
     public void incorrectFirstName(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        mortageRequestView.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
+        mortageRequestSteps.tapButtonNext();
+        testHelper.checkWhenDataIsIncorrect(mortageRequestSteps.getMortageRequestView().getAlertFrame(),
+                mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
     @Test(dataProvider = "MR_blankFirstNameField", dataProviderClass = TestDataProviders.class)
     public void blankFirstNameField(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        testHelper.checkWhenFieldIsBlank(mortageRequestView.isNextButtonEnabled(), "Next");
+        testHelper.checkWhenFieldIsBlank(mortageRequestSteps.getMortageRequestView().isButtonNextEnabled(),
+                "Next");
     }
 
     @Test(dataProvider = "MR_incorrectLastName", dataProviderClass = TestDataProviders.class)
     public void incorrectLastName(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        mortageRequestView.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
+        mortageRequestSteps.tapButtonNext();
+        testHelper.checkWhenDataIsIncorrect(mortageRequestSteps.getMortageRequestView().getAlertFrame(),
+                mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
     @Test(dataProvider = "MR_blankLastNameField", dataProviderClass = TestDataProviders.class)
     public void blankBlankNameField(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        testHelper.checkWhenFieldIsBlank(mortageRequestView.isNextButtonEnabled(), "Next");
+        testHelper.checkWhenFieldIsBlank(mortageRequestSteps.getMortageRequestView().isButtonNextEnabled(),
+                "Next");
     }
 
     @Test(dataProvider = "MR_incorrectAge", dataProviderClass = TestDataProviders.class)
     public void incorrectAge(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        mortageRequestView.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
+        mortageRequestSteps.tapButtonNext();
+        testHelper.checkWhenDataIsIncorrect(mortageRequestSteps.getMortageRequestView().getAlertFrame(),
+                mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
     @Test(dataProvider = "MR_blankAgeField", dataProviderClass = TestDataProviders.class)
     public void blankAgeField(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        testHelper.checkWhenFieldIsBlank(mortageRequestView.isNextButtonEnabled(), "Next");
+        testHelper.checkWhenFieldIsBlank(mortageRequestSteps.getMortageRequestView().isButtonNextEnabled(),
+                "Next");
     }
 
     @Test(dataProvider = "MR_incorrectAddress", dataProviderClass = TestDataProviders.class)
     public void incorrectAddress(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        mortageRequestView.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
+        mortageRequestSteps.tapButtonNext();
+        testHelper.checkWhenDataIsIncorrect(mortageRequestSteps.getMortageRequestView().getAlertFrame(),
+                mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
     @Test(dataProvider = "MR_blankAddressField", dataProviderClass = TestDataProviders.class)
     public void blankAddressField(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        testHelper.checkWhenFieldIsBlank(mortageRequestView.isNextButtonEnabled(), "Next");
+        testHelper.checkWhenFieldIsBlank(mortageRequestSteps.getMortageRequestView().isButtonNextEnabled(),
+                "Next");
     }
 
     @Test(dataProvider = "MR_incorrectCountry", dataProviderClass = TestDataProviders.class)
     public void incorrectCountry(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        mortageRequestView.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortageRequestView.getAlertFrame(), mortageRequest.getTitle(), mortageRequest.getMessage());
+        mortageRequestSteps.tapButtonNext();
+        testHelper.checkWhenDataIsIncorrect(mortageRequestSteps.getMortageRequestView().getAlertFrame(),
+                mortageRequest.getTitle(), mortageRequest.getMessage());
     }
 
     @Test(dataProvider = "MR_blankCountryField", dataProviderClass = TestDataProviders.class)
     public void blankCountryField(MortageRequest mortageRequest) {
 
         fill(mortageRequest);
-        testHelper.checkWhenFieldIsBlank(mortageRequestView.isNextButtonEnabled(), "Next");
+        testHelper.checkWhenFieldIsBlank(mortageRequestSteps.getMortageRequestView().isButtonNextEnabled(),
+                "Next");
     }
 }
