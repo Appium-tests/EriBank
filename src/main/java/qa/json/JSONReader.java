@@ -4,7 +4,7 @@ import com.google.common.io.Resources;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import qa.utils.Credentials;
-import qa.utils.MortageRequest;
+import qa.utils.MortgageRequest;
 import qa.utils.Payment;
 
 import java.io.IOException;
@@ -60,12 +60,12 @@ public class JSONReader {
                 .toArray(Payment[]::new);
     }
 
-    public static MortageRequest[] getMortageRequests(String node) {
+    public static MortgageRequest[] getMortgageRequests(String node) {
 
         JSONArray jsonArray = getJSONArray("mortageRequest", node);
 
         return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new MortageRequest(
+                .mapToObj(i -> new MortgageRequest(
                         jsonArray.getJSONObject(i).getString("firstName"),
                         jsonArray.getJSONObject(i).getString("lastName"),
                         jsonArray.getJSONObject(i).getString("age"),
@@ -75,6 +75,6 @@ public class JSONReader {
                         jsonArray.getJSONObject(i).getString("title"),
                         jsonArray.getJSONObject(i).getString("message")
                 ))
-                .toArray(MortageRequest[]::new);
+                .toArray(MortgageRequest[]::new);
     }
 }

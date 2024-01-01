@@ -2,67 +2,67 @@ package qa.steps;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Step;
-import qa.pageobject.mortagerequest.MortageRequestView;
+import qa.pageobject.mortgagerequest.MortgageRequestView;
 
-public class MortageRequestSteps {
+public class MortgageRequestSteps {
 
-    private final MortageRequestView mortageRequestView;
+    private final MortgageRequestView mortgageRequestView;
 
-    public MortageRequestSteps(AndroidDriver driver) {
+    public MortgageRequestSteps(AndroidDriver driver) {
 
-        mortageRequestView = new MortageRequestView(driver);
+        mortgageRequestView = new MortgageRequestView(driver);
     }
 
     @Step("Set first name")
     public void setFirstName(String firstName) {
 
-        mortageRequestView.setFirstName(firstName);
+        mortgageRequestView.setFirstName(firstName);
     }
 
     @Step("Set last name")
     public void setLastName(String lastName) {
 
-        mortageRequestView.setLastName(lastName);
+        mortgageRequestView.setLastName(lastName);
     }
 
     @Step("Set age")
     public void setAge(String age) {
 
-        mortageRequestView.setAge(age);
+        mortgageRequestView.setAge(age);
     }
 
     @Step("Set address")
     public void setAddress(String address) {
 
-        mortageRequestView.setAddress1(address);
+        mortgageRequestView.setAddress1(address);
     }
 
     @Step("Fill the second address field")
     public void fillSecondAddressField(String address) {
 
-        mortageRequestView.setAddress2(address);
+        mortgageRequestView.setAddress2(address);
     }
 
     @Step("Set country")
     public void setCountry(String country) {
 
-        mortageRequestView.setCountry(country);
+        mortgageRequestView.setCountry(country);
     }
 
     @Step("Tap the\"Next\" button")
     public void tapButtonNext() {
 
-        mortageRequestView.tapButtonNext();
+        mortgageRequestView.tapButtonNext();
     }
 
     @Step("Tap the \"Cancel\" button")
     public void tapButtonCancel() {
 
-        mortageRequestView.tapButtonCancel();
+        mortgageRequestView.tapButtonCancel();
     }
 
-    public MortageRequestView getMortageRequestView() {
+    public MortgageRequestView getMortgageRequestView() {
 
-        return mortageRequestView;
+        return mortgageRequestView;
     }
 }
