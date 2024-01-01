@@ -1,4 +1,4 @@
-package qa.pageobject.mortagerequest;
+package qa.pageobject.mortgagerequest;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -7,9 +7,9 @@ import qa.base.BaseView;
 
 import java.util.List;
 
-public class MortageSummaryView extends BaseView {
+public class MortgageSummaryView extends BaseView {
 
-    public MortageSummaryView(AndroidDriver driver) {
+    public MortgageSummaryView(AndroidDriver driver) {
 
         super(driver);
     }
