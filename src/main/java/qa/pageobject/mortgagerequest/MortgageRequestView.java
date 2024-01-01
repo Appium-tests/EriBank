@@ -41,10 +41,10 @@ public class MortgageRequestView extends BaseView {
     WebElement countryField;
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/nextButton")
-    WebElement buttonNext;
+    WebElement nextButton;
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/cancelButton")
-    WebElement buttonCancel;
+    WebElement cancelButton;
 
     public void setFirstName(String firstName) {
 
@@ -76,19 +76,19 @@ public class MortgageRequestView extends BaseView {
         countryField.sendKeys(country);
     }
 
-    public void tapButtonNext() {
+    public void tapNextButton() {
 
-        buttonNext.click();
+        nextButton.click();
     }
 
-    public boolean isButtonNextEnabled() {
+    public boolean isNextButtonEnabled() {
 
-        return buttonNext.isEnabled();
+        return nextButton.isEnabled();
     }
 
-    public void tapButtonCancel() {
+    public void tapCancelButton() {
 
-        buttonCancel.click();
+        cancelButton.click();
     }
 
     public boolean isDisplayed() {
