@@ -53,6 +53,7 @@ public class JSONReader {
                         jsonArray.getJSONObject(i).getString("name"),
                         jsonArray.getJSONObject(i).getString("amount"),
                         jsonArray.getJSONObject(i).getString("country"),
+                        jsonArray.getJSONObject(i).getString("question"),
                         jsonArray.getJSONObject(i).getString("title"),
                         jsonArray.getJSONObject(i).getString("message")
                 ))
