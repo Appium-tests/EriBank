@@ -2,6 +2,7 @@ package qa.helpers;
 
 import org.testng.Assert;
 import qa.pageobject.loginview.AlertFrame;
+import qa.pageobject.makepaymentview.QuestionFrame;
 
 public class TestHelper {
 
@@ -23,5 +24,19 @@ public class TestHelper {
 
         Assert.assertFalse(condition,
                 "The button \"" + buttonName + "\" is enabled");
+    }
+
+    public void checkQuestionMessage(QuestionFrame questionFrame, String question) {
+
+        Assert.assertTrue(questionFrame.isDisplayed(),
+                "The question frame is not displayed");
+        Assert.assertTrue(questionFrame.isButtonYESDisplayed(),
+                "The 'Yes' button is not displayed");
+        Assert.assertTrue(questionFrame.isButtonNODisplayed(),
+                "The 'No' button is not displayed");
+        Assert.assertEquals(questionFrame.getTitle(), "EriBank",
+                "Incorrect title");
+        Assert.assertEquals(questionFrame.getMessage(), question,
+                "Incorrect message content");
     }
 }
