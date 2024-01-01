@@ -145,4 +145,15 @@ public class MortageRequestViewTest extends BaseTest {
         testHelper.checkWhenFieldIsBlank(mortageRequestSteps.getMortageRequestView().isButtonNextEnabled(),
                 "Next");
     }
+
+    @Test
+    public void quitView() {
+
+        mortageRequestSteps.tapButtonCancel();
+
+        HomeView homeView = new HomeView(getDriver());
+
+        Assert.assertTrue(homeView.isDisplayed(),
+                "The home view is not displayed");
+    }
 }
