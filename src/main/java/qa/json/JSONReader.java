@@ -3,6 +3,7 @@ package qa.json;
 import com.google.common.io.Resources;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import qa.utils.Country;
 import qa.utils.Credentials;
 import qa.utils.MortgageRequest;
 import qa.utils.Payment;
@@ -76,5 +77,17 @@ public class JSONReader {
                         jsonArray.getJSONObject(i).getString("message")
                 ))
                 .toArray(MortgageRequest[]::new);
+    }
+
+    public static Country[] getCountries() {
+
+        JSONArray jsonArray = jsonObject.getJSONArray("countries");
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new Country(
+                        jsonArray.getJSONObject(i).getString("name"),
+                        jsonArray.getJSONObject(i).getInt("index")
+                ))
+                .toArray(Country[]::new);
     }
 }
