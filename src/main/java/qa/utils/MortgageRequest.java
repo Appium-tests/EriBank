@@ -3,7 +3,7 @@ package qa.utils;
 import lombok.Getter;
 
 @Getter
-public class MortageRequest {
+public class MortgageRequest {
 
     private final String firstName;
     private final String lastName;
@@ -14,7 +14,7 @@ public class MortageRequest {
     private final String title;
     private final String message;
 
-    public MortageRequest(String firstName, String lastName, String age, String address1, String address2, String country, String title, String message) {
+    public MortgageRequest(String firstName, String lastName, String age, String address1, String address2, String country, String title, String message) {
 
         this.firstName = firstName;
         this.lastName = lastName;
