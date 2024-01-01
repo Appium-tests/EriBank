@@ -99,7 +99,7 @@ public class MakePaymentViewTest extends BaseTest {
 
         fill(payment);
         makePaymentView.tapSendPaymentButton();
-        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getAlertTitle(), payment.getAlertMessage());
+        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getTitle(), payment.getMessage());
     }
 
     @Test(dataProvider = "PM_blankPhoneField", dataProviderClass = TestDataProviders.class)
@@ -113,7 +113,7 @@ public class MakePaymentViewTest extends BaseTest {
     public void incorrectName(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getAlertTitle(), payment.getAlertMessage());
+        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getTitle(), payment.getMessage());
     }
 
     @Test(dataProvider = "PM_blankNameField", dataProviderClass = TestDataProviders.class)
@@ -127,7 +127,7 @@ public class MakePaymentViewTest extends BaseTest {
     public void incorrectAmount(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getAlertTitle(), payment.getAlertMessage());
+        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getTitle(), payment.getMessage());
     }
 
     @Test(dataProvider = "PM_blankAmountField", dataProviderClass = TestDataProviders.class)
@@ -141,7 +141,7 @@ public class MakePaymentViewTest extends BaseTest {
     public void incorrectCountry(Payment payment) {
 
         fill(payment);
-        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getAlertTitle(), payment.getAlertMessage());
+        testHelper.checkWhenDataIsIncorrect(makePaymentView.getAlertFrame(), payment.getTitle(), payment.getMessage());
     }
 
     @Test(dataProvider = "PM_blankCountryField", dataProviderClass = TestDataProviders.class)
