@@ -36,7 +36,9 @@ public class JSONReader {
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new Credentials(
                         jsonArray.getJSONObject(i).getString("username"),
-                        jsonArray.getJSONObject(i).getString("password")
+                        jsonArray.getJSONObject(i).getString("password"),
+                        jsonArray.getJSONObject(i).getString("title"),
+                        jsonArray.getJSONObject(i).getString("message")
                 ))
                 .toArray(Credentials[]::new);
     }
@@ -51,8 +53,8 @@ public class JSONReader {
                         jsonArray.getJSONObject(i).getString("name"),
                         jsonArray.getJSONObject(i).getString("amount"),
                         jsonArray.getJSONObject(i).getString("country"),
-                        jsonArray.getJSONObject(i).getString("alertTitle"),
-                        jsonArray.getJSONObject(i).getString("alertMessage")
+                        jsonArray.getJSONObject(i).getString("title"),
+                        jsonArray.getJSONObject(i).getString("message")
                 ))
                 .toArray(Payment[]::new);
     }
