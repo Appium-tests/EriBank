@@ -1,5 +1,7 @@
 package mortgagerequestview;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -49,7 +51,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void correct(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapButtonNext();
+        mortgageRequestSteps.tapNextButton();
         checkWhenDataIsCorrect();
     }
 
@@ -57,7 +59,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void blankSecondAddressField(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapButtonNext();
+        mortgageRequestSteps.tapNextButton();
         checkWhenDataIsCorrect();
     }
 
@@ -65,7 +67,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void incorrectFirstName(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapButtonNext();
+        mortgageRequestSteps.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
                 mortgageRequest.getTitle(), mortgageRequest.getMessage());
     }
@@ -74,7 +76,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void blankFirstNameField(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isButtonNextEnabled(),
+        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
                 "Next");
     }
 
@@ -82,7 +84,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void incorrectLastName(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapButtonNext();
+        mortgageRequestSteps.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
                 mortgageRequest.getTitle(), mortgageRequest.getMessage());
     }
@@ -91,7 +93,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void blankBlankNameField(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isButtonNextEnabled(),
+        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
                 "Next");
     }
 
@@ -99,7 +101,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void incorrectAge(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapButtonNext();
+        mortgageRequestSteps.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
                 mortgageRequest.getTitle(), mortgageRequest.getMessage());
     }
@@ -108,7 +110,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void blankAgeField(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isButtonNextEnabled(),
+        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
                 "Next");
     }
 
@@ -116,7 +118,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void incorrectAddress(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapButtonNext();
+        mortgageRequestSteps.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
                 mortgageRequest.getTitle(), mortgageRequest.getMessage());
     }
@@ -125,7 +127,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void blankAddressField(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isButtonNextEnabled(),
+        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
                 "Next");
     }
 
@@ -133,7 +135,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void incorrectCountry(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapButtonNext();
+        mortgageRequestSteps.tapNextButton();
         testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
                 mortgageRequest.getTitle(), mortgageRequest.getMessage());
     }
@@ -142,18 +144,20 @@ public class MortgageRequestViewTest extends BaseTest {
     public void blankCountryField(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isButtonNextEnabled(),
+        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
                 "Next");
     }
 
     @Test
-    public void quitView() {
+    @Description("Verify that the \"Mortgage Request\" view is closed after touching the \"Cancel\" button")
+    @Story("Touching the \"Cancel\" button")
+    public void closingView() {
 
-        mortgageRequestSteps.tapButtonCancel();
+        mortgageRequestSteps.tapCancelButton();
 
         HomeView homeView = new HomeView(getDriver());
 
         Assert.assertTrue(homeView.isDisplayed(),
-                "The home view is not displayed");
+                "The view is not closed");
     }
 }

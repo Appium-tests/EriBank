@@ -174,4 +174,17 @@ public class MakePaymentViewTest extends BaseTest {
         testHelper.checkWhenFieldIsBlank(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
                 "Make payment");
     }
+
+    @Test
+    @Description("Verify that the \"Make Payment\" view is closed after touching the \"Cancel\" button")
+    @Story("Touching the \"Cancel\" button")
+    public void closingView() {
+
+        makePaymentSteps.tapCancelButton();
+
+        HomeView homeView = new HomeView(getDriver());
+
+        Assert.assertTrue(homeView.isDisplayed(),
+                "The \"Make Payment\" view is not closed");
+    }
 }

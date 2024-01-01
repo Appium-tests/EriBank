@@ -50,15 +50,15 @@ public class MortgageRequestSteps {
     }
 
     @Step("Tap the\"Next\" button")
-    public void tapButtonNext() {
+    public void tapNextButton() {
 
-        mortgageRequestView.tapButtonNext();
+        mortgageRequestView.tapNextButton();
     }
 
     @Step("Tap the \"Cancel\" button")
-    public void tapButtonCancel() {
+    public void tapCancelButton() {
 
-        mortgageRequestView.tapButtonCancel();
+        mortgageRequestView.tapCancelButton();
     }
 
     public MortgageRequestView getMortgageRequestView() {
