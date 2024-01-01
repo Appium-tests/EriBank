@@ -172,4 +172,10 @@ public class TestDataProviders {
 
         return JSONReader.getMortgageRequests("blankCountryField");
     }
+
+    @DataProvider(name = "countries")
+    public Object[] countries() {
+
+        return JSONReader.getCountries();
+    }
 }
