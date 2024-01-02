@@ -43,7 +43,8 @@ public class LoginTest extends BaseTest {
         setCredentials(credentials);
         HomeView homeView = new HomeView(getDriver());
 
-        Assert.assertTrue(homeView.isDisplayed());
+        Assert.assertTrue(homeView.isDisplayed(),
+                "The user is not logged in");
     }
 
     @Test(dataProvider = "CR_correctUsernameWithUppercase", dataProviderClass = TestDataProviders.class)
