@@ -8,8 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
+import qa.enums.View;
 import qa.helpers.Authentication;
 import qa.helpers.DynamicList;
+import qa.homeviewmanager.HomeViewManager;
 import qa.pageobject.homeview.HomeView;
 import qa.steps.ExpenseReportSteps;
 
@@ -23,8 +25,7 @@ public class ExpenseReportViewTest extends BaseTest {
     public void create() {
 
         Authentication.perform(getDriver());
-        HomeView homeView = new HomeView(getDriver());
-        homeView.tapExpenseReportButton();
+        HomeViewManager.open(getDriver(), View.EXPENSE_REPORT);
 
         expenseReportSteps = new ExpenseReportSteps(getDriver());
     }

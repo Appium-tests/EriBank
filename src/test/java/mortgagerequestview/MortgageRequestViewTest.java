@@ -6,8 +6,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
+import qa.enums.View;
 import qa.helpers.Authentication;
 import qa.helpers.TestHelper;
+import qa.homeviewmanager.HomeViewManager;
 import qa.pageobject.homeview.HomeView;
 import qa.pageobject.mortgagerequest.MortgageSummaryView;
 import qa.steps.MortgageRequestSteps;
@@ -23,8 +25,7 @@ public class MortgageRequestViewTest extends BaseTest {
     public void create() {
 
         Authentication.perform(getDriver());
-        HomeView homeView = new HomeView(getDriver());
-        homeView.tapMortageRequestButton();
+        HomeViewManager.open(getDriver(), View.MORTGAGE_REQUEST);
 
         mortgageRequestSteps = new MortgageRequestSteps(getDriver());
         testHelper = new TestHelper();

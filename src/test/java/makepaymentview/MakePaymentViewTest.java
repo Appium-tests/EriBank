@@ -8,8 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
+import qa.enums.View;
 import qa.helpers.Authentication;
 import qa.helpers.TestHelper;
+import qa.homeviewmanager.HomeViewManager;
 import qa.pageobject.homeview.HomeView;
 import qa.steps.MakePaymentSteps;
 import qa.testdataproviders.TestDataProviders;
@@ -26,8 +28,7 @@ public class MakePaymentViewTest extends BaseTest {
     public void create() {
 
         Authentication.perform(getDriver());
-        HomeView homeView = new HomeView(getDriver());
-        homeView.tapMakePaymentButton();
+        HomeViewManager.open(getDriver(), View.MAKE_PAYMENT);
 
         makePaymentSteps = new MakePaymentSteps(getDriver());
         testHelper = new TestHelper();
