@@ -45,7 +45,8 @@ public class MortgageRequestViewTest extends BaseTest {
 
         MortgageSummaryView mortgageSummaryView = new MortgageSummaryView(getDriver());
 
-        Assert.assertTrue(mortgageSummaryView.isDisplayed());
+        Assert.assertTrue(mortgageSummaryView.isDisplayed(),
+                "The summary view is not opened");
     }
 
     @Test(dataProvider = "MR_correct", dataProviderClass = TestDataProviders.class)
