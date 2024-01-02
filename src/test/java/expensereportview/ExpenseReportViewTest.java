@@ -64,4 +64,16 @@ public class ExpenseReportViewTest extends BaseTest {
         Assert.assertEquals(expenseReportSteps.getExpenseReportView().getCount(), expectedCount,
                 "Incorrect number of rows");
     }
+
+    @Test
+    @Description("Verify that the \"Expense Report\" view is closed after touching the \"Back\" button")
+    @Story("Touching the \"Back\" button")
+    public void closingView() {
+
+        expenseReportSteps.tapBackButton();
+
+        HomeView homeView = new HomeView(getDriver());
+
+        Assert.assertTrue(homeView.isDisplayed());
+    }
 }
