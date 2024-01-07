@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="'Mortgage Request' view">
+
+    <listeners>
+        <listener class-name="qa.listener.Listener"/>
+    </listeners>
+
+    <test name="'Mortgage Request' view functionalities">
+        <classes>
+            <class name="mortgagerequestview.MortgageRequestViewTest"/>
+        </classes>
+    </test>
+
+</suite>
