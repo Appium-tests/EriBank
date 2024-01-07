@@ -5,7 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import qa.driver.Driver;
-import qa.driverinfo.DriverInfo;
+import qa.environmentinfo.EnvironmentInfo;
 import qa.json.JSONReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -25,7 +25,7 @@ public class BaseTest {
     public void setUp() throws MalformedURLException {
 
         driver = Driver.createDriver();
-        DriverInfo.logInfo(driver);
+        EnvironmentInfo.logInfo(driver);
     }
 
     @AfterMethod
