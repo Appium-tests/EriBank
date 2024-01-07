@@ -14,7 +14,6 @@ import qa.pageobject.homeview.HomeView;
 import qa.pageobject.sendvoidrequestview.SendVoidRequestView;
 import qa.steps.AdvancedActionsSteps;
 
-import java.net.MalformedURLException;
 
 public class AdvancedActionsViewTest extends BaseTest {
 
@@ -44,7 +43,7 @@ public class AdvancedActionsViewTest extends BaseTest {
     @Test
     @Description("Checking whether the \"https://digital.ai...\" website opens after touching the \"EriBank Browser\" button.")
     @Story("Touching the \"EriBank Browser\" button")
-    public void eriBankBrowserButton() throws MalformedURLException, InterruptedException {
+    public void eriBankBrowserButton() {
 
         advancedActionsSteps.tapEriBankBrowserButton();
 
