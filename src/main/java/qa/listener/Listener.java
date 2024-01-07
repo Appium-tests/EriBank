@@ -24,25 +24,30 @@ public class Listener implements ITestListener {
     @Override
     public void onStart(ITestContext iTestContext) {
 
+        logger.info("-".repeat(50));
         logger.info("Suite: " + iTestContext.getSuite().getName());
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
 
+        logger.info("-".repeat(50));
         logger.info("Test finish");
+        logger.info("-".repeat(50));
     }
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
 
-        logger.info("Test \"" + iTestResult.getTestName() + "\" start on method: " + iTestResult.getMethod().getMethodName());
+        logger.info("-".repeat(50));
+        logger.info("Test start on method: " + iTestResult.getMethod().getMethodName());
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
 
         logger.info("Test PASSED");
+        logger.info("-".repeat(50));
         saveTextLog(getTestMethodName(iTestResult) + "- PASSED");
     }
 
@@ -50,6 +55,7 @@ public class Listener implements ITestListener {
     public void onTestFailure(ITestResult iTestResult) {
 
         logger.error("Test FAILED");
+        logger.info("-".repeat(50));
         saveTextLog(getTestMethodName(iTestResult) + "- FAILED");
     }
 
@@ -57,6 +63,7 @@ public class Listener implements ITestListener {
     public void onTestSkipped(ITestResult iTestResult) {
 
         logger.warn("Test SKIPPED");
+        logger.info("-".repeat(50));
         saveTextLog(getTestMethodName(iTestResult) + "- SKIPPED");
     }
 }
