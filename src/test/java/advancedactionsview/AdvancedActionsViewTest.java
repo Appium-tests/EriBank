@@ -1,6 +1,8 @@
 package advancedactionsview;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -14,7 +16,8 @@ import qa.pageobject.homeview.HomeView;
 import qa.pageobject.sendvoidrequestview.SendVoidRequestView;
 import qa.steps.AdvancedActionsSteps;
 
-
+@Epic("E2E")
+@Feature("Advanced Actions buttons")
 public class AdvancedActionsViewTest extends BaseTest {
 
     private AdvancedActionsSteps advancedActionsSteps;
