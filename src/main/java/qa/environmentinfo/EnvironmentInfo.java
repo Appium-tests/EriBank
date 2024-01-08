@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class EnvironmentInfo {
 
-    private static Logger logger = LoggerFactory.getLogger(EnvironmentInfo.class);
+    private static final Logger logger = LoggerFactory.getLogger(EnvironmentInfo.class);
     public static void logInfo(AndroidDriver driver) {
 
         logger.info("Device name: " + driver.getCapabilities().getCapability("deviceName"));
