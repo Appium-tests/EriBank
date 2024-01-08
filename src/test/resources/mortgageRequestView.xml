@@ -4,7 +4,7 @@
 <suite name="'Mortgage Request' view">
 
     <listeners>
-        <listener class-name="qa.listener.Listener"/>
+        <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
     <test name="'Mortgage Request' view functionalities">

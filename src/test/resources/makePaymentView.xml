@@ -4,7 +4,7 @@
 <suite name="'Make Payment view'">
 
     <listeners>
-        <listener class-name="qa.listener.Listener"/>
+        <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
     <test name="'Make Payment' view functionalities">

@@ -4,7 +4,7 @@
 <suite name="Login">
     
     <listeners>
-        <listener class-name="qa.listener.Listener"/>
+        <listener class-name="qa.listeners.Listener"/>
     </listeners>
     
     <test name="Login form functionalities">
