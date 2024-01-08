@@ -1,9 +1,8 @@
 package qa.base;
 
 import io.appium.java_client.android.AndroidDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
+import qa.appiumservermanager.AppiumServerManager;
 import qa.driver.Driver;
 import qa.environmentinfo.AllureEnvironment;
 import qa.environmentinfo.EnvironmentInfo;
@@ -16,18 +15,27 @@ public class BaseTest {
 
     private AndroidDriver driver;
 
-    @BeforeClass
-    public void readJSON() throws IOException {
+    @BeforeSuite
+    public void start() throws IOException {
 
+        AppiumServerManager.run();
         JSONReader.read();
-        AllureEnvironment.setEnvironment();
+    }
+
+    @AfterSuite
+    public void quit() {
+
+        AppiumServerManager.shutDown();
+        AllureEnvironment.write();
     }
 
     @BeforeMethod
     public void setUp() throws MalformedURLException {
 
         driver = Driver.createDriver();
+
         EnvironmentInfo.logInfo(driver);
+        AllureEnvironment.setEnvironment(driver);
     }
 
     @AfterMethod
