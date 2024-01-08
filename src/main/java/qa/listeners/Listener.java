@@ -1,4 +1,4 @@
-package qa.listener;
+package qa.listeners;
 
 import io.qameta.allure.Attachment;
 import org.slf4j.Logger;
@@ -10,6 +10,7 @@ import org.testng.ITestResult;
 public class Listener implements ITestListener {
 
     private final Logger logger = LoggerFactory.getLogger(Listener.class);
+
     private static String getTestMethodName(ITestResult iTestResult) {
 
         return iTestResult.getMethod().getMethodName();
