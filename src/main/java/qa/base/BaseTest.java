@@ -5,6 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import qa.driver.Driver;
+import qa.environmentinfo.AllureEnvironment;
 import qa.environmentinfo.EnvironmentInfo;
 import qa.json.JSONReader;
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class BaseTest {
     public void readJSON() throws IOException {
 
         JSONReader.read();
+        AllureEnvironment.setEnvironment();
     }
 
     @BeforeMethod
