@@ -10,7 +10,7 @@
     <root level="INFO">
         <appender-ref ref="console"/>
     </root>
-    <logger name="qa.listener.Listener" level="INFO">
+    <logger name="qa.listeners.Listener" level="INFO">
         <appender-ref ref="console/"/>
     </logger>
 </configuration>
