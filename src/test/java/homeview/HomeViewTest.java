@@ -3,7 +3,8 @@ package homeview;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,7 +18,7 @@ import qa.pageobject.makepaymentview.MakePaymentView;
 import qa.pageobject.mortgagerequest.MortgageRequestView;
 
 @Epic("E2E")
-@Feature("Home view buttons")
+@Feature("The home view")
 public class HomeViewTest extends BaseTest {
 
     private HomeView homeView;
@@ -30,11 +31,12 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test
-    @Description("Checking whether the \"Make Payment\" view opens after touching the \"Make Payment\" button.")
-    @Story("Touching the \"Make Payment\" button")
+    @QaseId(12)
+    @QaseTitle("The \"Make Payment\" button")
+    @Description("The \"Make Payment\" button")
     public void makePaymentButton() {
 
-        homeView.tapMakePaymentButton();
+        homeView.touchMakePaymentButton();
         MakePaymentView makePaymentView = new MakePaymentView(getDriver());
 
         Assert.assertTrue(makePaymentView.isDisplayed(),
@@ -42,11 +44,12 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test
-    @Description("Checking whether the \"Mortgage Request\" view opens after touching the \"Mortgage Request\" button.")
-    @Story("Touching the \"Mortgage Request\" button")
-    public void mortageRequestButton() {
+    @QaseId(13)
+    @QaseTitle("The \"Mortgage Request\" button")
+    @Description("The \"Mortgage Request\" button")
+    public void mortgageRequestButton() {
 
-        homeView.tapMortageRequestButton();
+        homeView.touchMortgageRequestButton();
         MortgageRequestView mortgageRequestView = new MortgageRequestView(getDriver());
 
         Assert.assertTrue(mortgageRequestView.isDisplayed(),
@@ -54,11 +57,12 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test
-    @Description("Checking whether the \"Expense Report\" view opens after touching the \"Expense Report\" button.")
-    @Story("Touching the \"Expense Report\" button")
+    @QaseId(14)
+    @QaseTitle("The \"Expense Report\" button")
+    @Description("The \"Expense Report\" button")
     public void expenseReportButton() {
 
-        homeView.tapExpenseReportButton();
+        homeView.touchExpenseReportButton();
         ExpenseReportView expenseReportView = new ExpenseReportView(getDriver());
 
         Assert.assertTrue(expenseReportView.isDisplayed(),
@@ -66,11 +70,12 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test
-    @Description("Checking whether the \"Advanced Actions\" view opens after touching the \"Advanced Actions\" button.")
-    @Story("Touching the \"Advanced Actions\" button")
+    @QaseId(15)
+    @QaseTitle("The \"Advanced Actions\" button")
+    @Description("The \"Advanced Actions\" button")
     public void advancedActionsButton() {
 
-        homeView.tapAdvancedActionsButton();
+        homeView.touchAdvancedActionsButton();
         AdvancedActionsView advancedActionsView = new AdvancedActionsView(getDriver());
 
         Assert.assertTrue(advancedActionsView.isDisplayed(),
@@ -78,11 +83,12 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test
-    @Description("Checking whether the user is logged out after touching the \"Logout\" button.")
-    @Story("Touching the \"Logout\" button")
+    @QaseId(13)
+    @QaseTitle("The \"Logout\" button")
+    @Description("The \"Logout\" button")
     public void logoutButton() {
 
-        homeView.tapLogoutButton();
+        homeView.touchLogoutButton();
         LoginView loginView = new LoginView(getDriver());
 
         Assert.assertTrue(loginView.isDisplayed(),
