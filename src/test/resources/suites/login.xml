@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Login">
+<suite name="Login view">
     
     <listeners>
         <listener class-name="qa.listeners.Listener"/>
     </listeners>
-    
-    <test name="Login form functionalities">
+
+    <parameter name="fileName" value="EB_Credentials.json"/>
+
+    <test name="Input">
+        <classes>
+            <class name="login.InputTextVerificationTest"/>
+        </classes>
+    </test>
+    <test name="Login">
         <classes>
             <class name="login.LoginTest"/>
         </classes>
