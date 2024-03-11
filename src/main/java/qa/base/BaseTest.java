@@ -6,7 +6,9 @@ import qa.appiumservermanager.AppiumServerManager;
 import qa.driver.Driver;
 import qa.environmentinfo.AllureEnvironment;
 import qa.environmentinfo.EnvironmentInfo;
-import qa.json.JSONReader;
+import qa.json.TestDataLoader;
+import qa.utils.FileReader;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 
@@ -15,11 +17,16 @@ public class BaseTest {
 
     private AndroidDriver driver;
 
+    @Parameters({"fileName"})
     @BeforeSuite
-    public void start() throws IOException {
+    public void start(@Optional("noFile")String fileName) throws IOException {
+
+        if (!fileName.equals("noFile")) {
+            FileReader.load(fileName);
+        }
 
         AppiumServerManager.run();
-        JSONReader.read();
+        TestDataLoader.read();
     }
 
     @AfterSuite
