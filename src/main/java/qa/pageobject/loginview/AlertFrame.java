@@ -46,7 +46,9 @@ public class AlertFrame extends BaseView {
         return message.getText();
     }
 
-    public void tapButton() {
+    @io.qameta.allure.Step("Touch the \"Close\" button")
+    @io.qase.api.annotation.Step("Touch the \"Close\" button")
+    public void touchCloseButton() {
 
         button.get(0).click();
     }
