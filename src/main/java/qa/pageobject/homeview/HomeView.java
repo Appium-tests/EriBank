@@ -37,27 +37,37 @@ public class HomeView extends BaseView {
         return !paymentHomeView.isEmpty();
     }
 
-    public void tapMakePaymentButton() {
+    @io.qameta.allure.Step("Touch the \"Make Payment\" button")
+    @io.qase.api.annotation.Step("Touch the \"Make Payment\" button")
+    public void touchMakePaymentButton() {
 
         makePaymentButton.click();
     }
 
-    public void tapMortageRequestButton() {
+    @io.qameta.allure.Step("Touch the \"Mortgage Request\" button")
+    @io.qase.api.annotation.Step("Touch the \"Mortgage Request\" button")
+    public void touchMortgageRequestButton() {
 
         mortageRequestButton.click();
     }
 
-    public void tapExpenseReportButton() {
+    @io.qameta.allure.Step("Touch the \"Expense Report\" button")
+    @io.qase.api.annotation.Step("Touch the \"Expense Report\" button")
+    public void touchExpenseReportButton() {
 
         expenseReportButton.click();
     }
 
-    public void tapAdvancedActionsButton() {
+    @io.qameta.allure.Step("Touch the \"Advanced Actions\" button")
+    @io.qase.api.annotation.Step("Touch the \"Advanced Actions\" button")
+    public void touchAdvancedActionsButton() {
 
         advancedActionsButton.click();
     }
 
-    public void tapLogoutButton() {
+    @io.qameta.allure.Step("Touch the \"Logout\" button")
+    @io.qase.api.annotation.Step("Touch the \"Logout\" button")
+    public void touchLogoutButton() {
 
         logoutButton.click();
     }
