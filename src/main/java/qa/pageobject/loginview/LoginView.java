@@ -2,6 +2,7 @@ package qa.pageobject.loginview;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import qa.base.BaseView;
 
@@ -9,12 +10,13 @@ import java.util.List;
 
 public class LoginView extends BaseView {
 
-    private final AlertFrame alertFrame;
+    @Getter
+    private final AlertFrame ALERT_FRAME;
 
     public LoginView(AndroidDriver driver) {
 
         super(driver);
-        alertFrame = new AlertFrame(driver);
+        ALERT_FRAME = new AlertFrame(driver);
     }
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/loginView")
@@ -34,23 +36,48 @@ public class LoginView extends BaseView {
         return !parent.isEmpty();
     }
 
-    public void setUsername(String username) {
+    @io.qameta.allure.Step("Enter an username")
+    @io.qase.api.annotation.Step("Enter an username")
+    public void setUsername(CharSequence... keys) {
 
-        usernameField.sendKeys(username);
+        usernameField.sendKeys(keys);
     }
 
+    @io.qameta.allure.Step("Enter a password")
+    @io.qase.api.annotation.Step("Enter a password")
     public void setPassword(String password) {
 
         passwordField.sendKeys(password);
     }
 
-    public void tapLoginButton() {
+    @io.qameta.allure.Step("Remove the username")
+    @io.qase.api.annotation.Step("Remove the username")
+    public void removeUsername() {
 
-        loginButton.click();
+        usernameField.clear();
     }
 
-    public AlertFrame getAlertFrame() {
+    @io.qameta.allure.Step("Remove the password")
+    @io.qase.api.annotation.Step("Remove the password")
+    public void removePassword() {
 
-        return alertFrame;
+        passwordField.clear();
+    }
+
+    public String getUsername() {
+
+        return usernameField.getText();
+    }
+
+    public String getPassword() {
+
+        return passwordField.getText();
+    }
+
+    @io.qameta.allure.Step("Touch the \"Login\" button")
+    @io.qase.api.annotation.Step("Touch the \"Login\" button")
+    public void touchLoginButton() {
+
+        loginButton.click();
     }
 }
