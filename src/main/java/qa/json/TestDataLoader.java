@@ -3,17 +3,17 @@ package qa.json;
 import com.google.common.io.Resources;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qa.utils.Country;
-import qa.utils.Credentials;
-import qa.utils.MortgageRequest;
-import qa.utils.Payment;
+import qa.models.Credentials;
+import qa.models.MortgageRequest;
+import qa.models.Payment;
+import qa.utils.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.IntStream;
 
-public class JSONReader {
+public class TestDataLoader {
 
     private static JSONObject jsonObject;
 
@@ -30,33 +30,30 @@ public class JSONReader {
         jsonObject = new JSONObject(Resources.toString(url, StandardCharsets.UTF_8));
     }
 
-    public static Credentials[] getCredentials(String node) {
+    public static Credentials[] getCredentials(String key) {
 
-        JSONArray jsonArray = getJSONArray("credentials", node);
+        JSONObject jsonObject = new JSONObject(FileReader.getSource());
+        JSONArray jsonArray = jsonObject.getJSONArray(key);
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new Credentials(
                         jsonArray.getJSONObject(i).getString("username"),
-                        jsonArray.getJSONObject(i).getString("password"),
-                        jsonArray.getJSONObject(i).getString("title"),
-                        jsonArray.getJSONObject(i).getString("message")
+                        jsonArray.getJSONObject(i).getString("password")
                 ))
                 .toArray(Credentials[]::new);
     }
 
-    public static Payment[] getPayments(String node) {
+    public static Payment[] getPayments(String key) {
 
-        JSONArray jsonArray = getJSONArray("payment", node);
+        JSONObject jsonObject = new JSONObject(FileReader.getSource());
+        JSONArray jsonArray = jsonObject.getJSONArray(key);
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new Payment(
                         jsonArray.getJSONObject(i).getString("phone"),
                         jsonArray.getJSONObject(i).getString("name"),
                         jsonArray.getJSONObject(i).getString("amount"),
-                        jsonArray.getJSONObject(i).getString("country"),
-                        jsonArray.getJSONObject(i).getString("question"),
-                        jsonArray.getJSONObject(i).getString("title"),
-                        jsonArray.getJSONObject(i).getString("message")
+                        jsonArray.getJSONObject(i).getString("country")
                 ))
                 .toArray(Payment[]::new);
     }
