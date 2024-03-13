@@ -9,10 +9,10 @@ public class AppiumServerManager {
     private static AppiumDriverLocalService appiumDriverLocalService;
 
     private static final String IP_ADDRESS = "127.0.0.1";
-    private static final String APPIUM_JS = "C:/Users/48608/AppData/Roaming/npm/node_modules/appium/build/lib/main.js";
-    private static final String DRIVER_EXECUTABLE_PATH = "C:/Program Files/nodejs/node.exe";
-    private static final int PORT = 4723;
-    private static final int DURATION = 100;
+    private static final String APPIUM_JS = "/home/pawelaksman/node_modules/appium/build/lib/main.js";
+    private static final String DRIVER_EXECUTABLE_PATH = "/home/pawelaksman/.nvm/versions/node/v20.11.0/bin/node";
+    private static final int PORT = 4724;
+    private static final int DURATION = 200;
 
     public static void run() {
 
