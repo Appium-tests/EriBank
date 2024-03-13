@@ -83,7 +83,7 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test
-    @QaseId(13)
+    @QaseId(16)
     @QaseTitle("The \"Logout\" button")
     @Description("The \"Logout\" button")
     public void logoutButton() {
