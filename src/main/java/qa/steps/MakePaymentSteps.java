@@ -2,8 +2,10 @@ package qa.steps;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Step;
+import lombok.Getter;
 import qa.pageobject.makepaymentview.MakePaymentView;
 
+@Getter
 public class MakePaymentSteps {
 
     private final MakePaymentView makePaymentView;
@@ -34,7 +36,7 @@ public class MakePaymentSteps {
     @Step("Tap the \"Select\" button")
     public void tapSelectButton() {
 
-        makePaymentView.tapCountryButton();
+        makePaymentView.touchSelectButton();
     }
 
     @Step("Set country")
@@ -46,17 +48,13 @@ public class MakePaymentSteps {
     @Step("Tap the \"Send payment\" button")
     public void tapSendPaymentButton() {
 
-        makePaymentView.tapSendPaymentButton();
+        makePaymentView.touchSendPaymentButton();
     }
 
     @Step("Tap the \"Cancel\" button")
     public void tapCancelButton() {
 
-        makePaymentView.tapCancelButton();
+        makePaymentView.touchCancelButton();
     }
 
-    public MakePaymentView getMakePaymentView() {
-
-        return makePaymentView;
-    }
 }
