@@ -11,10 +11,10 @@ public class HomeViewManager {
         HomeView homeView = new HomeView(driver);
 
         switch (view) {
-            case MAKE_PAYMENT -> homeView.tapMakePaymentButton();
-            case MORTGAGE_REQUEST -> homeView.tapMortageRequestButton();
-            case EXPENSE_REPORT -> homeView.tapExpenseReportButton();
-            case ADVANCED_ACTIONS -> homeView.tapAdvancedActionsButton();
+            case MAKE_PAYMENT -> homeView.touchMakePaymentButton();
+            case MORTGAGE_REQUEST -> homeView.touchMortgageRequestButton();
+            case EXPENSE_REPORT -> homeView.touchExpenseReportButton();
+            case ADVANCED_ACTIONS -> homeView.touchAdvancedActionsButton();
         }
     }
 }
