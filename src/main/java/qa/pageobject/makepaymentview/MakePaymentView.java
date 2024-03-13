@@ -2,6 +2,7 @@ package qa.pageobject.makepaymentview;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import qa.base.BaseView;
 import qa.pageobject.loginview.AlertFrame;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class MakePaymentView extends BaseView {
 
+    @Getter
     public final QuestionFrame questionFrame;
     public final AlertFrame alertFrame;
 
@@ -34,7 +36,7 @@ public class MakePaymentView extends BaseView {
     WebElement amountField;
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/countryButton")
-    WebElement countryButton;
+    WebElement selectButton;
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/countryTextField")
     WebElement countryField;
@@ -45,21 +47,29 @@ public class MakePaymentView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/cancelButton")
     WebElement cancelButton;
 
+    @io.qameta.allure.Step("Enter a phone")
+    @io.qase.api.annotation.Step("Enter a phone")
     public void setPhone(String phone) {
 
         phoneField.sendKeys(phone);
     }
 
+    @io.qameta.allure.Step("Enter a name")
+    @io.qase.api.annotation.Step("Enter a name")
     public void setName(String name) {
 
         nameField.sendKeys(name);
     }
 
+    @io.qameta.allure.Step("Enter an amount")
+    @io.qase.api.annotation.Step("Enter an amount")
     public void setAmount(String amount) {
 
         amountField.sendKeys(amount);
     }
 
+    @io.qameta.allure.Step("Enter a country")
+    @io.qase.api.annotation.Step("Enter a country")
     public void setCountry(String country) {
 
         countryField.sendKeys(country);
@@ -70,17 +80,23 @@ public class MakePaymentView extends BaseView {
         return sendPaymentButton.isEnabled();
     }
 
-    public void tapCountryButton() {
+    @io.qameta.allure.Step("Touch the \"Select\" button")
+    @io.qase.api.annotation.Step("Touch the \"Select\" button")
+    public void touchSelectButton() {
 
-        countryButton.click();
+        selectButton.click();
     }
 
-    public void tapSendPaymentButton() {
+    @io.qameta.allure.Step("Touch the \"Send Payment\" button")
+    @io.qase.api.annotation.Step("Touch the \"Send Payment\" button")
+    public void touchSendPaymentButton() {
 
         sendPaymentButton.click();
     }
 
-    public void tapCancelButton() {
+    @io.qameta.allure.Step("Touch the \"Cancel\" button")
+    @io.qase.api.annotation.Step("Touch the \"Cancel\" button")
+    public void touchCancelButton() {
 
         cancelButton.click();
     }
@@ -93,11 +109,6 @@ public class MakePaymentView extends BaseView {
     public boolean isDisplayed() {
 
         return !parent.isEmpty();
-    }
-
-    public QuestionFrame getQuestionFrame() {
-
-        return questionFrame;
     }
 
     public AlertFrame getAlertFrame() {
