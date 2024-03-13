@@ -23,6 +23,8 @@ public class CountryList extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/rowTextView")
     List<WebElement> countries;
 
+    @io.qameta.allure.Step("Touch the last visible list element and swipe to the first element")
+    @io.qase.api.annotation.Step("Touch the last visible list element and swipe to the first element")
     public void swipeDown() {
 
         Point to = countries.get(0).getLocation();
@@ -30,6 +32,8 @@ public class CountryList extends BaseView {
         from.ifPresent(element -> SwipingHelper.swipe(element.getLocation(), to, getDRIVER()));
     }
 
+    @io.qameta.allure.Step("Touch the first visible list element and swipe to the last element")
+    @io.qase.api.annotation.Step("Touch the first visible list element and swipe to the last element")
     public void swipeUp() {
 
         Point to = countries.get(countries.size() - 1).getLocation();
@@ -37,6 +41,8 @@ public class CountryList extends BaseView {
         from.ifPresent(element -> SwipingHelper.swipe(element.getLocation(), to, getDRIVER()));
     }
 
+    @io.qameta.allure.Step("Touch the list element")
+    @io.qase.api.annotation.Step("Touch the list element")
     public void selectCountry(int index) {
 
         countries.get(index).click();
