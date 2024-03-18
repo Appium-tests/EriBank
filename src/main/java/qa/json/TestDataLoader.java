@@ -43,6 +43,19 @@ public class TestDataLoader {
                 .toArray(Credentials[]::new);
     }
 
+    public static Credentials[] getCredentialsFromSource(String source, String key) {
+
+        JSONObject jsonObject = new JSONObject(source);
+        JSONArray jsonArray = jsonObject.getJSONArray(key);
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new Credentials(
+                        jsonArray.getJSONObject(i).getString("username"),
+                        jsonArray.getJSONObject(i).getString("password")
+                ))
+                .toArray(Credentials[]::new);
+    }
+
     public static Payment[] getPayments(String key) {
 
         JSONObject jsonObject = new JSONObject(FileReader.getSource());
