@@ -1,16 +1,18 @@
 package qa.helpers;
 
 import io.appium.java_client.android.AndroidDriver;
-import qa.dataproviders.CredentialsDataProviders;
+import qa.json.TestDataLoader;
 import qa.pageobject.loginview.LoginView;
 import qa.models.Credentials;
+import qa.utils.DataProviderNames;
+import qa.utils.FileReader;
 
 public class Authentication {
 
     public static void perform(AndroidDriver driver) {
 
-        CredentialsDataProviders dataProviders = new CredentialsDataProviders();
-        Credentials[] credentials = (Credentials[]) dataProviders.correct();
+        String source = FileReader.loadCredentials();
+        Credentials[] credentials = TestDataLoader.getCredentialsFromSource(source, DataProviderNames.CORRECT);
 
         LoginView loginView = new LoginView(driver);
         loginView.setUsername(credentials[0].getUsername());
