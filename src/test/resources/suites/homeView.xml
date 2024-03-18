@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="The home view">
+
+    <listeners>
+        <listener class-name="qa.listeners.Listener"/>
+    </listeners>
+
+    <parameter name="fileName" value="EB_Credentials.json"/>
+
+    <test name="Home view buttons">
+        <classes>
+            <class name="homeview.HomeViewTest">
+                <methods>
+                    <include name="expenseReportButton"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
