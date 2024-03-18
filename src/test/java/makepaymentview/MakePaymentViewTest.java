@@ -3,26 +3,29 @@ package makepaymentview;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
+import qa.dataproviders.MakePaymentDataProviders;
 import qa.enums.View;
 import qa.helpers.Authentication;
-import qa.helpers.TestHelper;
 import qa.homeviewmanager.HomeViewManager;
 import qa.pageobject.homeview.HomeView;
+import qa.pageobject.makepaymentview.MakePaymentView;
 import qa.steps.MakePaymentSteps;
 import qa.dataproviders.TestDataProviders;
 import qa.models.Payment;
+import qa.utils.DataProviderNames;
 
 @Epic("E2E")
-@Feature("Payment functionalities")
+@Feature("Sending payment")
 public class MakePaymentViewTest extends BaseTest {
 
+    private MakePaymentView makePaymentView;
     private MakePaymentSteps makePaymentSteps;
-    private TestHelper testHelper;
 
     @BeforeMethod
     public void create() {
@@ -30,8 +33,8 @@ public class MakePaymentViewTest extends BaseTest {
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MAKE_PAYMENT);
 
+        makePaymentView = new MakePaymentView(getDriver());
         makePaymentSteps = new MakePaymentSteps(getDriver());
-        testHelper = new TestHelper();
     }
 
     public void fill(Payment payment) {
@@ -42,150 +45,157 @@ public class MakePaymentViewTest extends BaseTest {
         makePaymentSteps.setCountry(payment.getCountry());
     }
 
-    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
-    @Description("Checking that the \"Send payment\" button is enabled when the details are correct")
-    @Story("The \"Send payment\" button state")
-    public void sendPaymentButtonStatusWhenDataIsCorrect(Payment payment) {
+    @io.qameta.allure.Step("Check the \"Send Payment\" button status")
+    @io.qase.api.annotation.Step("Check the \"Send Payment\" button status")
+    private void checkSendPaymentButtonStatus(boolean expectedStatus) {
 
-        fill(payment);
-
-        Assert.assertTrue(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
-                "The \"Make payment\" button is disabled");
+        Assert.assertEquals(makePaymentView.isSendPaymentButtonEnabled(), expectedStatus, "Incorrect the \"Make Payment\" button status");
     }
 
-    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
-    @Description("Checking that the payment confirmation message is visible after touching the \"Send payment\" button")
-    @Story("The payment confirmation message visibility")
-    public void questionFrameVisibility(Payment payment) {
+    private void checkAlertFrame(String expectedMessage) {
 
-        fill(payment);
-        makePaymentSteps.tapSendPaymentButton();
-        //testHelper.checkQuestionMessage(makePaymentSteps.getMakePaymentView().getQuestionFrame(),
-             //   payment.getQuestion());
+        Assert.assertTrue(makePaymentView.getAlertFrame().isDisplayed(), "The alert is not displayed");
+        Assert.assertEquals(makePaymentView.getAlertFrame().getMessage(), expectedMessage, "Incorrect message content");
     }
 
-    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent when the details are correct")
-    @Story("Sending payment with the correct details")
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @QaseId(20)
+    @QaseTitle("Correct user data")
+    @Description("Correct user data")
     public void correct(Payment payment) {
 
         fill(payment);
-        makePaymentSteps.getMakePaymentView().touchSendPaymentButton();
-        makePaymentSteps.getMakePaymentView().getQuestionFrame().tapButtonYES();
+        checkSendPaymentButtonStatus(true);
+        makePaymentView.touchSendPaymentButton();
+        makePaymentView.getQuestionFrame().touchButtonYES();
 
         HomeView homeView = new HomeView(getDriver());
 
-        Assert.assertTrue(homeView.isDisplayed(),
-                "The home view is not displayed");
+        Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
     }
 
-    @Test(dataProvider = "PM_correct", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent after touching the \"Cancel\" button")
-    @Story("Touching the \"Cancel\" button")
-    public void cancellation(Payment payment) {
-
-        fill(payment);
-
-        makePaymentSteps.getMakePaymentView().touchSendPaymentButton();
-        makePaymentSteps.getMakePaymentView().getQuestionFrame().tapButtonNO();
-
-        HomeView homeView = new HomeView(getDriver());
-
-        Assert.assertFalse(homeView.isDisplayed(),
-                "The home view is displayed");
-    }
-
-    @Test(dataProvider = "PM_incorrectPhone", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent when the phone number is incorrect")
-    @Story("Incorrect phone number")
+    @Test(dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = MakePaymentDataProviders.class)
+    @QaseId(21)
+    @QaseTitle("Incorrect phone")
+    @Description("Incorrect phone")
     public void incorrectPhone(Payment payment) {
 
         fill(payment);
-        makePaymentSteps.getMakePaymentView().touchSendPaymentButton();
-        //testHelper.checkWhenDataIsIncorrect(makePaymentSteps.getMakePaymentView().getAlertFrame(),
-              //  payment.getTitle(), payment.getMessage());
+        checkSendPaymentButtonStatus(true);
+        makePaymentView.touchSendPaymentButton();
+        checkAlertFrame("Invalid phone");
     }
 
-    @Test(dataProvider = "PM_blankPhoneField", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent when the phone field is blank")
-    @Story("Blank phone field")
+
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @QaseId(22)
+    @QaseTitle("Blank the \"Phone\" field")
+    @Description("Blank the \"Phone\" field")
     public void blankPhoneField(Payment payment) {
 
-        fill(payment);
-        testHelper.checkWhenFieldIsBlank(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
-                "Make payment");
+        makePaymentView.setName(payment.getName());
+        makePaymentView.setAmount(payment.getAmount());
+        makePaymentView.setCountry(payment.getCountry());
+        checkSendPaymentButtonStatus(false);
     }
 
-    @Test(dataProvider = "PM_incorrectName", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent when the name is incorrect")
-    @Story("Incorrect name")
+    @Test(dataProvider = DataProviderNames.INCORRECT_NAME, dataProviderClass = MakePaymentDataProviders.class)
+    @QaseId(23)
+    @QaseTitle("Incorrect name")
+    @Description("Incorrect name")
     public void incorrectName(Payment payment) {
 
         fill(payment);
-        //testHelper.checkWhenDataIsIncorrect(makePaymentSteps.getMakePaymentView().getAlertFrame(),
-                //payment.getTitle(), payment.getMessage());
+        checkSendPaymentButtonStatus(true);
+        makePaymentView.touchSendPaymentButton();
+        checkAlertFrame("Invalid name");
     }
 
-    @Test(dataProvider = "PM_blankNameField", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent when the name field is blank")
-    @Story("Blank name field")
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @QaseId(24)
+    @QaseTitle("Blank the \"Name\" field")
+    @Description("Blank the \"Name\" field")
     public void blankNameField(Payment payment) {
 
-        fill(payment);
-        testHelper.checkWhenFieldIsBlank(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
-                "Make payment");
+        makePaymentView.setPhone(payment.getPhone());
+        makePaymentView.setAmount(payment.getAmount());
+        makePaymentView.setCountry(payment.getCountry());
+        checkSendPaymentButtonStatus(false);
     }
 
-    @Test(dataProvider = "PM_incorrectAmount", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent when the amount is incorrect")
-    @Story("Incorrect amount")
+    @Test(dataProvider = DataProviderNames.INCORRECT_AMOUNT, dataProviderClass = MakePaymentDataProviders.class)
+    @QaseId(25)
+    @QaseTitle("Incorrect amount")
+    @Description("Incorrect amount")
     public void incorrectAmount(Payment payment) {
 
         fill(payment);
-        //testHelper.checkWhenDataIsIncorrect(makePaymentSteps.getMakePaymentView().getAlertFrame(),
-              //  payment.getTitle(), payment.getMessage());
+        checkSendPaymentButtonStatus(true);
+        makePaymentView.touchSendPaymentButton();
+        checkAlertFrame("Invalid amount");
     }
 
-    @Test(dataProvider = "PM_blankAmountField", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent when the amount field is blank")
-    @Story("Blank amount field")
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @QaseId(26)
+    @QaseTitle("Blank the \"Amount\" field")
+    @Description("Blank the \"Amount\" field")
     public void blankAmountField(Payment payment) {
 
-        fill(payment);
-        testHelper.checkWhenFieldIsBlank(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
-                "Make payment");
+        makePaymentView.setPhone(payment.getPhone());
+        makePaymentView.setName(payment.getName());
+        makePaymentView.setCountry(payment.getCountry());
+        checkSendPaymentButtonStatus(false);
     }
 
     @Test(dataProvider = "PM_incorrectCountry", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent when the country name is incorrect")
-    @Story("Incorrect country name")
+    @QaseId(27)
+    @QaseTitle("Incorrect country name")
+    @Description("Incorrect country name")
     public void incorrectCountry(Payment payment) {
 
         fill(payment);
-       // testHelper.checkWhenDataIsIncorrect(makePaymentSteps.getMakePaymentView().getAlertFrame(),
-               // payment.getTitle(), payment.getMessage());
+        checkSendPaymentButtonStatus(true);
+        makePaymentView.touchSendPaymentButton();
+        checkAlertFrame("Invalid country");
     }
 
-    @Test(dataProvider = "PM_blankCountryField", dataProviderClass = TestDataProviders.class)
-    @Description("Verify that the payment has been sent when the country field is blank")
-    @Story("Blank country field")
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @QaseId(28)
+    @QaseTitle("Blank the \"Country\" field")
+    @Description("Blank the \"Country\" field")
     public void blankCountryField(Payment payment) {
 
+        makePaymentView.setPhone(payment.getPhone());
+        makePaymentView.setName(payment.getName());
+        makePaymentView.setAmount(payment.getAmount());
+        checkSendPaymentButtonStatus(false);
+    }
+
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @QaseId(29)
+    @QaseTitle("Cancelling the transaction")
+    @Description("Cancelling the transaction")
+    public void cancellingTransaction(Payment payment) {
+
         fill(payment);
-        testHelper.checkWhenFieldIsBlank(makePaymentSteps.getMakePaymentView().isSendPaymentButtonEnabled(),
-                "Make payment");
+        checkSendPaymentButtonStatus(true);
+        makePaymentView.touchSendPaymentButton();
+        makePaymentView.getQuestionFrame().touchButtonNO();
+
+        Assert.assertTrue(makePaymentView.isDisplayed(), "The \"Make Payment\" view is not displayed");
+
     }
 
     @Test
-    @Description("Verify that the \"Make Payment\" view is closed after touching the \"Cancel\" button")
-    @Story("Touching the \"Cancel\" button")
-    public void closingView() {
+    @QaseId(30)
+    @QaseTitle("The \"Cancel\" button")
+    @Description("The \"Cancel\" button")
+    public void cancelButton() {
 
-        makePaymentSteps.tapCancelButton();
+        makePaymentView.touchCancelButton();
 
         HomeView homeView = new HomeView(getDriver());
 
-        Assert.assertTrue(homeView.isDisplayed(),
-                "The \"Make Payment\" view is not closed");
+        Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
     }
 }
