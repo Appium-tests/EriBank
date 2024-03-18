@@ -1,8 +1,6 @@
 package qa.driver;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.AndroidMobileCapabilityType;
-import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -20,11 +18,11 @@ public class Driver {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("automationName", AUTOMATION_NAME);
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, UDID);
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM_NAME);
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, PLATFORM_VERSION);
-        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, APP_PACKAGE);
-        capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, APP_ACTIVITY);
+        capabilities.setCapability("deviceName", UDID);
+        capabilities.setCapability("platformName", PLATFORM_NAME);
+        capabilities.setCapability("platformVersion", PLATFORM_VERSION);
+        capabilities.setCapability("appPackage", APP_PACKAGE);
+        capabilities.setCapability("appActivity", APP_ACTIVITY);
         capabilities.setCapability("appium:autoGrantPermission", true);
 
         return capabilities;
