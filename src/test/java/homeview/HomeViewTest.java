@@ -8,8 +8,8 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.BaseTest;
-import qa.helpers.Authentication;
+import base.BaseTest;
+import qa.support.Authentication;
 import qa.pageobject.advancedactionsview.AdvancedActionsView;
 import qa.pageobject.expensereportview.ExpenseReportView;
 import qa.pageobject.homeview.HomeView;
@@ -30,7 +30,7 @@ public class HomeViewTest extends BaseTest {
         homeView = new HomeView(getDriver());
     }
 
-    @Test
+    @Test(priority = 1)
     @QaseId(12)
     @QaseTitle("The \"Make Payment\" button")
     @Description("The \"Make Payment\" button")
@@ -43,7 +43,7 @@ public class HomeViewTest extends BaseTest {
                 "The \"Make payment\" view is not displayed");
     }
 
-    @Test
+    @Test(priority = 2)
     @QaseId(13)
     @QaseTitle("The \"Mortgage Request\" button")
     @Description("The \"Mortgage Request\" button")
@@ -56,7 +56,7 @@ public class HomeViewTest extends BaseTest {
                 "The \"Mortgage request\" view is not displayed");
     }
 
-    @Test
+    @Test(priority = 3)
     @QaseId(14)
     @QaseTitle("The \"Expense Report\" button")
     @Description("The \"Expense Report\" button")
@@ -69,7 +69,7 @@ public class HomeViewTest extends BaseTest {
                 "The \"Expense report\" view is not displayed");
     }
 
-    @Test
+    @Test(priority = 4)
     @QaseId(15)
     @QaseTitle("The \"Advanced Actions\" button")
     @Description("The \"Advanced Actions\" button")
@@ -82,7 +82,7 @@ public class HomeViewTest extends BaseTest {
                 "The \"Advanced Actions\" view is not displayed");
     }
 
-    @Test
+    @Test(priority = 5)
     @QaseId(16)
     @QaseTitle("The \"Logout\" button")
     @Description("The \"Logout\" button")

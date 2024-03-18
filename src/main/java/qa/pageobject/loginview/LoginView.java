@@ -5,7 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import qa.base.BaseView;
+import qa.pageobject.base.BaseView;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import qa.base.BaseView;
+import qa.pageobject.base.BaseView;
 import qa.pageobject.loginview.AlertFrame;
 
 import java.util.List;
@@ -14,6 +14,7 @@ public class MakePaymentView extends BaseView {
 
     @Getter
     public final QuestionFrame questionFrame;
+    @Getter
     public final AlertFrame alertFrame;
 
     public MakePaymentView(AndroidDriver driver) {
@@ -113,10 +114,5 @@ public class MakePaymentView extends BaseView {
     public boolean isDisplayed() {
 
         return !parent.isEmpty();
-    }
-
-    public AlertFrame getAlertFrame() {
-
-        return alertFrame;
     }
 }

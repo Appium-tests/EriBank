@@ -1,8 +1,8 @@
 package qa.dataproviders;
 
 import org.testng.annotations.DataProvider;
-import qa.json.TestDataLoader;
-import qa.utils.DataProviderNames;
+import qa.support.TestDataLoader;
+import qa.support.DataProviderNames;
 
 public class MakePaymentDataProviders {
 

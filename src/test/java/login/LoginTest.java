@@ -8,12 +8,12 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.BaseTest;
+import base.BaseTest;
 import qa.pageobject.homeview.HomeView;
 import qa.pageobject.loginview.LoginView;
 import qa.dataproviders.CredentialsDataProviders;
 import qa.models.Credentials;
-import qa.utils.DataProviderNames;
+import qa.support.DataProviderNames;
 
 @Epic("E2E")
 @Feature("Login")
@@ -36,7 +36,7 @@ public class LoginTest extends BaseTest {
         loginView.touchLoginButton();
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
     @QaseId(5)
     @QaseTitle("Login with correct credentials")
     @Description("Login with correct credentials")
@@ -48,7 +48,7 @@ public class LoginTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = DataProviderNames.USERNAME_WITH_UPPER_LETTERS, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.USERNAME_WITH_UPPER_LETTERS, dataProviderClass = CredentialsDataProviders.class)
     @QaseId(6)
     @QaseTitle("Correct username with upper letters")
     @Description("Correct username with upper letters")
@@ -59,7 +59,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(homeView.isDisplayed(), "The home view is not opened");
     }
 
-    @Test(dataProvider = DataProviderNames.PASSWORD_WITH_UPPER_LETTERS, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.PASSWORD_WITH_UPPER_LETTERS, dataProviderClass = CredentialsDataProviders.class)
     @QaseId(7)
     @QaseTitle("Correct password with upper letters")
     @Description("Correct password with upper letters")
@@ -69,7 +69,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginView.getALERT_FRAME().isDisplayed(), "The alert is not displayed");
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_USERNAME, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.INCORRECT_USERNAME, dataProviderClass = CredentialsDataProviders.class)
     @QaseId(8)
     @QaseTitle("Incorrect username")
     @Description("Incorrect username")
@@ -79,7 +79,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginView.getALERT_FRAME().isDisplayed(), "The alert is not displayed");
     }
 
-    @Test(dataProvider = DataProviderNames.BLANK_USERNAME_FIELD, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.BLANK_USERNAME_FIELD, dataProviderClass = CredentialsDataProviders.class)
     @QaseId(9)
     @QaseTitle("Blank the \"Username\" field")
     @Description("Blank the \"Username\" field")
@@ -90,7 +90,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginView.getALERT_FRAME().isDisplayed(), "The alert is not displayed");
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_PASSWORD, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 6, dataProvider = DataProviderNames.INCORRECT_PASSWORD, dataProviderClass = CredentialsDataProviders.class)
     @QaseId(10)
     @QaseTitle("Incorrect password")
     @Description("Incorrect password")
@@ -100,7 +100,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginView.getALERT_FRAME().isDisplayed(), "The alert is not displayed");
     }
 
-    @Test(dataProvider = DataProviderNames.BLANK_PASSWORD_FIELD, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 7, dataProvider = DataProviderNames.BLANK_PASSWORD_FIELD, dataProviderClass = CredentialsDataProviders.class)
     @QaseId(11)
     @QaseTitle("Blank the \"Password\" field")
     @Description("Blank the \"Password\" field")

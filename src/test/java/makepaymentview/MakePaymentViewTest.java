@@ -8,24 +8,22 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.BaseTest;
+import base.BaseTest;
 import qa.dataproviders.MakePaymentDataProviders;
 import qa.enums.View;
-import qa.helpers.Authentication;
-import qa.homeviewmanager.HomeViewManager;
+import qa.support.Authentication;
+import qa.support.HomeViewManager;
 import qa.pageobject.homeview.HomeView;
 import qa.pageobject.makepaymentview.MakePaymentView;
-import qa.steps.MakePaymentSteps;
-import qa.dataproviders.TestDataProviders;
+import qa.dataproviders.MortgageRequestDataProviders;
 import qa.models.Payment;
-import qa.utils.DataProviderNames;
+import qa.support.DataProviderNames;
 
 @Epic("E2E")
 @Feature("Sending payment")
 public class MakePaymentViewTest extends BaseTest {
 
     private MakePaymentView makePaymentView;
-    private MakePaymentSteps makePaymentSteps;
 
     @BeforeMethod
     public void create() {
@@ -34,15 +32,14 @@ public class MakePaymentViewTest extends BaseTest {
         HomeViewManager.open(getDriver(), View.MAKE_PAYMENT);
 
         makePaymentView = new MakePaymentView(getDriver());
-        makePaymentSteps = new MakePaymentSteps(getDriver());
     }
 
     public void fill(Payment payment) {
 
-        makePaymentSteps.setPhone(payment.getPhone());
-        makePaymentSteps.setName(payment.getName());
-        makePaymentSteps.setAmount(payment.getAmount());
-        makePaymentSteps.setCountry(payment.getCountry());
+        makePaymentView.setPhone(payment.getPhone());
+        makePaymentView.setName(payment.getName());
+        makePaymentView.setAmount(payment.getAmount());
+        makePaymentView.setCountry(payment.getCountry());
     }
 
     @io.qameta.allure.Step("Check the \"Send Payment\" button status")
@@ -58,7 +55,7 @@ public class MakePaymentViewTest extends BaseTest {
         Assert.assertEquals(makePaymentView.getAlertFrame().getMessage(), expectedMessage, "Incorrect message content");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
     @QaseId(20)
     @QaseTitle("Correct user data")
     @Description("Correct user data")
@@ -74,7 +71,7 @@ public class MakePaymentViewTest extends BaseTest {
         Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = MakePaymentDataProviders.class)
     @QaseId(21)
     @QaseTitle("Incorrect phone")
     @Description("Incorrect phone")
@@ -87,7 +84,7 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
     @QaseId(22)
     @QaseTitle("Blank the \"Phone\" field")
     @Description("Blank the \"Phone\" field")
@@ -99,7 +96,7 @@ public class MakePaymentViewTest extends BaseTest {
         checkSendPaymentButtonStatus(false);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_NAME, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.INCORRECT_NAME, dataProviderClass = MakePaymentDataProviders.class)
     @QaseId(23)
     @QaseTitle("Incorrect name")
     @Description("Incorrect name")
@@ -111,7 +108,7 @@ public class MakePaymentViewTest extends BaseTest {
         checkAlertFrame("Invalid name");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
     @QaseId(24)
     @QaseTitle("Blank the \"Name\" field")
     @Description("Blank the \"Name\" field")
@@ -123,7 +120,7 @@ public class MakePaymentViewTest extends BaseTest {
         checkSendPaymentButtonStatus(false);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_AMOUNT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 6, dataProvider = DataProviderNames.INCORRECT_AMOUNT, dataProviderClass = MakePaymentDataProviders.class)
     @QaseId(25)
     @QaseTitle("Incorrect amount")
     @Description("Incorrect amount")
@@ -135,7 +132,7 @@ public class MakePaymentViewTest extends BaseTest {
         checkAlertFrame("Invalid amount");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 7, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
     @QaseId(26)
     @QaseTitle("Blank the \"Amount\" field")
     @Description("Blank the \"Amount\" field")
@@ -147,7 +144,7 @@ public class MakePaymentViewTest extends BaseTest {
         checkSendPaymentButtonStatus(false);
     }
 
-    @Test(dataProvider = "PM_incorrectCountry", dataProviderClass = TestDataProviders.class)
+    @Test(priority = 8, dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MortgageRequestDataProviders.class)
     @QaseId(27)
     @QaseTitle("Incorrect country name")
     @Description("Incorrect country name")
@@ -159,7 +156,7 @@ public class MakePaymentViewTest extends BaseTest {
         checkAlertFrame("Invalid country");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 9, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
     @QaseId(28)
     @QaseTitle("Blank the \"Country\" field")
     @Description("Blank the \"Country\" field")
@@ -171,7 +168,7 @@ public class MakePaymentViewTest extends BaseTest {
         checkSendPaymentButtonStatus(false);
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 10, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
     @QaseId(29)
     @QaseTitle("Cancelling the transaction")
     @Description("Cancelling the transaction")
@@ -186,7 +183,7 @@ public class MakePaymentViewTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 11)
     @QaseId(30)
     @QaseTitle("The \"Cancel\" button")
     @Description("The \"Cancel\" button")

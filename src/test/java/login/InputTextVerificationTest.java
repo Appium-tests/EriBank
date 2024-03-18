@@ -8,7 +8,7 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.BaseTest;
+import base.BaseTest;
 import qa.pageobject.loginview.LoginView;
 
 @Epic("E2E")
@@ -26,7 +26,7 @@ public class InputTextVerificationTest extends BaseTest {
         loginView = new LoginView(getDriver());
     }
 
-    @Test
+    @Test(priority = 1)
     @QaseId(1)
     @QaseTitle("Verification of the \"Username\" field text input\"")
     @Description("Verification of the \"Username\" field text input\"")
@@ -36,7 +36,7 @@ public class InputTextVerificationTest extends BaseTest {
         Assert.assertEquals(loginView.getUsername(), TEXT, "Incorrect the \"Username\" field output");
     }
 
-    @Test
+    @Test(priority = 2)
     @QaseId(2)
     @QaseTitle("Removing text from the \"Username\" field")
     @Description("Removing text from the \"Username\" field")
@@ -48,7 +48,7 @@ public class InputTextVerificationTest extends BaseTest {
         Assert.assertEquals(loginView.getUsername(), USERNAME_HINT, "The text is not deleted");
     }
 
-    @Test
+    @Test(priority = 3)
     @QaseId(3)
     @QaseTitle("Verification of the \"Password\" field text input\"")
     @Description("Verification of the \"Password\" field text input\"")
@@ -59,7 +59,7 @@ public class InputTextVerificationTest extends BaseTest {
         Assert.assertEquals(loginView.getPassword(), expectedOutput, "Incorrect the \"Password\" field output");
     }
 
-    @Test
+    @Test(priority = 4)
     @QaseId(4)
     @QaseTitle("Removing text from the \"Password\" field")
     @Description("Removing text from the \"Password\" field")

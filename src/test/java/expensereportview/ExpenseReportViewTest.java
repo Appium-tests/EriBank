@@ -7,11 +7,11 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.BaseTest;
+import base.BaseTest;
 import qa.enums.View;
-import qa.helpers.Authentication;
-import qa.helpers.DynamicList;
-import qa.homeviewmanager.HomeViewManager;
+import qa.support.Authentication;
+import qa.support.DynamicList;
+import qa.support.HomeViewManager;
 import qa.pageobject.homeview.HomeView;
 import qa.steps.ExpenseReportSteps;
 
