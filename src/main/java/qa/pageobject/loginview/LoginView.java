@@ -4,6 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BaseView;
 
 import java.util.List;
@@ -40,14 +41,14 @@ public class LoginView extends BaseView {
     @io.qase.api.annotation.Step("Enter an username")
     public void setUsername(CharSequence... keys) {
 
-        usernameField.sendKeys(keys);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(keys);
     }
 
     @io.qameta.allure.Step("Enter a password")
     @io.qase.api.annotation.Step("Enter a password")
-    public void setPassword(String password) {
+    public void setPassword(CharSequence... keys) {
 
-        passwordField.sendKeys(password);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(keys);
     }
 
     @io.qameta.allure.Step("Remove the username")
@@ -78,6 +79,6 @@ public class LoginView extends BaseView {
     @io.qase.api.annotation.Step("Touch the \"Login\" button")
     public void touchLoginButton() {
 
-        loginButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(loginButton)).click();
     }
 }

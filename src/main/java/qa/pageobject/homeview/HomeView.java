@@ -3,6 +3,7 @@ package qa.pageobject.homeview;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BaseView;
 
 import java.util.List;
@@ -41,34 +42,34 @@ public class HomeView extends BaseView {
     @io.qase.api.annotation.Step("Touch the \"Make Payment\" button")
     public void touchMakePaymentButton() {
 
-        makePaymentButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(makePaymentButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Mortgage Request\" button")
     @io.qase.api.annotation.Step("Touch the \"Mortgage Request\" button")
     public void touchMortgageRequestButton() {
 
-        mortageRequestButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(mortageRequestButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Expense Report\" button")
     @io.qase.api.annotation.Step("Touch the \"Expense Report\" button")
     public void touchExpenseReportButton() {
 
-        expenseReportButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(expenseReportButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Advanced Actions\" button")
     @io.qase.api.annotation.Step("Touch the \"Advanced Actions\" button")
     public void touchAdvancedActionsButton() {
 
-        advancedActionsButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(advancedActionsButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Logout\" button")
     @io.qase.api.annotation.Step("Touch the \"Logout\" button")
     public void touchLogoutButton() {
 
-        logoutButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
     }
 }

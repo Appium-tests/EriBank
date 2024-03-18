@@ -4,6 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BaseView;
 import qa.pageobject.loginview.AlertFrame;
 
@@ -51,28 +52,31 @@ public class MakePaymentView extends BaseView {
     @io.qase.api.annotation.Step("Enter a phone")
     public void setPhone(String phone) {
 
-        phoneField.sendKeys(phone);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(phoneField)).sendKeys(phone);
     }
 
     @io.qameta.allure.Step("Enter a name")
     @io.qase.api.annotation.Step("Enter a name")
     public void setName(String name) {
 
-        nameField.sendKeys(name);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(nameField)).sendKeys(name);
+
     }
 
     @io.qameta.allure.Step("Enter an amount")
     @io.qase.api.annotation.Step("Enter an amount")
     public void setAmount(String amount) {
 
-        amountField.sendKeys(amount);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(amountField)).sendKeys(amount);
+
     }
 
     @io.qameta.allure.Step("Enter a country")
     @io.qase.api.annotation.Step("Enter a country")
     public void setCountry(String country) {
 
-        countryField.sendKeys(country);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(countryField)).sendKeys(country);
+
     }
 
     public boolean isSendPaymentButtonEnabled() {
@@ -84,21 +88,21 @@ public class MakePaymentView extends BaseView {
     @io.qase.api.annotation.Step("Touch the \"Select\" button")
     public void touchSelectButton() {
 
-        selectButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(selectButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Send Payment\" button")
     @io.qase.api.annotation.Step("Touch the \"Send Payment\" button")
     public void touchSendPaymentButton() {
 
-        sendPaymentButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(sendPaymentButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Cancel\" button")
     @io.qase.api.annotation.Step("Touch the \"Cancel\" button")
     public void touchCancelButton() {
 
-        cancelButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
     }
 
     public String getCountryNameFromCountryField() {
