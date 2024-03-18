@@ -3,6 +3,7 @@ package qa.pageobject.makepaymentview;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BaseView;
 
 import java.util.List;
@@ -24,24 +25,14 @@ public class QuestionFrame extends BaseView {
     WebElement message;
 
     @AndroidFindBy(id = "android:id/button1")
-    List<WebElement> buttonYES;
+    WebElement buttonYES;
 
     @AndroidFindBy(id = "android:id/button2")
-    List<WebElement> buttonNO;
+    WebElement buttonNO;
 
     public boolean isDisplayed() {
 
         return !parentPanel.isEmpty();
-    }
-
-    public boolean isButtonYESDisplayed() {
-
-        return !buttonYES.isEmpty();
-    }
-
-    public boolean isButtonNODisplayed() {
-
-        return !buttonNO.isEmpty();
     }
 
     public String getTitle() {
@@ -54,13 +45,17 @@ public class QuestionFrame extends BaseView {
         return message.getText();
     }
 
-    public void tapButtonYES() {
+    @io.qameta.allure.Step("Touch the \"Yes\" button")
+    @io.qase.api.annotation.Step("Touch the \"Yes\" button")
+    public void touchButtonYES() {
 
-        buttonYES.get(0).click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(buttonYES)).click();
     }
 
-    public void tapButtonNO() {
+    @io.qameta.allure.Step("Touch the \"No\" button")
+    @io.qase.api.annotation.Step("Touch the \"No\" button")
+    public void touchButtonNO() {
 
-        buttonNO.get(0).click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(buttonNO)).click();
     }
 }
