@@ -3,27 +3,26 @@ package mortgagerequestview;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.BaseTest;
+import base.BaseTest;
 import qa.enums.View;
-import qa.helpers.Authentication;
-import qa.helpers.TestHelper;
-import qa.homeviewmanager.HomeViewManager;
-import qa.pageobject.homeview.HomeView;
+import qa.support.Authentication;
+import qa.support.HomeViewManager;
+import qa.pageobject.mortgagerequest.MortgageRequestView;
 import qa.pageobject.mortgagerequest.MortgageSummaryView;
-import qa.steps.MortgageRequestSteps;
-import qa.testdataproviders.TestDataProviders;
-import qa.utils.MortgageRequest;
+import qa.dataproviders.MortgageRequestDataProviders;
+import qa.models.MortgageRequest;
+import qa.support.DataProviderNames;
 
 @Epic("E2E")
 @Feature("Mortgage Request functionalities")
 public class MortgageRequestViewTest extends BaseTest {
 
-    private MortgageRequestSteps mortgageRequestSteps;
-    private TestHelper testHelper;
+    private MortgageRequestView mortgageRequestView;
 
     @BeforeMethod
     public void create() {
@@ -31,163 +30,200 @@ public class MortgageRequestViewTest extends BaseTest {
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MORTGAGE_REQUEST);
 
-        mortgageRequestSteps = new MortgageRequestSteps(getDriver());
-        testHelper = new TestHelper();
+        mortgageRequestView = new MortgageRequestView(getDriver());
     }
 
     private void fill(MortgageRequest mortgageRequest) {
 
-        mortgageRequestSteps.setFirstName(mortgageRequest.getFirstName());
-        mortgageRequestSteps.setLastName(mortgageRequest.getLastName());
-        mortgageRequestSteps.setAge(mortgageRequest.getAge());
-        mortgageRequestSteps.setAddress(mortgageRequest.getAddress1());
-        mortgageRequestSteps.fillSecondAddressField(mortgageRequest.getAddress2());
-        mortgageRequestSteps.setCountry(mortgageRequest.getCountry());
+        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
+        mortgageRequestView.setLastName(mortgageRequest.getLastName());
+        mortgageRequestView.setAge(mortgageRequest.getAge());
+        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
+        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
+        mortgageRequestView.setCountry(mortgageRequest.getCountry());
     }
 
-    private void checkWhenDataIsCorrect() {
+    @io.qameta.allure.Step("Check the \"Next\" button status")
+    @io.qase.api.annotation.Step("Check the \"Next\" button status")
+    private void checkNextButtonStatus(boolean expectedStatus) {
 
-        MortgageSummaryView mortgageSummaryView = new MortgageSummaryView(getDriver());
-
-        Assert.assertTrue(mortgageSummaryView.isDisplayed(),
-                "The summary view is not opened");
+        Assert.assertEquals(mortgageRequestView.isNextButtonEnabled(), expectedStatus, "Incorrect the \"Next\" button status");
     }
 
-    @Test(dataProvider = "MR_correct", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether the mortgage loan application containing the correct data has been sent")
-    @Story("Sending correct data")
+    private void checkAlertFrame(String expectedMessage) {
+
+        Assert.assertTrue(mortgageRequestView.getAlertFrame().isDisplayed(), "The alert is not displayed");
+        Assert.assertEquals(mortgageRequestView.getAlertFrame().getMessage(), expectedMessage, "Incorrect message content");
+    }
+
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(31)
+    @QaseTitle("Correct data")
+    @Description("Correct data")
     public void correct(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapNextButton();
-        checkWhenDataIsCorrect();
+        checkNextButtonStatus(true);
+        mortgageRequestView.touchNextButton();
+
+        MortgageSummaryView mortgageSummaryView = new MortgageSummaryView(getDriver());
+        Assert.assertTrue(mortgageSummaryView.isDisplayed(), "The \"Mortgage summary view\" is not opened");
+
     }
 
-    @Test(dataProvider = "MR_blankSecondAddressField", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing a blank \"Address 2\" field has been sent")
-    @Story("Blank \"Address 2\" field")
-    public void blankSecondAddressField(MortgageRequest mortgageRequest) {
-
-        fill(mortgageRequest);
-        mortgageRequestSteps.tapNextButton();
-        checkWhenDataIsCorrect();
-    }
-
-    @Test(dataProvider = "MR_incorrectFirstName", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing an incorrect first name has been sent")
-    @Story("Incorrect first name")
+    @Test(dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(32)
+    @QaseTitle("Incorrect first name")
+    @Description("Incorrect first name")
     public void incorrectFirstName(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
-                mortgageRequest.getTitle(), mortgageRequest.getMessage());
+        checkNextButtonStatus(true);
+        mortgageRequestView.touchNextButton();
+        checkAlertFrame("Incorrect first name");
     }
 
-    @Test(dataProvider = "MR_blankFirstNameField", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing a blank \"First name\" field has been sent")
-    @Story("Blank \"First name\" field")
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(33)
+    @QaseTitle("Blank the \"First Name\" field")
+    @Description("Blank the \"First Name\" field")
     public void blankFirstNameField(MortgageRequest mortgageRequest) {
 
-        fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
-                "Next");
+        mortgageRequestView.setLastName(mortgageRequest.getLastName());
+        mortgageRequestView.setAge(mortgageRequest.getAge());
+        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
+        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
+        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        checkNextButtonStatus(false);
     }
 
-    @Test(dataProvider = "MR_incorrectLastName", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing an incorrect last name has been sent")
-    @Story("Incorrect last name")
+    @Test(dataProvider = DataProviderNames.INCORRECT_LAST_NAME, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(34)
+    @QaseTitle("Incorrect last name")
+    @Description("Incorrect last name")
     public void incorrectLastName(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
-                mortgageRequest.getTitle(), mortgageRequest.getMessage());
+        checkNextButtonStatus(true);
+        mortgageRequestView.touchNextButton();
+        checkAlertFrame("Incorrect last name");
     }
 
-    @Test(dataProvider = "MR_blankLastNameField", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing a blank \"Last name\" field has been sent")
-    @Story("Blank \"Last name\" field")
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(35)
+    @QaseTitle("Blank the \"Last Name\" field")
+    @Description("Blank the \"Last Name\" field")
     public void blankLastNameField(MortgageRequest mortgageRequest) {
 
-        fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
-                "Next");
+        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
+        mortgageRequestView.setAge(mortgageRequest.getAge());
+        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
+        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
+        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        checkNextButtonStatus(false);
     }
 
-    @Test(dataProvider = "MR_incorrectAge", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing an incorrect age has been sent")
-    @Story("Incorrect age")
+    @Test(dataProvider = DataProviderNames.INCORRECT_AGE, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(36)
+    @QaseTitle("Incorrect age")
+    @Description("Incorrect age")
     public void incorrectAge(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
-                mortgageRequest.getTitle(), mortgageRequest.getMessage());
+        checkNextButtonStatus(true);
+        mortgageRequestView.touchNextButton();
+        checkAlertFrame("Incorrect age");
     }
 
-    @Test(dataProvider = "MR_blankAgeField", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing a blank \"Age\" field has been sent")
-    @Story("Blank \"Age\" field")
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(37)
+    @QaseTitle("Blank the \"Age\" field")
+    @Description("Blank the \"Age\" field")
     public void blankAgeField(MortgageRequest mortgageRequest) {
 
-        fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
-                "Next");
+        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
+        mortgageRequestView.setAge(mortgageRequest.getAge());
+        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
+        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
+        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        checkNextButtonStatus(false);
     }
 
-    @Test(dataProvider = "MR_incorrectAddress", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing an incorrect address has been sent")
-    @Story("Incorrect address")
-    public void incorrectAddress(MortgageRequest mortgageRequest) {
+    @Test(dataProvider = DataProviderNames.INCORRECT_ADDRESS_1, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(38)
+    @QaseTitle("Incorrect address 1")
+    @Description("Incorrect address 1")
+    public void incorrectAddress1(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
-                mortgageRequest.getTitle(), mortgageRequest.getMessage());
+        checkNextButtonStatus(true);
+        mortgageRequestView.touchNextButton();
+        checkAlertFrame("Incorrect address 1");
     }
 
-    @Test(dataProvider = "MR_blankAddressField", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing a blank \"Address 1\" field has been sent")
-    @Story("Blank \"Address 1\" field")
-    public void blankAddressField(MortgageRequest mortgageRequest) {
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(39)
+    @QaseTitle("Blank the \"Address 1\" field")
+    @Description("Blank the \"Address 1\" field")
+    public void blankAddress1Field(MortgageRequest mortgageRequest) {
+
+        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
+        mortgageRequestView.setLastName(mortgageRequest.getLastName());
+        mortgageRequestView.setAge(mortgageRequest.getAge());
+        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
+        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        checkNextButtonStatus(false);
+    }
+
+    @Test(dataProvider = DataProviderNames.INCORRECT_ADDRESS_2, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(40)
+    @QaseTitle("Incorrect address 2")
+    @Description("Incorrect address 2")
+    public void incorrectAddress2(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
-                "Next");
+        checkNextButtonStatus(true);
+        mortgageRequestView.touchNextButton();
+        checkAlertFrame("Incorrect address 2");
     }
 
-    @Test(dataProvider = "MR_incorrectCountry", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing an incorrect country has been sent")
-    @Story("Incorrect country")
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(41)
+    @QaseTitle("Blank the \"Address 2\" field")
+    @Description("Blank the \"Address 2\" field")
+    public void blankAddress2Field(MortgageRequest mortgageRequest) {
+
+        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
+        mortgageRequestView.setLastName(mortgageRequest.getLastName());
+        mortgageRequestView.setAge(mortgageRequest.getAge());
+        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
+        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        checkNextButtonStatus(false);
+    }
+
+    @Test(dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(42)
+    @QaseTitle("Incorrect country")
+    @Description("Incorrect country")
     public void incorrectCountry(MortgageRequest mortgageRequest) {
 
         fill(mortgageRequest);
-        mortgageRequestSteps.tapNextButton();
-        testHelper.checkWhenDataIsIncorrect(mortgageRequestSteps.getMortgageRequestView().getAlertFrame(),
-                mortgageRequest.getTitle(), mortgageRequest.getMessage());
+        checkNextButtonStatus(true);
+        mortgageRequestView.touchNextButton();
+        checkAlertFrame("Incorrect country");
     }
 
-    @Test(dataProvider = "MR_blankCountryField", dataProviderClass = TestDataProviders.class)
-    @Description("Checking whether a mortgage loan application containing a blank \"Country\" field has been sent")
-    @Story("Blank \"Country\" field")
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @QaseId(43)
+    @QaseTitle("Blank the \"Country\" field")
+    @Description("Blank the \"Country\" field")
     public void blankCountryField(MortgageRequest mortgageRequest) {
 
-        fill(mortgageRequest);
-        testHelper.checkWhenFieldIsBlank(mortgageRequestSteps.getMortgageRequestView().isNextButtonEnabled(),
-                "Next");
-    }
-
-    @Test
-    @Description("Verify that the \"Mortgage Request\" view is closed after touching the \"Cancel\" button")
-    @Story("Touching the \"Cancel\" button")
-    public void closingView() {
-
-        mortgageRequestSteps.tapCancelButton();
-
-        HomeView homeView = new HomeView(getDriver());
-
-        Assert.assertTrue(homeView.isDisplayed(),
-                "The view is not closed");
+        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
+        mortgageRequestView.setLastName(mortgageRequest.getLastName());
+        mortgageRequestView.setAge(mortgageRequest.getAge());
+        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
+        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
+        checkNextButtonStatus(false);
     }
 }
