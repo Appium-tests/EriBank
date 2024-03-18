@@ -2,14 +2,17 @@ package qa.pageobject.mortgagerequest;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
-import qa.base.BaseView;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import qa.pageobject.base.BaseView;
 import qa.pageobject.loginview.AlertFrame;
 
 import java.util.List;
 
 public class MortgageRequestView extends BaseView {
 
+    @Getter
     private final AlertFrame alertFrame;
 
     public MortgageRequestView(AndroidDriver driver) {
@@ -46,39 +49,58 @@ public class MortgageRequestView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/cancelButton")
     WebElement cancelButton;
 
+    @io.qameta.allure.Step("Enter a first name")
+    @io.qase.api.annotation.Step("Enter a first name")
     public void setFirstName(String firstName) {
 
-        firstNameField.sendKeys(firstName);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(firstNameField)).sendKeys(firstName);
     }
 
+    @io.qameta.allure.Step("Enter a last name")
+    @io.qase.api.annotation.Step("Enter a last name")
     public void setLastName(String lastName) {
 
-        lastNameField.sendKeys(lastName);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(lastNameField)).sendKeys(lastName);
+
     }
 
+    @io.qameta.allure.Step("Enter an age")
+    @io.qase.api.annotation.Step("Enter an age")
     public void setAge(String age) {
 
-        ageField.sendKeys(age);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(ageField)).sendKeys(age);
+
     }
 
+    @io.qameta.allure.Step("Enter an address 1")
+    @io.qase.api.annotation.Step("Enter an address 1")
     public void setAddress1(String address) {
 
-        addressField1.sendKeys(address);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(addressField1)).sendKeys(address);
+
     }
 
+    @io.qameta.allure.Step("Enter an address 2")
+    @io.qase.api.annotation.Step("Enter an address 2")
     public void setAddress2(String address) {
 
-        addressField2.sendKeys(address);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(addressField2)).sendKeys(address);
+
     }
 
+    @io.qameta.allure.Step("Enter a country")
+    @io.qase.api.annotation.Step("Enter a country")
     public void setCountry(String country) {
 
-        countryField.sendKeys(country);
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(countryField)).sendKeys(country);
+
     }
 
-    public void tapNextButton() {
+    @io.qameta.allure.Step("Touch the \"Next\" button")
+    @io.qase.api.annotation.Step("Touch the \"Next\" button")
+    public void touchNextButton() {
 
-        nextButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(nextButton)).click();
     }
 
     public boolean isNextButtonEnabled() {
@@ -86,18 +108,13 @@ public class MortgageRequestView extends BaseView {
         return nextButton.isEnabled();
     }
 
-    public void tapCancelButton() {
+    public void touchCancelButton() {
 
-        cancelButton.click();
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
     }
 
     public boolean isDisplayed() {
 
         return !parent.isEmpty();
-    }
-
-    public AlertFrame getAlertFrame() {
-
-        return alertFrame;
     }
 }
