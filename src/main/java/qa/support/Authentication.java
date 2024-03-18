@@ -1,11 +1,8 @@
-package qa.helpers;
+package qa.support;
 
 import io.appium.java_client.android.AndroidDriver;
-import qa.json.TestDataLoader;
 import qa.pageobject.loginview.LoginView;
 import qa.models.Credentials;
-import qa.utils.DataProviderNames;
-import qa.utils.FileReader;
 
 public class Authentication {
 

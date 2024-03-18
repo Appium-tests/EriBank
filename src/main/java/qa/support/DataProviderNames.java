@@ -1,4 +1,4 @@
-package qa.utils;
+package qa.support;
 
 public class DataProviderNames {
 
@@ -17,4 +17,10 @@ public class DataProviderNames {
     public static final String BLANK_AMOUNT_FIELD = "blankAmountField";
     public static final String INCORRECT_COUNTRY = "incorrectCountry";
     public static final String BLANK_COUNTRY_FIELD = "blankCountryField";
+    public static final String INCORRECT_FIRST_NAME = "incorrectFirstName";
+    public static final String INCORRECT_LAST_NAME = "incorrectLastName";
+    public static final String INCORRECT_AGE = "incorrectAge";
+    public static final String INCORRECT_ADDRESS_1 = "incorrectAddress1";
+    public static final String INCORRECT_ADDRESS_2 = "incorrectAddress2";
+    public static final String RANDOM_INDEXES = "randomIndexes";
 }

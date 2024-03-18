@@ -1,4 +1,4 @@
-package qa.homeviewmanager;
+package qa.support;
 
 import io.appium.java_client.android.AndroidDriver;
 import qa.enums.View;

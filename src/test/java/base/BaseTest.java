@@ -1,4 +1,4 @@
-package qa.base;
+package base;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.*;
@@ -6,8 +6,8 @@ import qa.appiumservermanager.AppiumServerManager;
 import qa.driver.Driver;
 import qa.environmentinfo.AllureEnvironment;
 import qa.environmentinfo.EnvironmentInfo;
-import qa.json.TestDataLoader;
-import qa.utils.FileReader;
+import qa.support.TestDataLoader;
+import qa.support.FileReader;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

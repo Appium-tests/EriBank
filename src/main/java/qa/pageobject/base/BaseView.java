@@ -1,4 +1,4 @@
-package qa.base;
+package qa.pageobject.base;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;

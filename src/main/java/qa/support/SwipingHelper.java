@@ -1,4 +1,4 @@
-package qa.utils;
+package qa.support;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.Point;

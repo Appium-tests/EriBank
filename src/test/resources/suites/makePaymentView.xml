@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="'Make Payment view'">
+<suite name="The 'Make Payment' view">
 
     <listeners>
         <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
+    <parameter name="fileName" value="EB_MakePayment.json"/>
+
     <test name="'Make Payment' view functionalities">
         <classes>
             <class name="makepaymentview.CountryListTest"/>
+        </classes>
+    </test>
+    <test name="Sending payment">
+        <classes>
             <class name="makepaymentview.MakePaymentViewTest"/>
         </classes>
     </test>
-
 </suite>

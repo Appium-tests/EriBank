@@ -1,4 +1,4 @@
-package qa.json;
+package qa.support;
 
 import com.google.common.io.Resources;
 import org.json.JSONArray;
@@ -6,11 +6,11 @@ import org.json.JSONObject;
 import qa.models.Credentials;
 import qa.models.MortgageRequest;
 import qa.models.Payment;
-import qa.utils.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class TestDataLoader {
@@ -71,9 +71,10 @@ public class TestDataLoader {
                 .toArray(Payment[]::new);
     }
 
-    public static MortgageRequest[] getMortgageRequests(String node) {
+    public static MortgageRequest[] getMortgageRequests(String key) {
 
-        JSONArray jsonArray = getJSONArray("mortageRequest", node);
+        JSONObject jsonObject = new JSONObject(FileReader.getSource());
+        JSONArray jsonArray = jsonObject.getJSONArray(key);
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new MortgageRequest(
@@ -82,22 +83,18 @@ public class TestDataLoader {
                         jsonArray.getJSONObject(i).getString("age"),
                         jsonArray.getJSONObject(i).getString("address1"),
                         jsonArray.getJSONObject(i).getString("address2"),
-                        jsonArray.getJSONObject(i).getString("country"),
-                        jsonArray.getJSONObject(i).getString("title"),
-                        jsonArray.getJSONObject(i).getString("message")
+                        jsonArray.getJSONObject(i).getString("country")
                 ))
                 .toArray(MortgageRequest[]::new);
     }
 
-    public static Country[] getCountries() {
+    public static Integer[] getIndexes() {
 
-        JSONArray jsonArray = jsonObject.getJSONArray("countries");
+        Random random = new Random();
+        int size = 5;
+        int min = 0;
+        int max = 37;
 
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new Country(
-                        jsonArray.getJSONObject(i).getString("name"),
-                        jsonArray.getJSONObject(i).getInt("index")
-                ))
-                .toArray(Country[]::new);
+        return IntStream.of(random.ints(size, min, max).toArray()).boxed().toArray(Integer[]::new);
     }
 }

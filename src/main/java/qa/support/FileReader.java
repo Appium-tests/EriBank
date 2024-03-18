@@ -1,4 +1,4 @@
-package qa.utils;
+package qa.support;
 
 import lombok.Getter;
 import org.json.simple.parser.JSONParser;

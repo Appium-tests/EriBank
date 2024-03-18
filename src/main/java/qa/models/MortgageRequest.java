@@ -1,4 +1,4 @@
-package qa.utils;
+package qa.models;
 
 import lombok.Getter;
 
@@ -11,10 +11,8 @@ public class MortgageRequest {
     private final String address1;
     private final String address2;
     private final String country;
-    private final String title;
-    private final String message;
 
-    public MortgageRequest(String firstName, String lastName, String age, String address1, String address2, String country, String title, String message) {
+    public MortgageRequest(String firstName, String lastName, String age, String address1, String address2, String country) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -22,7 +20,5 @@ public class MortgageRequest {
         this.address1 = address1;
         this.address2 = address2;
         this.country = country;
-        this.title = title;
-        this.message = message;
     }
 }
