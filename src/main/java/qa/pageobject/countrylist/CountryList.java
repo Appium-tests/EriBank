@@ -2,15 +2,19 @@ package qa.pageobject.countrylist;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import lombok.Getter;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
-import qa.base.BaseView;
-import qa.utils.SwipingHelper;
+import qa.pageobject.base.BaseView;
+import qa.support.SwipingHelper;
 
 import java.util.List;
 import java.util.Optional;
 
 public class CountryList extends BaseView {
+
+    @Getter
+    private String countryName;
 
     public CountryList(AndroidDriver driver) {
 
@@ -45,6 +49,7 @@ public class CountryList extends BaseView {
     @io.qase.api.annotation.Step("Touch the list element")
     public void selectCountry(int index) {
 
+        countryName = countries.get(index).getText();
         countries.get(index).click();
     }
 
