@@ -93,7 +93,7 @@ public class TestDataLoader {
         Random random = new Random();
         int size = 5;
         int min = 0;
-        int max = 37;
+        int max = 18;
 
         return IntStream.of(random.ints(size, min, max).toArray()).boxed().toArray(Integer[]::new);
     }
