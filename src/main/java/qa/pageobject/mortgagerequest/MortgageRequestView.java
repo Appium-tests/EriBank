@@ -40,6 +40,9 @@ public class MortgageRequestView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/addressTwoTextField")
     WebElement addressField2;
 
+    @AndroidFindBy(id = "com.experitest.ExperiBank:id/countryButton")
+    WebElement selectButton;
+
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/countryTextField")
     WebElement countryField;
 
@@ -96,6 +99,13 @@ public class MortgageRequestView extends BaseView {
 
     }
 
+    @io.qameta.allure.Step("Touch the \"Select\" button")
+    @io.qase.api.annotation.Step("Touch the \"Select\" button")
+    public void touchSelectButton() {
+
+        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(selectButton)).click();
+    }
+
     @io.qameta.allure.Step("Touch the \"Next\" button")
     @io.qase.api.annotation.Step("Touch the \"Next\" button")
     public void touchNextButton() {
@@ -111,6 +121,11 @@ public class MortgageRequestView extends BaseView {
     public void touchCancelButton() {
 
         getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
+    }
+
+    public String getCountryNameFromCountryField() {
+
+        return countryField.getText();
     }
 
     public boolean isDisplayed() {
