@@ -9,11 +9,12 @@
 
     <parameter name="fileName" value="EB_MakePayment.json"/>
 
-    <test name="'Make Payment' view functionalities">
+    <test name="The country dropdown list">
         <classes>
             <class name="makepaymentview.CountryListTest"/>
         </classes>
     </test>
+
     <test name="Sending payment">
         <classes>
             <class name="makepaymentview.MakePaymentViewTest"/>
