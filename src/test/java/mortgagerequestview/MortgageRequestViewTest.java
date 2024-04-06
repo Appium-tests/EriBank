@@ -57,7 +57,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(31)
+    @QaseId(34)
     @QaseTitle("Correct data")
     @Description("Correct data")
     public void correct(MortgageRequest mortgageRequest) {
@@ -72,7 +72,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(32)
+    @QaseId(35)
     @QaseTitle("Incorrect first name")
     @Description("Incorrect first name")
     public void incorrectFirstName(MortgageRequest mortgageRequest) {
@@ -84,7 +84,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(33)
+    @QaseId(36)
     @QaseTitle("Blank the \"First Name\" field")
     @Description("Blank the \"First Name\" field")
     public void blankFirstNameField(MortgageRequest mortgageRequest) {
@@ -98,7 +98,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.INCORRECT_LAST_NAME, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(34)
+    @QaseId(37)
     @QaseTitle("Incorrect last name")
     @Description("Incorrect last name")
     public void incorrectLastName(MortgageRequest mortgageRequest) {
@@ -110,7 +110,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(35)
+    @QaseId(38)
     @QaseTitle("Blank the \"Last Name\" field")
     @Description("Blank the \"Last Name\" field")
     public void blankLastNameField(MortgageRequest mortgageRequest) {
@@ -124,7 +124,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.INCORRECT_AGE, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(36)
+    @QaseId(39)
     @QaseTitle("Incorrect age")
     @Description("Incorrect age")
     public void incorrectAge(MortgageRequest mortgageRequest) {
@@ -136,7 +136,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(37)
+    @QaseId(40)
     @QaseTitle("Blank the \"Age\" field")
     @Description("Blank the \"Age\" field")
     public void blankAgeField(MortgageRequest mortgageRequest) {
@@ -150,7 +150,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.INCORRECT_ADDRESS_1, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(38)
+    @QaseId(41)
     @QaseTitle("Incorrect address 1")
     @Description("Incorrect address 1")
     public void incorrectAddress1(MortgageRequest mortgageRequest) {
@@ -162,7 +162,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(39)
+    @QaseId(42)
     @QaseTitle("Blank the \"Address 1\" field")
     @Description("Blank the \"Address 1\" field")
     public void blankAddress1Field(MortgageRequest mortgageRequest) {
@@ -176,7 +176,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.INCORRECT_ADDRESS_2, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(40)
+    @QaseId(43)
     @QaseTitle("Incorrect address 2")
     @Description("Incorrect address 2")
     public void incorrectAddress2(MortgageRequest mortgageRequest) {
@@ -188,7 +188,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(41)
+    @QaseId(44)
     @QaseTitle("Blank the \"Address 2\" field")
     @Description("Blank the \"Address 2\" field")
     public void blankAddress2Field(MortgageRequest mortgageRequest) {
@@ -202,7 +202,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(42)
+    @QaseId(45)
     @QaseTitle("Incorrect country")
     @Description("Incorrect country")
     public void incorrectCountry(MortgageRequest mortgageRequest) {
@@ -214,7 +214,7 @@ public class MortgageRequestViewTest extends BaseTest {
     }
 
     @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
-    @QaseId(43)
+    @QaseId(46)
     @QaseTitle("Blank the \"Country\" field")
     @Description("Blank the \"Country\" field")
     public void blankCountryField(MortgageRequest mortgageRequest) {
