@@ -1,5 +1,6 @@
 package makepaymentview;
 
+import base.CountryListBaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -8,59 +9,59 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import base.BaseTest;
 import qa.dataproviders.RandomIndexesDataProvider;
 import qa.support.Authentication;
-import qa.pageobject.countrylist.CountryList;
 import qa.pageobject.homeview.HomeView;
 import qa.pageobject.makepaymentview.MakePaymentView;
 import qa.support.DataProviderNames;
 
 @Epic("E2E")
 @Feature("Country list")
-public class CountryListTest extends BaseTest {
+public class CountryListTest extends CountryListBaseTest {
 
     private MakePaymentView makePaymentView;
-    private CountryList countryList;
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"closed", "opened"})
     public void create() {
 
         Authentication.perform(getDriver());
         HomeView homeView = new HomeView(getDriver());
         homeView.touchMakePaymentButton();
         makePaymentView = new MakePaymentView(getDriver());
+    }
+
+    @BeforeMethod(groups = "opened")
+    public void forOpened() {
+
         makePaymentView.touchSelectButton();
-        countryList = new CountryList(getDriver());
     }
 
-    @Test(priority = 1)
-    public void swiping() {
-
-        countryList.swipeDown();
-        Assert.assertTrue(countryList.isLastItemDisplayed(), "Unable to swipe down the list");
-        countryList.swipeUp();
-        Assert.assertTrue(countryList.isFirstItemDisplayed(), "Unable to swipe up the list");
-    }
-
-    @Test(priority = 2)
+    @Test(priority = 2, groups = "closed")
     @QaseId(17)
     @QaseTitle("The \"Select\" button")
     @Description("The \"Select\" button")
     public void selectButton() {
 
-        Assert.assertTrue(countryList.isDisplayed(),
-                "The country list is not displayed");
+        baseSelectButton();
     }
 
-    @Test(priority = 3, dataProvider = DataProviderNames.RANDOM_INDEXES, dataProviderClass = RandomIndexesDataProvider.class)
+    @Test(priority = 1, groups = "opened")
     @QaseId(18)
+    @QaseTitle("Swiping the list")
+    @Description("Swiping the list")
+    public void swiping() {
+
+        baseSwiping();
+    }
+
+    @Test(priority = 3, groups = "opened", dataProvider = DataProviderNames.RANDOM_INDEXES, dataProviderClass = RandomIndexesDataProvider.class)
+    @QaseId(19)
     @QaseTitle("Selecting a country")
     @Description("Selecting a country")
     public void selectingCountry(int index) {
 
-        countryList.selectCountry(index);
+        baseSelectingCountry(index);
 
-        Assert.assertEquals(makePaymentView.getCountryNameFromCountryField(), countryList.getCountryName(),"Incorrect country in the country field");
+        Assert.assertEquals(makePaymentView.getCountryNameFromCountryField(), getCountryList().getCountryName(),"Incorrect country in the country field");
     }
 }
