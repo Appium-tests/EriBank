@@ -9,7 +9,13 @@
 
     <parameter name="fileName" value="EB_Mortgage.json"/>
 
-    <test name="'Mortgage Request' view functionalities">
+    <test name="The country dropdown list">
+        <classes>
+            <class name="mortgagerequestview.CountryListTest"/>
+        </classes>
+    </test>
+
+    <test name="Sending a request">
         <classes>
             <class name="mortgagerequestview.MortgageRequestViewTest"/>
         </classes>
