@@ -13,7 +13,7 @@ import qa.enums.View;
 import qa.support.Authentication;
 import qa.support.HomeViewManager;
 import qa.pageobject.mortgagerequest.MortgageRequestView;
-import qa.pageobject.mortgagerequest.MortgageSummaryView;
+import qa.pageobject.mortgagesummaryview.MortgageSummaryView;
 import qa.dataproviders.MortgageRequestDataProviders;
 import qa.models.MortgageRequest;
 import qa.support.DataProviderNames;
