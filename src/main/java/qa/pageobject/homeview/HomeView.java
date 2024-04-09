@@ -42,34 +42,34 @@ public class HomeView extends BaseView {
     @io.qase.api.annotation.Step("Touch the \"Make Payment\" button")
     public void touchMakePaymentButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(makePaymentButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(makePaymentButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Mortgage Request\" button")
     @io.qase.api.annotation.Step("Touch the \"Mortgage Request\" button")
     public void touchMortgageRequestButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(mortageRequestButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(mortageRequestButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Expense Report\" button")
     @io.qase.api.annotation.Step("Touch the \"Expense Report\" button")
     public void touchExpenseReportButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(expenseReportButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(expenseReportButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Advanced Actions\" button")
     @io.qase.api.annotation.Step("Touch the \"Advanced Actions\" button")
     public void touchAdvancedActionsButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(advancedActionsButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(advancedActionsButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Logout\" button")
     @io.qase.api.annotation.Step("Touch the \"Logout\" button")
     public void touchLogoutButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
     }
 }

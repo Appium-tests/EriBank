@@ -6,7 +6,7 @@ import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.pageobject.base.BaseView;
-import qa.pageobject.loginview.AlertFrame;
+import qa.pageobject.loginview.ErrorMessageBox;
 
 import java.util.List;
 
@@ -15,14 +15,14 @@ public class MakePaymentView extends BaseView {
     @Getter
     public final QuestionFrame questionFrame;
     @Getter
-    public final AlertFrame alertFrame;
+    public final ErrorMessageBox errorMessageBox;
 
     public MakePaymentView(AndroidDriver driver) {
 
         super(driver);
 
         questionFrame = new QuestionFrame(driver);
-        alertFrame = new AlertFrame(driver);
+        errorMessageBox = new ErrorMessageBox(driver);
     }
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/makePaymentView")
@@ -53,14 +53,14 @@ public class MakePaymentView extends BaseView {
     @io.qase.api.annotation.Step("Enter a phone")
     public void setPhone(String phone) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(phoneField)).sendKeys(phone);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(phoneField)).sendKeys(phone);
     }
 
     @io.qameta.allure.Step("Enter a name")
     @io.qase.api.annotation.Step("Enter a name")
     public void setName(String name) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(nameField)).sendKeys(name);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(nameField)).sendKeys(name);
 
     }
 
@@ -68,7 +68,7 @@ public class MakePaymentView extends BaseView {
     @io.qase.api.annotation.Step("Enter an amount")
     public void setAmount(String amount) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(amountField)).sendKeys(amount);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(amountField)).sendKeys(amount);
 
     }
 
@@ -76,7 +76,7 @@ public class MakePaymentView extends BaseView {
     @io.qase.api.annotation.Step("Enter a country")
     public void setCountry(String country) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(countryField)).sendKeys(country);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(countryField)).sendKeys(country);
 
     }
 
@@ -89,21 +89,21 @@ public class MakePaymentView extends BaseView {
     @io.qase.api.annotation.Step("Touch the \"Select\" button")
     public void touchSelectButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(selectButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Send Payment\" button")
     @io.qase.api.annotation.Step("Touch the \"Send Payment\" button")
     public void touchSendPaymentButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(sendPaymentButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(sendPaymentButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Cancel\" button")
     @io.qase.api.annotation.Step("Touch the \"Cancel\" button")
     public void touchCancelButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
     }
 
     public String getCountryNameFromCountryField() {

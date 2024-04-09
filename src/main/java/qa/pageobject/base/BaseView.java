@@ -11,13 +11,13 @@ import java.time.Duration;
 @Getter
 public class BaseView {
 
-    private final AndroidDriver DRIVER;
-    private final WebDriverWait WEB_DRIVER_WAIT;
+    private final AndroidDriver driver;
+    private final WebDriverWait webDriverWait;
 
     public BaseView(AndroidDriver driver) {
 
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        this.DRIVER = driver;
-        WEB_DRIVER_WAIT = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.driver = driver;
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 }

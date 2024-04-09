@@ -6,20 +6,20 @@ import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.pageobject.base.BaseView;
-import qa.pageobject.loginview.AlertFrame;
+import qa.pageobject.loginview.ErrorMessageBox;
 
 import java.util.List;
 
 public class MortgageRequestView extends BaseView {
 
     @Getter
-    private final AlertFrame alertFrame;
+    private final ErrorMessageBox errorMessageBox;
 
     public MortgageRequestView(AndroidDriver driver) {
 
         super(driver);
 
-        alertFrame = new AlertFrame(driver);
+        errorMessageBox = new ErrorMessageBox(driver);
     }
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/makePaymentView")
@@ -56,7 +56,7 @@ public class MortgageRequestView extends BaseView {
     @io.qase.api.annotation.Step("Enter a first name")
     public MortgageRequestView setFirstName(String firstName) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(firstNameField)).sendKeys(firstName);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(firstNameField)).sendKeys(firstName);
         return this;
     }
 
@@ -64,7 +64,7 @@ public class MortgageRequestView extends BaseView {
     @io.qase.api.annotation.Step("Enter a last name")
     public MortgageRequestView setLastName(String lastName) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(lastNameField)).sendKeys(lastName);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(lastNameField)).sendKeys(lastName);
         return this;
     }
 
@@ -72,7 +72,7 @@ public class MortgageRequestView extends BaseView {
     @io.qase.api.annotation.Step("Enter an age")
     public MortgageRequestView setAge(String age) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(ageField)).sendKeys(age);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(ageField)).sendKeys(age);
         return this;
     }
 
@@ -80,7 +80,7 @@ public class MortgageRequestView extends BaseView {
     @io.qase.api.annotation.Step("Enter an address 1")
     public MortgageRequestView setAddress1(String address) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(addressField1)).sendKeys(address);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(addressField1)).sendKeys(address);
         return this;
     }
 
@@ -88,7 +88,7 @@ public class MortgageRequestView extends BaseView {
     @io.qase.api.annotation.Step("Enter an address 2")
     public MortgageRequestView setAddress2(String address) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(addressField2)).sendKeys(address);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(addressField2)).sendKeys(address);
         return this;
     }
 
@@ -96,7 +96,7 @@ public class MortgageRequestView extends BaseView {
     @io.qase.api.annotation.Step("Enter a country")
     public MortgageRequestView setCountry(String country) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(countryField)).sendKeys(country);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(countryField)).sendKeys(country);
         return this;
     }
 
@@ -104,7 +104,7 @@ public class MortgageRequestView extends BaseView {
     @io.qase.api.annotation.Step("Touch the \"Select\" button")
     public MortgageRequestView touchSelectButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(selectButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectButton)).click();
         return this;
     }
 
@@ -112,7 +112,7 @@ public class MortgageRequestView extends BaseView {
     @io.qase.api.annotation.Step("Touch the \"Next\" button")
     public MortgageRequestView touchNextButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(nextButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(nextButton)).click();
         return this;
     }
 
@@ -123,7 +123,7 @@ public class MortgageRequestView extends BaseView {
 
     public void touchCancelButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
     }
 
     public String getCountryNameFromCountryField() {

@@ -26,10 +26,10 @@ public class MortgageSummaryView extends BaseView {
 
         super(driver);
 
-        this.typeOfLoanSection = new TypeOfLoanSection(getDRIVER());
-        this.numberOfYearsSection = new NumberOfYearsSection(getDRIVER());
-        this.typeOfOccupationSection = new TypeOfOccupationSection(getDRIVER());
-        this.yearlyIncomeSection = new YearlyIncomeSection(getDRIVER());
+        this.typeOfLoanSection = new TypeOfLoanSection(getDriver());
+        this.numberOfYearsSection = new NumberOfYearsSection(getDriver());
+        this.typeOfOccupationSection = new TypeOfOccupationSection(getDriver());
+        this.yearlyIncomeSection = new YearlyIncomeSection(getDriver());
     }
 
     @AndroidFindBy(className = "android.widget.CheckedTextView")
@@ -47,14 +47,14 @@ public class MortgageSummaryView extends BaseView {
 
         Point to = itemsList.get(0).getLocation();
         Point from = itemsList.get(itemsList.size() - 1).getLocation();
-        SwipingHelper.swipe(from, to, getDRIVER());
+        SwipingHelper.swipe(from, to, getDriver());
     }
 
     public void swipeUp() {
 
         Optional<WebElement> from = itemsList.stream().filter(WebElement::isDisplayed).findFirst();
         Point to = itemsList.get(itemsList.size() - 1).getLocation();
-        from.ifPresent(webElement -> SwipingHelper.swipe(webElement.getLocation(), to, getDRIVER()));
+        from.ifPresent(webElement -> SwipingHelper.swipe(webElement.getLocation(), to, getDriver()));
     }
 
     public boolean isFirstItemVisible() {

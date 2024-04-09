@@ -61,8 +61,8 @@ public class MortgageRequestViewTest extends BaseTest {
 
     private void checkAlertFrame(String expectedMessage) {
 
-        Assert.assertTrue(mortgageRequestView.getAlertFrame().isDisplayed(), "The alert is not displayed");
-        Assert.assertEquals(mortgageRequestView.getAlertFrame().getMessage(), expectedMessage, "Incorrect message content");
+        Assert.assertTrue(mortgageRequestView.getErrorMessageBox().isDisplayed(), "The alert is not displayed");
+        Assert.assertEquals(mortgageRequestView.getErrorMessageBox().getMessage(), expectedMessage, "Incorrect message content");
     }
 
     @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)

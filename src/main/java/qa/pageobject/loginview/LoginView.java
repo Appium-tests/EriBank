@@ -12,12 +12,12 @@ import java.util.List;
 public class LoginView extends BaseView {
 
     @Getter
-    private final AlertFrame ALERT_FRAME;
+    private final ErrorMessageBox errorMessageBox;
 
     public LoginView(AndroidDriver driver) {
 
         super(driver);
-        ALERT_FRAME = new AlertFrame(driver);
+        errorMessageBox = new ErrorMessageBox(driver);
     }
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/loginView")
@@ -41,14 +41,14 @@ public class LoginView extends BaseView {
     @io.qase.api.annotation.Step("Enter an username")
     public void setUsername(CharSequence... keys) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(keys);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(keys);
     }
 
     @io.qameta.allure.Step("Enter a password")
     @io.qase.api.annotation.Step("Enter a password")
     public void setPassword(CharSequence... keys) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(keys);
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(keys);
     }
 
     @io.qameta.allure.Step("Remove the username")
@@ -79,6 +79,6 @@ public class LoginView extends BaseView {
     @io.qase.api.annotation.Step("Touch the \"Login\" button")
     public void touchLoginButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(loginButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(loginButton)).click();
     }
 }

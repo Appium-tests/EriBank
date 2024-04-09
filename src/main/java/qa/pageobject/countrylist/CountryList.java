@@ -33,7 +33,7 @@ public class CountryList extends BaseView {
 
         Point to = countries.get(0).getLocation();
         Optional<WebElement> from = countries.stream().filter(WebElement::isDisplayed).reduce((first, second) -> second);
-        from.ifPresent(element -> SwipingHelper.swipe(element.getLocation(), to, getDRIVER()));
+        from.ifPresent(element -> SwipingHelper.swipe(element.getLocation(), to, getDriver()));
     }
 
     @io.qameta.allure.Step("Touch the first visible list element and swipe to the last element")
@@ -42,7 +42,7 @@ public class CountryList extends BaseView {
 
         Point to = countries.get(countries.size() - 1).getLocation();
         Optional<WebElement> from = countries.stream().filter(WebElement::isDisplayed).findFirst();
-        from.ifPresent(element -> SwipingHelper.swipe(element.getLocation(), to, getDRIVER()));
+        from.ifPresent(element -> SwipingHelper.swipe(element.getLocation(), to, getDriver()));
     }
 
     @io.qameta.allure.Step("Select a country")

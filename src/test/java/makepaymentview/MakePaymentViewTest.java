@@ -58,8 +58,8 @@ public class MakePaymentViewTest extends BaseTest {
 
     private void checkAlertFrame(String expectedMessage) {
 
-        Assert.assertTrue(makePaymentView.getAlertFrame().isDisplayed(), "The alert is not displayed");
-        Assert.assertEquals(makePaymentView.getAlertFrame().getMessage(), expectedMessage, "Incorrect message content");
+        Assert.assertTrue(makePaymentView.getErrorMessageBox().isDisplayed(), "The alert is not displayed");
+        Assert.assertEquals(makePaymentView.getErrorMessageBox().getMessage(), expectedMessage, "Incorrect message content");
     }
 
     @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
