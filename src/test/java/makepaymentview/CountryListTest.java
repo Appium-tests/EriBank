@@ -4,8 +4,10 @@ import base.CountryListBaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -37,27 +39,33 @@ public class CountryListTest extends CountryListBaseTest {
     }
 
     @Test(priority = 2, groups = "closed")
+    @Tag("List")
+    @Owner("Paweł Aksman")
+    @Description("The \"Select\" button")
     @QaseId(17)
     @QaseTitle("The \"Select\" button")
-    @Description("The \"Select\" button")
     public void selectButton() {
 
         baseSelectButton();
     }
 
     @Test(priority = 1, groups = "opened")
+    @Tag("List")
+    @Owner("Paweł Aksman")
+    @Description("Swiping the list")
     @QaseId(18)
     @QaseTitle("Swiping the list")
-    @Description("Swiping the list")
     public void swiping() {
 
         baseSwiping();
     }
 
     @Test(priority = 3, groups = "opened", dataProvider = DataProviderNames.RANDOM_INDEXES, dataProviderClass = RandomIndexesDataProvider.class)
+    @Tag("List")
+    @Owner("Paweł Aksman")
+    @Description("Selecting a country")
     @QaseId(19)
     @QaseTitle("Selecting a country")
-    @Description("Selecting a country")
     public void selectingCountry(int index) {
 
         baseSelectingCountry(index);
