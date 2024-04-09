@@ -54,63 +54,66 @@ public class MortgageRequestView extends BaseView {
 
     @io.qameta.allure.Step("Enter a first name")
     @io.qase.api.annotation.Step("Enter a first name")
-    public void setFirstName(String firstName) {
+    public MortgageRequestView setFirstName(String firstName) {
 
         getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(firstNameField)).sendKeys(firstName);
+        return this;
     }
 
     @io.qameta.allure.Step("Enter a last name")
     @io.qase.api.annotation.Step("Enter a last name")
-    public void setLastName(String lastName) {
+    public MortgageRequestView setLastName(String lastName) {
 
         getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(lastNameField)).sendKeys(lastName);
-
+        return this;
     }
 
     @io.qameta.allure.Step("Enter an age")
     @io.qase.api.annotation.Step("Enter an age")
-    public void setAge(String age) {
+    public MortgageRequestView setAge(String age) {
 
         getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(ageField)).sendKeys(age);
-
+        return this;
     }
 
     @io.qameta.allure.Step("Enter an address 1")
     @io.qase.api.annotation.Step("Enter an address 1")
-    public void setAddress1(String address) {
+    public MortgageRequestView setAddress1(String address) {
 
         getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(addressField1)).sendKeys(address);
-
+        return this;
     }
 
     @io.qameta.allure.Step("Enter an address 2")
     @io.qase.api.annotation.Step("Enter an address 2")
-    public void setAddress2(String address) {
+    public MortgageRequestView setAddress2(String address) {
 
         getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(addressField2)).sendKeys(address);
-
+        return this;
     }
 
     @io.qameta.allure.Step("Enter a country")
     @io.qase.api.annotation.Step("Enter a country")
-    public void setCountry(String country) {
+    public MortgageRequestView setCountry(String country) {
 
         getWEB_DRIVER_WAIT().until(ExpectedConditions.visibilityOf(countryField)).sendKeys(country);
-
+        return this;
     }
 
     @io.qameta.allure.Step("Touch the \"Select\" button")
     @io.qase.api.annotation.Step("Touch the \"Select\" button")
-    public void touchSelectButton() {
+    public MortgageRequestView touchSelectButton() {
 
         getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(selectButton)).click();
+        return this;
     }
 
     @io.qameta.allure.Step("Touch the \"Next\" button")
     @io.qase.api.annotation.Step("Touch the \"Next\" button")
-    public void touchNextButton() {
+    public MortgageRequestView touchNextButton() {
 
         getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(nextButton)).click();
+        return this;
     }
 
     public boolean isNextButtonEnabled() {
