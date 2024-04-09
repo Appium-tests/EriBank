@@ -1,9 +1,7 @@
 package expensereportview;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -31,6 +29,8 @@ public class ExpenseReportViewTest extends BaseTest {
     }
 
     @Test
+    @Tag("View")
+    @Owner("Paweł Aksman")
     @Description("Checking whether a row is added after touching the \"Add\" button")
     @Story("Touching the \"Add\" button")
     public void addingRow() {
@@ -47,6 +47,8 @@ public class ExpenseReportViewTest extends BaseTest {
     }
 
     @Test
+    @Tag("View")
+    @Owner("Paweł Aksman")
     @Description("Checking whether a row is removed after touching on the row")
     @Story("Touching on the row")
     public void removingRow() {
@@ -67,6 +69,8 @@ public class ExpenseReportViewTest extends BaseTest {
     }
 
     @Test
+    @Tag("View")
+    @Owner("Paweł Aksman")
     @Description("Verify that the \"Expense Report\" view is closed after touching the \"Back\" button")
     @Story("Touching the \"Back\" button")
     public void closingView() {
