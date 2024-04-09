@@ -1,7 +1,7 @@
 package expensereportview;
 
 import io.qameta.allure.*;
-import org.junit.jupiter.api.Tag;
+import io.qameta.allure.testng.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
