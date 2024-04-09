@@ -30,32 +30,32 @@ public class BaseSection extends BaseView {
     @io.qase.api.annotation.Step("Touch the item")
     public void touchItem(String name) {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(
-                getDRIVER().findElement(By.xpath(itemXPath + name + "']"))
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(
+                getDriver().findElement(By.xpath(itemXPath + name + "']"))
         )).click();
     }
 
     public String getItemCheckedStatus(String name) {
 
-        return getDRIVER().findElement(By.xpath(itemXPath + name + "']")).getAttribute("checked");
+        return getDriver().findElement(By.xpath(itemXPath + name + "']")).getAttribute("checked");
     }
 
     public WebElement getParent() {
 
-        return getDRIVER().findElement(parent);
+        return getDriver().findElement(parent);
     }
 
     @io.qameta.allure.Step("Touch the \"Save\" button")
     @io.qase.api.annotation.Step("Touch the \"Save\" button")
     public void touchSaveButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(saveButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveButton)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"Back\" button")
     @io.qase.api.annotation.Step("Touch the \"Back\" button")
     public void touchBackButton() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(backButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(backButton)).click();
     }
 }
