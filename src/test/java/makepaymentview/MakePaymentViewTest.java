@@ -1,10 +1,9 @@
 package makepaymentview;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -56,10 +55,17 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Correct user data")
     @QaseId(20)
     @QaseTitle("Correct user data")
-    @Description("Correct user data")
     public void correct(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -72,10 +78,17 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = MakePaymentDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Incorrect phone")
     @QaseId(21)
     @QaseTitle("Incorrect phone")
-    @Description("Incorrect phone")
     public void incorrectPhone(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -85,10 +98,17 @@ public class MakePaymentViewTest extends BaseTest {
 
 
     @Test(priority = 3, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Blank the \"Phone\" field")
     @QaseId(22)
     @QaseTitle("Blank the \"Phone\" field")
-    @Description("Blank the \"Phone\" field")
     public void blankPhoneField(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         makePaymentView.setName(payment.getName());
         makePaymentView.setAmount(payment.getAmount());
@@ -97,10 +117,17 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 4, dataProvider = DataProviderNames.INCORRECT_NAME, dataProviderClass = MakePaymentDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Incorrect name")
     @QaseId(23)
     @QaseTitle("Incorrect name")
-    @Description("Incorrect name")
     public void incorrectName(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -109,10 +136,17 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 5, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Blank the \"Name\" field")
     @QaseId(24)
     @QaseTitle("Blank the \"Name\" field")
-    @Description("Blank the \"Name\" field")
     public void blankNameField(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         makePaymentView.setPhone(payment.getPhone());
         makePaymentView.setAmount(payment.getAmount());
@@ -121,10 +155,17 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 6, dataProvider = DataProviderNames.INCORRECT_AMOUNT, dataProviderClass = MakePaymentDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Incorrect amount")
     @QaseId(25)
     @QaseTitle("Incorrect amount")
-    @Description("Incorrect amount")
     public void incorrectAmount(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -133,10 +174,17 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 7, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Blank the \"Amount\" field")
     @QaseId(26)
     @QaseTitle("Blank the \"Amount\" field")
-    @Description("Blank the \"Amount\" field")
     public void blankAmountField(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         makePaymentView.setPhone(payment.getPhone());
         makePaymentView.setName(payment.getName());
@@ -145,10 +193,17 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 8, dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MortgageRequestDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Incorrect country name")
     @QaseId(27)
     @QaseTitle("Incorrect country name")
-    @Description("Incorrect country name")
     public void incorrectCountry(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -157,10 +212,17 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 9, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Blank the \"Country\" field")
     @QaseId(28)
     @QaseTitle("Blank the \"Country\" field")
-    @Description("Blank the \"Country\" field")
     public void blankCountryField(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         makePaymentView.setPhone(payment.getPhone());
         makePaymentView.setName(payment.getName());
@@ -169,10 +231,17 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 10, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("Cancelling the transaction")
     @QaseId(29)
     @QaseTitle("Cancelling the transaction")
-    @Description("Cancelling the transaction")
     public void cancellingTransaction(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -184,9 +253,11 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 11)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("The \"Cancel\" button")
     @QaseId(30)
     @QaseTitle("The \"Cancel\" button")
-    @Description("The \"Cancel\" button")
     public void cancelButton() {
 
         makePaymentView.touchCancelButton();

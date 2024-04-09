@@ -3,8 +3,10 @@ package homeview;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -31,9 +33,12 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("The \"Make Payment\" button")
     @QaseId(12)
     @QaseTitle("The \"Make Payment\" button")
-    @Description("The \"Make Payment\" button")
+
     public void makePaymentButton() {
 
         homeView.touchMakePaymentButton();
@@ -44,9 +49,11 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test(priority = 2)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("The \"Mortgage Request\" button")
     @QaseId(13)
     @QaseTitle("The \"Mortgage Request\" button")
-    @Description("The \"Mortgage Request\" button")
     public void mortgageRequestButton() {
 
         homeView.touchMortgageRequestButton();
@@ -57,9 +64,11 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test(priority = 3)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("The \"Expense Report\" button")
     @QaseId(14)
     @QaseTitle("The \"Expense Report\" button")
-    @Description("The \"Expense Report\" button")
     public void expenseReportButton() {
 
         homeView.touchExpenseReportButton();
@@ -70,9 +79,11 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test(priority = 4)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("The \"Advanced Actions\" button")
     @QaseId(15)
     @QaseTitle("The \"Advanced Actions\" button")
-    @Description("The \"Advanced Actions\" button")
     public void advancedActionsButton() {
 
         homeView.touchAdvancedActionsButton();
@@ -83,9 +94,11 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test(priority = 5)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("The \"Logout\" button")
     @QaseId(16)
     @QaseTitle("The \"Logout\" button")
-    @Description("The \"Logout\" button")
     public void logoutButton() {
 
         homeView.touchLogoutButton();

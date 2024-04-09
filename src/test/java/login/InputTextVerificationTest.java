@@ -3,8 +3,10 @@ package login;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -27,9 +29,12 @@ public class InputTextVerificationTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Tag("Input")
+    @Tag("Login")
+    @Owner("Paweł Aksman")
+    @Description("Verification of the \"Username\" field text input\"")
     @QaseId(1)
     @QaseTitle("Verification of the \"Username\" field text input\"")
-    @Description("Verification of the \"Username\" field text input\"")
     public void usernameField() {
 
         loginView.setUsername(TEXT);
@@ -37,9 +42,12 @@ public class InputTextVerificationTest extends BaseTest {
     }
 
     @Test(priority = 2)
+    @Tag("Input")
+    @Tag("Login")
+    @Owner("Paweł Aksman")
+    @Description("Removing text from the \"Username\" field")
     @QaseId(2)
     @QaseTitle("Removing text from the \"Username\" field")
-    @Description("Removing text from the \"Username\" field")
     public void removingTextFromUsernameField() {
 
         loginView.setUsername(TEXT);
@@ -49,9 +57,12 @@ public class InputTextVerificationTest extends BaseTest {
     }
 
     @Test(priority = 3)
+    @Tag("Input")
+    @Tag("Login")
+    @Owner("Paweł Aksman")
+    @Description("Verification of the \"Password\" field text input\"")
     @QaseId(3)
     @QaseTitle("Verification of the \"Password\" field text input\"")
-    @Description("Verification of the \"Password\" field text input\"")
     public void passwordField() {
 
         loginView.setPassword(TEXT);
@@ -60,9 +71,12 @@ public class InputTextVerificationTest extends BaseTest {
     }
 
     @Test(priority = 4)
+    @Tag("Input")
+    @Tag("Login")
+    @Owner("Paweł Aksman")
+    @Description("Removing text from the \"Password\" field")
     @QaseId(4)
     @QaseTitle("Removing text from the \"Password\" field")
-    @Description("Removing text from the \"Password\" field")
     public void removingTextFromPasswordField() {
 
         loginView.setPassword(TEXT);
