@@ -11,11 +11,6 @@ public class Listener implements ITestListener {
 
     private final Logger logger = LoggerFactory.getLogger(Listener.class);
 
-    private static String getTestMethodName(ITestResult iTestResult) {
-
-        return iTestResult.getMethod().getMethodName();
-    }
-
     @Attachment(value = "{0}", type = "text/plain")
     public static String saveTextLog(String message) {
 
@@ -49,7 +44,6 @@ public class Listener implements ITestListener {
 
         logger.info("Test PASSED");
         logger.info("-".repeat(50));
-        saveTextLog(getTestMethodName(iTestResult) + "- PASSED");
     }
 
     @Override
@@ -57,7 +51,7 @@ public class Listener implements ITestListener {
 
         logger.error("Test FAILED");
         logger.info("-".repeat(50));
-        saveTextLog(getTestMethodName(iTestResult) + "- FAILED");
+        saveTextLog(iTestResult.getThrowable().getMessage());
     }
 
     @Override
@@ -65,6 +59,5 @@ public class Listener implements ITestListener {
 
         logger.warn("Test SKIPPED");
         logger.info("-".repeat(50));
-        saveTextLog(getTestMethodName(iTestResult) + "- SKIPPED");
     }
 }
