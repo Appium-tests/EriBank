@@ -16,7 +16,7 @@ public class MortgageSummaryView extends BaseView {
     @Getter
     private final TypeOfLoanSection typeOfLoanSection;
     @Getter
-    private final NumberOfYearsView numberOfYearsView;
+    private final NumberOfYearsSection numberOfYearsSection;
     @Getter
     private final TypeOfOccupationSection typeOfOccupationSection;
     @Getter
@@ -27,33 +27,20 @@ public class MortgageSummaryView extends BaseView {
         super(driver);
 
         this.typeOfLoanSection = new TypeOfLoanSection(getDRIVER());
-        this.numberOfYearsView = new NumberOfYearsView(getDRIVER());
+        this.numberOfYearsSection = new NumberOfYearsSection(getDRIVER());
         this.typeOfOccupationSection = new TypeOfOccupationSection(getDRIVER());
         this.yearlyIncomeSection = new YearlyIncomeSection(getDRIVER());
     }
-
-    @AndroidFindBy(id = "com.experitest.ExperiBank:id/typeOfLoanListView")
-    List<WebElement> typeOfLoanListView;
-
-    @AndroidFindBy(id = "com.experitest.ExperiBank:id/numberOfYearsListView")
-    List<WebElement> numberOfYearsListView;
-
-    @AndroidFindBy(id = "com.experitest.ExperiBank:id/typeOfOccupationListView")
-    List<WebElement> typeOfOccupationListView;
 
     @AndroidFindBy(className = "android.widget.CheckedTextView")
     List<WebElement> itemsList;
 
     public boolean isDisplayed() {
 
-        return !typeOfLoanListView.isEmpty() &&
-               !numberOfYearsListView.isEmpty() &&
-               !typeOfOccupationListView.isEmpty();
-    }
-
-    public int getSize() {
-
-        return itemsList.size();
+        return !typeOfLoanSection.getParent().isDisplayed() &&
+               !numberOfYearsSection.getParent().isDisplayed() &&
+               !typeOfOccupationSection.getParent().isDisplayed() &&
+               !yearlyIncomeSection.getParent().isDisplayed();
     }
 
     public void swipeDown() {
@@ -68,11 +55,6 @@ public class MortgageSummaryView extends BaseView {
         Optional<WebElement> from = itemsList.stream().filter(WebElement::isDisplayed).findFirst();
         Point to = itemsList.get(itemsList.size() - 1).getLocation();
         from.ifPresent(webElement -> SwipingHelper.swipe(webElement.getLocation(), to, getDRIVER()));
-    }
-
-    public String getText() {
-
-        return itemsList.get(itemsList.size() - 1).getText();
     }
 
     public boolean isFirstItemVisible() {
