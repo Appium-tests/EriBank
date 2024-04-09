@@ -24,10 +24,21 @@ public class TestDataLoader {
 
         return jsonObject1.getJSONArray(node);
     }
+
     public static void read() throws IOException {
 
         URL url = Resources.getResource("testdata.json");
         jsonObject = new JSONObject(Resources.toString(url, StandardCharsets.UTF_8));
+    }
+
+    public static String[] getStringArray(String key) {
+
+        JSONObject jsonObject = new JSONObject(FileReader.getSource());
+        JSONArray jsonArray = jsonObject.getJSONArray(key);
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(jsonArray::getString)
+                .toArray(String[]::new);
     }
 
     public static Credentials[] getCredentials(String key) {

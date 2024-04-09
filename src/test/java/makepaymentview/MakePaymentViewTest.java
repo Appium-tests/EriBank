@@ -1,9 +1,9 @@
 package makepaymentview;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
-import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -31,6 +31,14 @@ public class MakePaymentViewTest extends BaseTest {
         HomeViewManager.open(getDriver(), View.MAKE_PAYMENT);
 
         makePaymentView = new MakePaymentView(getDriver());
+    }
+
+    private void setAllureParameters(Payment payment) {
+
+        Allure.parameter("Phone", payment.getPhone());
+        Allure.parameter("Name", payment.getName());
+        Allure.parameter("Amount", payment.getAmount());
+        Allure.parameter("Country", payment.getCountry());
     }
 
     public void fill(Payment payment) {
@@ -62,10 +70,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Correct user data")
     public void correct(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
-        Allure.parameter("Country", payment.getCountry());
+        setAllureParameters(payment);
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -85,10 +90,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Incorrect phone")
     public void incorrectPhone(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
-        Allure.parameter("Country", payment.getCountry());
+        setAllureParameters(payment);
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -105,10 +107,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Blank the \"Phone\" field")
     public void blankPhoneField(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
-        Allure.parameter("Country", payment.getCountry());
+        setAllureParameters(payment);
 
         makePaymentView.setName(payment.getName());
         makePaymentView.setAmount(payment.getAmount());
@@ -124,10 +123,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Incorrect name")
     public void incorrectName(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
-        Allure.parameter("Country", payment.getCountry());
+        setAllureParameters(payment);
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -143,9 +139,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Blank the \"Name\" field")
     public void blankNameField(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
+        setAllureParameters(payment);
         Allure.parameter("Country", payment.getCountry());
 
         makePaymentView.setPhone(payment.getPhone());
@@ -162,10 +156,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Incorrect amount")
     public void incorrectAmount(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
-        Allure.parameter("Country", payment.getCountry());
+        setAllureParameters(payment);
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -181,10 +172,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Blank the \"Amount\" field")
     public void blankAmountField(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
-        Allure.parameter("Country", payment.getCountry());
+        setAllureParameters(payment);
 
         makePaymentView.setPhone(payment.getPhone());
         makePaymentView.setName(payment.getName());
@@ -200,10 +188,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Incorrect country name")
     public void incorrectCountry(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
-        Allure.parameter("Country", payment.getCountry());
+        setAllureParameters(payment);
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -219,10 +204,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Blank the \"Country\" field")
     public void blankCountryField(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
-        Allure.parameter("Country", payment.getCountry());
+        setAllureParameters(payment);
 
         makePaymentView.setPhone(payment.getPhone());
         makePaymentView.setName(payment.getName());
@@ -238,10 +220,7 @@ public class MakePaymentViewTest extends BaseTest {
     @QaseTitle("Cancelling the transaction")
     public void cancellingTransaction(Payment payment) {
 
-        Allure.parameter("Phone", payment.getPhone());
-        Allure.parameter("Name", payment.getName());
-        Allure.parameter("Amount", payment.getAmount());
-        Allure.parameter("Country", payment.getCountry());
+        setAllureParameters(payment);
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
@@ -261,9 +240,7 @@ public class MakePaymentViewTest extends BaseTest {
     public void cancelButton() {
 
         makePaymentView.touchCancelButton();
-
         HomeView homeView = new HomeView(getDriver());
-
         Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
     }
 }
