@@ -45,8 +45,8 @@ public class CountryList extends BaseView {
         from.ifPresent(element -> SwipingHelper.swipe(element.getLocation(), to, getDRIVER()));
     }
 
-    @io.qameta.allure.Step("Touch the list element")
-    @io.qase.api.annotation.Step("Touch the list element")
+    @io.qameta.allure.Step("Select a country")
+    @io.qase.api.annotation.Step("Select a country")
     public void selectCountry(int index) {
 
         countryName = countries.get(index).getText();
