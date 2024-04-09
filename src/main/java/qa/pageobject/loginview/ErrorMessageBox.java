@@ -7,9 +7,9 @@ import qa.pageobject.base.BaseView;
 
 import java.util.List;
 
-public class AlertFrame extends BaseView {
+public class ErrorMessageBox extends BaseView {
 
-    public AlertFrame(AndroidDriver driver) {
+    public ErrorMessageBox(AndroidDriver driver) {
 
         super(driver);
     }
