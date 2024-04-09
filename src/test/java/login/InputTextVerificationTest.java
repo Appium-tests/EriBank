@@ -12,6 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import base.BaseTest;
 import qa.pageobject.loginview.LoginView;
+import qa.support.AllureAttachments;
+
+import java.io.IOException;
 
 @Epic("E2E")
 @Feature("Login form input text verification")
@@ -35,9 +38,10 @@ public class InputTextVerificationTest extends BaseTest {
     @Description("Verification of the \"Username\" field text input\"")
     @QaseId(1)
     @QaseTitle("Verification of the \"Username\" field text input\"")
-    public void usernameField() {
+    public void usernameField() throws IOException {
 
         loginView.setUsername(TEXT);
+        AllureAttachments.takeScreenshot(getDriver(), "usernameField");
         Assert.assertEquals(loginView.getUsername(), TEXT, "Incorrect the \"Username\" field output");
     }
 
@@ -48,11 +52,11 @@ public class InputTextVerificationTest extends BaseTest {
     @Description("Removing text from the \"Username\" field")
     @QaseId(2)
     @QaseTitle("Removing text from the \"Username\" field")
-    public void removingTextFromUsernameField() {
+    public void removingTextFromUsernameField() throws IOException {
 
         loginView.setUsername(TEXT);
         loginView.removeUsername();
-
+        AllureAttachments.takeScreenshot(getDriver(), "blankUsernameField");
         Assert.assertEquals(loginView.getUsername(), USERNAME_HINT, "The text is not deleted");
     }
 
@@ -63,9 +67,10 @@ public class InputTextVerificationTest extends BaseTest {
     @Description("Verification of the \"Password\" field text input\"")
     @QaseId(3)
     @QaseTitle("Verification of the \"Password\" field text input\"")
-    public void passwordField() {
+    public void passwordField() throws IOException {
 
         loginView.setPassword(TEXT);
+        AllureAttachments.takeScreenshot(getDriver(), "passwordField");
         String expectedOutput = "•".repeat(TEXT.length());
         Assert.assertEquals(loginView.getPassword(), expectedOutput, "Incorrect the \"Password\" field output");
     }
@@ -77,11 +82,11 @@ public class InputTextVerificationTest extends BaseTest {
     @Description("Removing text from the \"Password\" field")
     @QaseId(4)
     @QaseTitle("Removing text from the \"Password\" field")
-    public void removingTextFromPasswordField() {
+    public void removingTextFromPasswordField() throws IOException {
 
         loginView.setPassword(TEXT);
         loginView.removePassword();
-
+        AllureAttachments.takeScreenshot(getDriver(), "blankPasswordField");
         Assert.assertEquals(loginView.getPassword(), PASSWORD_HINT, "The text is not deleted");
     }
 }
