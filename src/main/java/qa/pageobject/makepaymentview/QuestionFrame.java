@@ -49,13 +49,13 @@ public class QuestionFrame extends BaseView {
     @io.qase.api.annotation.Step("Touch the \"Yes\" button")
     public void touchButtonYES() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(buttonYES)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(buttonYES)).click();
     }
 
     @io.qameta.allure.Step("Touch the \"No\" button")
     @io.qase.api.annotation.Step("Touch the \"No\" button")
     public void touchButtonNO() {
 
-        getWEB_DRIVER_WAIT().until(ExpectedConditions.elementToBeClickable(buttonNO)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(buttonNO)).click();
     }
 }
