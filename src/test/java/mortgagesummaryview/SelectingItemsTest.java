@@ -33,7 +33,7 @@ public class SelectingItemsTest extends BaseTest {
     @Owner("Paweł Aksman")
     @Description("Swiping the view")
     @QaseId(49)
-    @QaseTitle("Selecting the \"Type Of Loan\" item")
+    @QaseTitle("Touching the \"Type Of Loan\" items")
     public void selectingTypeOfLoanSectionItems(String itemName) {
 
         Allure.parameter("Item", itemName);
@@ -48,7 +48,7 @@ public class SelectingItemsTest extends BaseTest {
     @Owner("Paweł Aksman")
     @Description("Swiping the view")
     @QaseId(50)
-    @QaseTitle("Selecting the \"Number Of Years\" item")
+    @QaseTitle("Touching the \"Number Of Years\" items")
     public void selectingNumberOfYearsSectionItems(String itemName) {
 
         Allure.parameter("Item", itemName);
@@ -63,7 +63,7 @@ public class SelectingItemsTest extends BaseTest {
     @Owner("Paweł Aksman")
     @Description("Swiping the view")
     @QaseId(51)
-    @QaseTitle("Selecting the \"Type Of Occupation\" item")
+    @QaseTitle("Touching the \"Type Of Occupation\" items")
     public void selectingTypeOfOccupationSectionItems(String itemName) {
 
         Allure.parameter("Item", itemName);
@@ -79,7 +79,7 @@ public class SelectingItemsTest extends BaseTest {
     @Owner("Paweł Aksman")
     @Description("Swiping the view")
     @QaseId(52)
-    @QaseTitle("Selecting the \"Yearly Income\" item")
+    @QaseTitle("Touching the \"Yearly Income\" items")
     public void selectingYearlyIncomeSectionItems(String itemName) {
 
         Allure.parameter("Item", itemName);
