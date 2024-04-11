@@ -1,9 +1,6 @@
 package login;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
@@ -32,6 +29,7 @@ public class InputTextVerificationTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Input")
     @Tag("Login")
     @Owner("Paweł Aksman")
@@ -46,6 +44,7 @@ public class InputTextVerificationTest extends BaseTest {
     }
 
     @Test(priority = 2)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Input")
     @Tag("Login")
     @Owner("Paweł Aksman")
@@ -61,6 +60,7 @@ public class InputTextVerificationTest extends BaseTest {
     }
 
     @Test(priority = 3)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Input")
     @Tag("Login")
     @Owner("Paweł Aksman")
@@ -76,6 +76,7 @@ public class InputTextVerificationTest extends BaseTest {
     }
 
     @Test(priority = 4)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Input")
     @Tag("Login")
     @Owner("Paweł Aksman")
