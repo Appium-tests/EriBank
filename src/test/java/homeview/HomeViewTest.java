@@ -1,9 +1,6 @@
 package homeview;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.junit.jupiter.api.Tag;
@@ -33,6 +30,7 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("The \"Make Payment\" button")
@@ -49,6 +47,7 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test(priority = 2)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("The \"Mortgage Request\" button")
@@ -63,7 +62,8 @@ public class HomeViewTest extends BaseTest {
                 "The \"Mortgage request\" view is not displayed");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 4)
+    @Severity(SeverityLevel.NORMAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("The \"Expense Report\" button")
@@ -78,7 +78,8 @@ public class HomeViewTest extends BaseTest {
                 "The \"Expense report\" view is not displayed");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 5)
+    @Severity(SeverityLevel.MINOR)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("The \"Advanced Actions\" button")
@@ -93,7 +94,8 @@ public class HomeViewTest extends BaseTest {
                 "The \"Advanced Actions\" view is not displayed");
     }
 
-    @Test(priority = 5)
+    @Test(priority = 3)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("The \"Logout\" button")
