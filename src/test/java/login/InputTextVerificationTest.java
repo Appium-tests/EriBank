@@ -38,6 +38,8 @@ public class InputTextVerificationTest extends BaseTest {
     @QaseTitle("Verification of the \"Username\" field text input\"")
     public void usernameField() throws IOException {
 
+        Allure.parameter("Any text", TEXT);
+
         loginView.setUsername(TEXT);
         AllureAttachments.takeScreenshot(getDriver(), "usernameField");
         Assert.assertEquals(loginView.getUsername(), TEXT, "Incorrect the \"Username\" field output");
@@ -52,6 +54,8 @@ public class InputTextVerificationTest extends BaseTest {
     @QaseId(2)
     @QaseTitle("Removing text from the \"Username\" field")
     public void removingTextFromUsernameField() throws IOException {
+
+        Allure.parameter("Any text", TEXT);
 
         loginView.setUsername(TEXT);
         loginView.removeUsername();
@@ -69,6 +73,8 @@ public class InputTextVerificationTest extends BaseTest {
     @QaseTitle("Verification of the \"Password\" field text input\"")
     public void passwordField() throws IOException {
 
+        Allure.parameter("Any text", TEXT);
+
         loginView.setPassword(TEXT);
         AllureAttachments.takeScreenshot(getDriver(), "passwordField");
         String expectedOutput = "•".repeat(TEXT.length());
@@ -84,6 +90,8 @@ public class InputTextVerificationTest extends BaseTest {
     @QaseId(4)
     @QaseTitle("Removing text from the \"Password\" field")
     public void removingTextFromPasswordField() throws IOException {
+
+        Allure.parameter("Any text", TEXT);
 
         loginView.setPassword(TEXT);
         loginView.removePassword();
