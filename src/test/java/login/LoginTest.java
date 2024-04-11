@@ -18,7 +18,7 @@ import qa.support.DataProviderNames;
 import java.io.IOException;
 
 @Epic("E2E")
-@Feature("Login")
+@Feature("Login to an account")
 public class LoginTest extends BaseTest {
 
     private LoginView loginView;
