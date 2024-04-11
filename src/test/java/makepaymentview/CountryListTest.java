@@ -1,10 +1,7 @@
 package makepaymentview;
 
 import base.CountryListBaseTest;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
@@ -38,7 +35,8 @@ public class CountryListTest extends CountryListBaseTest {
         makePaymentView.touchSelectButton();
     }
 
-    @Test(priority = 2, groups = "closed")
+    @Test(priority = 1, groups = "closed")
+    @Severity(SeverityLevel.NORMAL)
     @Tag("List")
     @Owner("Paweł Aksman")
     @Description("The \"Select\" button")
@@ -50,6 +48,7 @@ public class CountryListTest extends CountryListBaseTest {
     }
 
     @Test(priority = 1, groups = "opened")
+    @Severity(SeverityLevel.NORMAL)
     @Tag("List")
     @Owner("Paweł Aksman")
     @Description("Swiping the list")
@@ -61,12 +60,15 @@ public class CountryListTest extends CountryListBaseTest {
     }
 
     @Test(priority = 3, groups = "opened", dataProvider = DataProviderNames.RANDOM_INDEXES, dataProviderClass = RandomIndexesDataProvider.class)
+    @Severity(SeverityLevel.NORMAL)
     @Tag("List")
     @Owner("Paweł Aksman")
     @Description("Selecting a country")
     @QaseId(19)
     @QaseTitle("Selecting a country")
     public void selectingCountry(int index) {
+
+        Allure.parameter("List index", index);
 
         baseSelectingCountry(index);
 
