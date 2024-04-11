@@ -17,7 +17,7 @@ import qa.pageobject.makepaymentview.MakePaymentView;
 import qa.pageobject.mortgagerequest.MortgageRequestView;
 
 @Epic("E2E")
-@Feature("The home view")
+@Feature("The home view buttons")
 public class HomeViewTest extends BaseTest {
 
     private HomeView homeView;
