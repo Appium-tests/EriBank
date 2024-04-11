@@ -39,7 +39,8 @@ public class LoginTest extends BaseTest {
         loginView.touchLoginButton();
     }
 
-    @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Login")
     @Tag("Credentials")
     @Owner("Paweł Aksman")
@@ -57,7 +58,8 @@ public class LoginTest extends BaseTest {
     }
 
 
-    @Test(priority = 2, dataProvider = DataProviderNames.USERNAME_WITH_UPPER_LETTERS, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.USERNAME_WITH_UPPER_LETTERS, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Login")
     @Tag("Credentials")
     @Owner("Paweł Aksman")
@@ -73,7 +75,8 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginView.getErrorMessageBox().isDisplayed(), "The alert is not displayed");
     }
 
-    @Test(priority = 3, dataProvider = DataProviderNames.PASSWORD_WITH_UPPER_LETTERS, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.PASSWORD_WITH_UPPER_LETTERS, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Login")
     @Tag("Credentials")
     @Owner("Paweł Aksman")
@@ -90,6 +93,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 4, dataProvider = DataProviderNames.INCORRECT_USERNAME, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Login")
     @Tag("Credentials")
     @Owner("Paweł Aksman")
@@ -106,6 +110,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 5, dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Login")
     @Tag("Credentials")
     @Owner("Paweł Aksman")
@@ -123,6 +128,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 6, dataProvider = DataProviderNames.INCORRECT_PASSWORD, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Login")
     @Tag("Credentials")
     @Owner("Paweł Aksman")
@@ -139,6 +145,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 7, dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("Login")
     @Tag("Credentials")
     @Owner("Paweł Aksman")
