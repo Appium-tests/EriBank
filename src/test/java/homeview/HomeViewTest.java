@@ -63,7 +63,7 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test(priority = 4)
-    @Severity(SeverityLevel.NORMAL)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("The \"Expense Report\" button")
@@ -79,7 +79,7 @@ public class HomeViewTest extends BaseTest {
     }
 
     @Test(priority = 5)
-    @Severity(SeverityLevel.MINOR)
+    @Severity(SeverityLevel.NORMAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("The \"Advanced Actions\" button")
