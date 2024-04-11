@@ -1,0 +1,43 @@
+package makepaymentview;
+
+import base.BaseTest;
+import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import qa.pageobject.homeview.HomeView;
+import qa.pageobject.makepaymentview.MakePaymentView;
+import qa.support.Authentication;
+
+@Epic("E2E")
+@Feature("The \"Cancel\" button")
+public class ButtonTest extends BaseTest {
+
+    private MakePaymentView makePaymentView;
+
+    @BeforeMethod(groups = {"closed", "opened"})
+    public void create() {
+
+        Authentication.perform(getDriver());
+        HomeView homeView = new HomeView(getDriver());
+        homeView.touchMakePaymentButton();
+        makePaymentView = new MakePaymentView(getDriver());
+    }
+
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("View")
+    @Owner("Paweł Aksman")
+    @Description("The \"Cancel\" button")
+    @QaseId(30)
+    @QaseTitle("The \"Cancel\" button")
+    public void cancelButton() {
+
+        makePaymentView.touchCancelButton();
+        HomeView homeView = new HomeView(getDriver());
+        Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
+    }
+}
