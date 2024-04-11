@@ -20,4 +20,10 @@
             <class name="makepaymentview.MakePaymentViewTest"/>
         </classes>
     </test>
+
+    <test name="The 'Cancel' button">
+        <classes>
+            <class name="makepaymentview.ButtonTest"/>
+        </classes>
+    </test>
 </suite>
