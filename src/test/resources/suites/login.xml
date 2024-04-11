@@ -9,12 +9,12 @@
 
     <parameter name="fileName" value="EB_Credentials.json"/>
 
-    <test name="Input verification">
+    <test name="Login form input text verification">
         <classes>
             <class name="login.InputTextVerificationTest"/>
         </classes>
     </test>
-    <test name="Login">
+    <test name="Login to an account">
         <classes>
             <class name="login.LoginTest"/>
         </classes>
