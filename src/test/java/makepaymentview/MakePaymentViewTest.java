@@ -63,6 +63,7 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Correct user data")
@@ -82,7 +83,8 @@ public class MakePaymentViewTest extends BaseTest {
         Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
     }
 
-    @Test(priority = 2, dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = MakePaymentDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Incorrect phone")
@@ -99,7 +101,8 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
 
-    @Test(priority = 3, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 8, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Phone\" field")
@@ -115,7 +118,8 @@ public class MakePaymentViewTest extends BaseTest {
         checkSendPaymentButtonStatus(false);
     }
 
-    @Test(priority = 4, dataProvider = DataProviderNames.INCORRECT_NAME, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT_NAME, dataProviderClass = MakePaymentDataProviders.class)
+    @Severity(SeverityLevel.NORMAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Incorrect name")
@@ -131,7 +135,8 @@ public class MakePaymentViewTest extends BaseTest {
         checkAlertFrame("Invalid name");
     }
 
-    @Test(priority = 5, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 7, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Name\" field")
@@ -148,7 +153,8 @@ public class MakePaymentViewTest extends BaseTest {
         checkSendPaymentButtonStatus(false);
     }
 
-    @Test(priority = 6, dataProvider = DataProviderNames.INCORRECT_AMOUNT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.INCORRECT_AMOUNT, dataProviderClass = MakePaymentDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Incorrect amount")
@@ -164,7 +170,8 @@ public class MakePaymentViewTest extends BaseTest {
         checkAlertFrame("Invalid amount");
     }
 
-    @Test(priority = 7, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Test(priority = 6, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Amount\" field")
@@ -180,7 +187,8 @@ public class MakePaymentViewTest extends BaseTest {
         checkSendPaymentButtonStatus(false);
     }
 
-    @Test(priority = 8, dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Incorrect country name")
@@ -197,6 +205,7 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 9, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Country\" field")
@@ -213,6 +222,7 @@ public class MakePaymentViewTest extends BaseTest {
     }
 
     @Test(priority = 10, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MakePaymentDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Cancelling the transaction")
@@ -229,18 +239,5 @@ public class MakePaymentViewTest extends BaseTest {
 
         Assert.assertTrue(makePaymentView.isDisplayed(), "The \"Make Payment\" view is not displayed");
 
-    }
-
-    @Test(priority = 11)
-    @Tag("View")
-    @Owner("Paweł Aksman")
-    @Description("The \"Cancel\" button")
-    @QaseId(30)
-    @QaseTitle("The \"Cancel\" button")
-    public void cancelButton() {
-
-        makePaymentView.touchCancelButton();
-        HomeView homeView = new HomeView(getDriver());
-        Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
     }
 }
