@@ -14,7 +14,7 @@ import qa.support.Authentication;
 
 @Epic("E2E")
 @Feature("The \"Cancel\" button")
-public class ButtonTest extends BaseTest {
+public class CancelButtonTest extends BaseTest {
 
     private MakePaymentView makePaymentView;
 
@@ -34,7 +34,7 @@ public class ButtonTest extends BaseTest {
     @Description("The \"Cancel\" button")
     @QaseId(30)
     @QaseTitle("The \"Cancel\" button")
-    public void cancelButton() {
+    public void closingPage() {
 
         makePaymentView.touchCancelButton();
         HomeView homeView = new HomeView(getDriver());
