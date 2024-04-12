@@ -47,7 +47,7 @@ public class CountryListTest extends CountryListBaseTest {
         baseSelectButton();
     }
 
-    @Test(priority = 1, groups = "opened")
+    @Test(priority = 2, groups = "opened")
     @Severity(SeverityLevel.NORMAL)
     @Tag("List")
     @Owner("Paweł Aksman")
