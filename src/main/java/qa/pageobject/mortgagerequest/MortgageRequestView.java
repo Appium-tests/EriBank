@@ -116,14 +116,16 @@ public class MortgageRequestView extends BaseView {
         return this;
     }
 
-    public boolean isNextButtonEnabled() {
-
-        return nextButton.isEnabled();
-    }
-
+    @io.qameta.allure.Step("Touch the \"Cancel\" button")
+    @io.qase.api.annotation.Step("Touch the \"Cancel\" button")
     public void touchCancelButton() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
+    }
+
+    public boolean isNextButtonEnabled() {
+
+        return nextButton.isEnabled();
     }
 
     public String getCountryNameFromCountryField() {
