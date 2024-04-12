@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.pageobject.base.BaseView;
 import qa.support.SwipingHelper;
 
@@ -34,6 +35,12 @@ public class MortgageSummaryView extends BaseView {
 
     @AndroidFindBy(className = "android.widget.CheckedTextView")
     List<WebElement> itemsList;
+
+    @AndroidFindBy(id = "com.experitest.ExperiBank:id/saveButton")
+    WebElement saveButton;
+
+    @AndroidFindBy(id = "com.experitest.ExperiBank:id/backButton")
+    WebElement backButton;
 
     public boolean isDisplayed() {
 
@@ -65,5 +72,19 @@ public class MortgageSummaryView extends BaseView {
     public boolean isLastItemVisible() {
 
         return itemsList.get(itemsList.size() - 1).getText().equals("More");
+    }
+
+    @io.qameta.allure.Step("Click the \"Save\" button")
+    @io.qase.api.annotation.Step("Click the \"Save\" button")
+    public void clickSaveButton() {
+
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveButton)).click();
+    }
+
+    @io.qameta.allure.Step("Click the \"Back\" button")
+    @io.qase.api.annotation.Step("Click the \"Back\" button")
+    public void clickBackButton() {
+
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(backButton)).click();
     }
 }
