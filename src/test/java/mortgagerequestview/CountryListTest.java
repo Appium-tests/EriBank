@@ -3,6 +3,8 @@ package mortgagerequestview;
 import base.CountryListBaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
@@ -15,6 +17,8 @@ import qa.pageobject.mortgagerequest.MortgageRequestView;
 import qa.support.Authentication;
 import qa.support.DataProviderNames;
 import qa.support.HomeViewManager;
+
+import javax.annotation.Priority;
 
 public class CountryListTest extends CountryListBaseTest {
 
@@ -35,6 +39,7 @@ public class CountryListTest extends CountryListBaseTest {
     }
 
     @Test(priority = 1, groups = "closed")
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("List")
     @Owner("Paweł Aksman")
     @Description("The \"Select\" button")
@@ -47,6 +52,7 @@ public class CountryListTest extends CountryListBaseTest {
     }
 
     @Test(priority = 2, groups = "opened")
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("List")
     @Owner("Paweł Aksman")
     @Description("Swiping the list")
@@ -58,6 +64,7 @@ public class CountryListTest extends CountryListBaseTest {
     }
 
     @Test(priority = 3, groups = "opened", dataProvider = DataProviderNames.RANDOM_INDEXES, dataProviderClass = RandomIndexesDataProvider.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("List")
     @Owner("Paweł Aksman")
     @Description("Selecting a country")
