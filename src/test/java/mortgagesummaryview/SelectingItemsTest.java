@@ -1,9 +1,7 @@
 package mortgagesummaryview;
 
 import base.BaseTest;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
@@ -16,6 +14,8 @@ import qa.support.Authentication;
 import qa.support.DataProviderNames;
 import qa.support.MortgageFormFiller;
 
+@Epic("E2E")
+@Feature("Touching items")
 public class SelectingItemsTest extends BaseTest {
 
     private MortgageSummaryView mortgageSummaryView;
@@ -28,7 +28,10 @@ public class SelectingItemsTest extends BaseTest {
         mortgageSummaryView = new MortgageSummaryView(getDriver());
     }
 
-    @Test(dataProvider = DataProviderNames.TYPE_OF_LOAN, dataProviderClass = SectionsDataProvider.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.TYPE_OF_LOAN, dataProviderClass = SectionsDataProvider.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("View")
+    @Tag("List")
     @Tag("Item")
     @Owner("Paweł Aksman")
     @Description("Swiping the view")
@@ -43,7 +46,9 @@ public class SelectingItemsTest extends BaseTest {
                 "The + \"" + itemName + "\" item is not checked");
     }
 
-    @Test(dataProvider = DataProviderNames.NUMBER_OF_YEARS, dataProviderClass = SectionsDataProvider.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.NUMBER_OF_YEARS, dataProviderClass = SectionsDataProvider.class)
+    @Tag("View")
+    @Tag("List")
     @Tag("Item")
     @Owner("Paweł Aksman")
     @Description("Swiping the view")
@@ -58,7 +63,9 @@ public class SelectingItemsTest extends BaseTest {
                 "The + \"" + itemName + "\" item is not checked");
     }
 
-    @Test(dataProvider = DataProviderNames.TYPE_OF_OCCUPATION, dataProviderClass = SectionsDataProvider.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.TYPE_OF_OCCUPATION, dataProviderClass = SectionsDataProvider.class)
+    @Tag("View")
+    @Tag("List")
     @Tag("Item")
     @Owner("Paweł Aksman")
     @Description("Swiping the view")
@@ -74,7 +81,9 @@ public class SelectingItemsTest extends BaseTest {
                 "The + \"" + itemName + "\" item is not checked");
     }
 
-    @Test(dataProvider = DataProviderNames.YEARLY_INCOME, dataProviderClass = SectionsDataProvider.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.YEARLY_INCOME, dataProviderClass = SectionsDataProvider.class)
+    @Tag("View")
+    @Tag("List")
     @Tag("Item")
     @Owner("Paweł Aksman")
     @Description("Swiping the view")

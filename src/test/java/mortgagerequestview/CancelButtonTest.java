@@ -33,6 +33,7 @@ public class CancelButtonTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Tag("View")
+    @Tag("Button")
     @Owner("Paweł Aksman")
     @Description("The \"Cancel\" button")
     @QaseId(47)

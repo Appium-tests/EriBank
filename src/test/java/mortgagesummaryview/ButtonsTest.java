@@ -1,6 +1,13 @@
 package mortgagesummaryview;
 
 import base.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.testng.Tag;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -23,17 +30,33 @@ public class ButtonsTest extends BaseTest {
         mortgageSummaryView = new MortgageSummaryView(getDriver());
     }
 
-    @Test
+    @Test(priority = 1)
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("View")
+    @Tag("List")
+    @Tag("Button")
+    @Owner("Paweł Aksman")
+    @Description("The \"Save\" button")
+    @QaseId(53)
+    @QaseTitle("Touching the \"Save\" items")
     public void saveButton() {
 
         mortgageSummaryView.clickSaveButton();
         Assert.assertTrue(mortgageRequestView.isDisplayed(), "The mortgage request view is not visible");
     }
 
-    @Test
+    @Test(priority = 2)
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("View")
+    @Tag("List")
+    @Tag("Button")
+    @Owner("Paweł Aksman")
+    @Description("The \"Bsck\" button")
+    @QaseId(54)
+    @QaseTitle("Touching the \"Back\" items")
     public void backButton() {
 
         mortgageSummaryView.clickSaveButton();
-        Assert.assertTrue(mortgageRequestView.isDisplayed(), "The mortgage request view is not visible");
+        Assert.assertTrue(mortgageRequestView.isDisplayed(), "The home view is not visible");
     }
 }
