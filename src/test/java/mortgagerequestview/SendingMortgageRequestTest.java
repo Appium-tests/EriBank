@@ -18,8 +18,8 @@ import qa.models.MortgageRequest;
 import qa.support.DataProviderNames;
 
 @Epic("E2E")
-@Feature("Mortgage Request functionalities")
-public class MortgageRequestViewTest extends BaseTest {
+@Feature("Sending Mortgage Request")
+public class SendingMortgageRequestTest extends BaseTest {
 
     private MortgageRequestView mortgageRequestView;
 
@@ -65,7 +65,8 @@ public class MortgageRequestViewTest extends BaseTest {
         Assert.assertEquals(mortgageRequestView.getErrorMessageBox().getMessage(), expectedMessage, "Incorrect message content");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Correct data")
@@ -84,7 +85,8 @@ public class MortgageRequestViewTest extends BaseTest {
 
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Incorrect first name")
@@ -100,7 +102,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkAlertFrame("Incorrect first name");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"First Name\" field")
@@ -118,7 +121,7 @@ public class MortgageRequestViewTest extends BaseTest {
         checkNextButtonStatus(false);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_LAST_NAME, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.INCORRECT_LAST_NAME, dataProviderClass = MortgageRequestDataProviders.class)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Incorrect last name")
@@ -134,7 +137,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkAlertFrame("Incorrect last name");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Last Name\" field")
@@ -152,7 +156,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkNextButtonStatus(false);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_AGE, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 8, dataProvider = DataProviderNames.INCORRECT_AGE, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Incorrect age")
@@ -168,7 +173,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkAlertFrame("Incorrect age");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 9, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Age\" field")
@@ -186,7 +192,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkNextButtonStatus(false);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_ADDRESS_1, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 6, dataProvider = DataProviderNames.INCORRECT_ADDRESS_1, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Age\" field")
@@ -202,7 +209,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkAlertFrame("Incorrect address 1");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 7, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Address 1\" field")
@@ -221,7 +229,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkNextButtonStatus(false);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_ADDRESS_2, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 12, dataProvider = DataProviderNames.INCORRECT_ADDRESS_2, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Incorrect address 2")
@@ -237,7 +246,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkAlertFrame("Incorrect address 2");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 13, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Address 2\" field")
@@ -255,7 +265,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkNextButtonStatus(false);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 10, dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Incorrect country")
@@ -271,7 +282,8 @@ public class MortgageRequestViewTest extends BaseTest {
         checkAlertFrame("Incorrect country");
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 11, dataProvider = DataProviderNames.CORRECT, dataProviderClass = MortgageRequestDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
     @Description("Blank the \"Country\" field")
