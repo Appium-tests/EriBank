@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="The mortgage summary view">
+
+    <listeners>
+        <listener class-name="qa.listeners.Listener"/>
+    </listeners>
+
+    <parameter name="fileName" value="EB_Sections.json"/>
+
+    <test name="Swipping the list">
+        <classes>
+            <class name="mortgagesummaryview.SwipingTest"/>
+        </classes>
+    </test>
+
+    <test name="Selecting items">
+        <classes>
+            <class name="mortgagesummaryview.SelectingItemsTest"/>
+        </classes>
+    </test>
+
+    <test name="Buttons">
+        <classes>
+            <class name="mortgagesummaryview.ButtonsTest"/>
+        </classes>
+    </test>
+
+</suite>
