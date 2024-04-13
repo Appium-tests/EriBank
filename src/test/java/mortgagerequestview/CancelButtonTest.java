@@ -26,11 +26,10 @@ public class CancelButtonTest extends BaseTest {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MORTGAGE_REQUEST);
-
         mortgageRequestView = new MortgageRequestView(getDriver());
     }
 
-    @Test
+    @Test(groups = "default")
     @Severity(SeverityLevel.NORMAL)
     @Tag("View")
     @Tag("Button")
