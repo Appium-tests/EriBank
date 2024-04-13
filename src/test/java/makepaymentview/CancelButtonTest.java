@@ -18,7 +18,7 @@ public class CancelButtonTest extends BaseTest {
 
     private MakePaymentView makePaymentView;
 
-    @BeforeMethod(groups = {"closed", "opened"})
+    @BeforeMethod
     public void create() {
 
         Authentication.perform(getDriver());
