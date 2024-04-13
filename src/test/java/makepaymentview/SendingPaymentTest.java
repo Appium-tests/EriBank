@@ -20,7 +20,7 @@ import qa.support.DataProviderNames;
 
 @Epic("E2E")
 @Feature("Sending payment")
-public class MakePaymentViewTest extends BaseTest {
+public class SendingPaymentTest extends BaseTest {
 
     private MakePaymentView makePaymentView;
 
@@ -43,10 +43,11 @@ public class MakePaymentViewTest extends BaseTest {
 
     public void fill(Payment payment) {
 
-        makePaymentView.setPhone(payment.getPhone());
-        makePaymentView.setName(payment.getName());
-        makePaymentView.setAmount(payment.getAmount());
-        makePaymentView.setCountry(payment.getCountry());
+        makePaymentView
+                .setPhone(payment.getPhone())
+                .setName(payment.getName())
+                .setAmount(payment.getAmount())
+                .setCountry(payment.getCountry());
     }
 
     @io.qameta.allure.Step("Check the \"Send Payment\" button status")
@@ -75,11 +76,12 @@ public class MakePaymentViewTest extends BaseTest {
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
-        makePaymentView.touchSendPaymentButton();
-        makePaymentView.getQuestionFrame().touchButtonYES();
+
+        makePaymentView
+                .touchSendPaymentButton()
+                .getQuestionFrame().touchButtonYES();
 
         HomeView homeView = new HomeView(getDriver());
-
         Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
     }
 
@@ -112,9 +114,11 @@ public class MakePaymentViewTest extends BaseTest {
 
         setAllureParameters(payment);
 
-        makePaymentView.setName(payment.getName());
-        makePaymentView.setAmount(payment.getAmount());
-        makePaymentView.setCountry(payment.getCountry());
+        makePaymentView
+                .setName(payment.getName())
+                .setAmount(payment.getAmount())
+                .setCountry(payment.getCountry());
+
         checkSendPaymentButtonStatus(false);
     }
 
@@ -147,9 +151,11 @@ public class MakePaymentViewTest extends BaseTest {
         setAllureParameters(payment);
         Allure.parameter("Country", payment.getCountry());
 
-        makePaymentView.setPhone(payment.getPhone());
-        makePaymentView.setAmount(payment.getAmount());
-        makePaymentView.setCountry(payment.getCountry());
+        makePaymentView
+                .setPhone(payment.getPhone())
+                .setAmount(payment.getAmount())
+                .setCountry(payment.getCountry());
+
         checkSendPaymentButtonStatus(false);
     }
 
@@ -181,9 +187,11 @@ public class MakePaymentViewTest extends BaseTest {
 
         setAllureParameters(payment);
 
-        makePaymentView.setPhone(payment.getPhone());
-        makePaymentView.setName(payment.getName());
-        makePaymentView.setCountry(payment.getCountry());
+        makePaymentView
+                .setPhone(payment.getPhone())
+                .setName(payment.getName())
+                .setCountry(payment.getCountry());
+
         checkSendPaymentButtonStatus(false);
     }
 
@@ -215,9 +223,11 @@ public class MakePaymentViewTest extends BaseTest {
 
         setAllureParameters(payment);
 
-        makePaymentView.setPhone(payment.getPhone());
-        makePaymentView.setName(payment.getName());
-        makePaymentView.setAmount(payment.getAmount());
+        makePaymentView
+                .setPhone(payment.getPhone())
+                .setName(payment.getName())
+                .setAmount(payment.getAmount());
+
         checkSendPaymentButtonStatus(false);
     }
 
@@ -234,8 +244,10 @@ public class MakePaymentViewTest extends BaseTest {
 
         fill(payment);
         checkSendPaymentButtonStatus(true);
-        makePaymentView.touchSendPaymentButton();
-        makePaymentView.getQuestionFrame().touchButtonNO();
+
+        makePaymentView
+                .touchSendPaymentButton()
+                .getQuestionFrame().touchButtonNO();
 
         Assert.assertTrue(makePaymentView.isDisplayed(), "The \"Make Payment\" view is not displayed");
 

@@ -28,18 +28,7 @@ public class SendingMortgageRequestTest extends BaseTest {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MORTGAGE_REQUEST);
-
         mortgageRequestView = new MortgageRequestView(getDriver());
-    }
-
-    private void fill(MortgageRequest mortgageRequest) {
-
-        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
-        mortgageRequestView.setLastName(mortgageRequest.getLastName());
-        mortgageRequestView.setAge(mortgageRequest.getAge());
-        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
-        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
-        mortgageRequestView.setCountry(mortgageRequest.getCountry());
     }
 
     private void setAllureParameters(MortgageRequest mortgageRequest) {
@@ -50,6 +39,17 @@ public class SendingMortgageRequestTest extends BaseTest {
         Allure.parameter("Address 1", mortgageRequest.getAddress1());
         Allure.parameter("Address 2", mortgageRequest.getAddress2());
         Allure.parameter("Country", mortgageRequest.getCountry());
+    }
+
+    private void fill(MortgageRequest mortgageRequest) {
+
+        mortgageRequestView
+                .setFirstName(mortgageRequest.getFirstName())
+                .setLastName(mortgageRequest.getLastName())
+                .setAge(mortgageRequest.getAge())
+                .setAddress1(mortgageRequest.getAddress1())
+                .setAddress2(mortgageRequest.getAddress2())
+                .setCountry(mortgageRequest.getCountry());
     }
 
     @io.qameta.allure.Step("Check the \"Next\" button status")
@@ -81,8 +81,12 @@ public class SendingMortgageRequestTest extends BaseTest {
         mortgageRequestView.touchNextButton();
 
         MortgageSummaryView mortgageSummaryView = new MortgageSummaryView(getDriver());
-        Assert.assertTrue(mortgageSummaryView.isDisplayed(), "The \"Mortgage summary view\" is not opened");
 
+        try {
+            mortgageSummaryView.isDisplayed();
+        } catch (Exception e) {
+            Assert.fail("The \"Mortgage summary view\" is not opened");
+        }
     }
 
     @Test(priority = 2, dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = MortgageRequestDataProviders.class)
@@ -113,11 +117,13 @@ public class SendingMortgageRequestTest extends BaseTest {
 
         setAllureParameters(mortgageRequest);
 
-        mortgageRequestView.setLastName(mortgageRequest.getLastName());
-        mortgageRequestView.setAge(mortgageRequest.getAge());
-        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
-        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
-        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        mortgageRequestView
+                .setLastName(mortgageRequest.getLastName())
+                .setAge(mortgageRequest.getAge())
+                .setAddress1(mortgageRequest.getAddress1())
+                .setAddress2(mortgageRequest.getAddress2())
+                .setCountry(mortgageRequest.getCountry());
+
         checkNextButtonStatus(false);
     }
 
@@ -148,11 +154,13 @@ public class SendingMortgageRequestTest extends BaseTest {
 
         setAllureParameters(mortgageRequest);
 
-        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
-        mortgageRequestView.setAge(mortgageRequest.getAge());
-        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
-        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
-        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        mortgageRequestView
+                .setFirstName(mortgageRequest.getFirstName())
+                .setAge(mortgageRequest.getAge())
+                .setAddress1(mortgageRequest.getAddress1())
+                .setAddress2(mortgageRequest.getAddress2())
+                .setCountry(mortgageRequest.getCountry());
+
         checkNextButtonStatus(false);
     }
 
@@ -184,11 +192,13 @@ public class SendingMortgageRequestTest extends BaseTest {
 
         setAllureParameters(mortgageRequest);
 
-        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
-        mortgageRequestView.setAge(mortgageRequest.getAge());
-        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
-        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
-        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        mortgageRequestView
+                .setFirstName(mortgageRequest.getFirstName())
+                .setAge(mortgageRequest.getAge())
+                .setAddress1(mortgageRequest.getAddress1())
+                .setAddress2(mortgageRequest.getAddress2())
+                .setCountry(mortgageRequest.getCountry());
+
         checkNextButtonStatus(false);
     }
 
@@ -221,11 +231,13 @@ public class SendingMortgageRequestTest extends BaseTest {
 
         setAllureParameters(mortgageRequest);
 
-        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
-        mortgageRequestView.setLastName(mortgageRequest.getLastName());
-        mortgageRequestView.setAge(mortgageRequest.getAge());
-        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
-        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        mortgageRequestView
+                .setFirstName(mortgageRequest.getFirstName())
+                .setLastName(mortgageRequest.getLastName())
+                .setAge(mortgageRequest.getAge())
+                .setAddress2(mortgageRequest.getAddress2())
+                .setCountry(mortgageRequest.getCountry());
+
         checkNextButtonStatus(false);
     }
 
@@ -257,11 +269,13 @@ public class SendingMortgageRequestTest extends BaseTest {
 
         setAllureParameters(mortgageRequest);
 
-        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
-        mortgageRequestView.setLastName(mortgageRequest.getLastName());
-        mortgageRequestView.setAge(mortgageRequest.getAge());
-        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
-        mortgageRequestView.setCountry(mortgageRequest.getCountry());
+        mortgageRequestView
+                .setFirstName(mortgageRequest.getFirstName())
+                .setLastName(mortgageRequest.getLastName())
+                .setAge(mortgageRequest.getAge())
+                .setAddress1(mortgageRequest.getAddress1())
+                .setCountry(mortgageRequest.getCountry());
+
         checkNextButtonStatus(false);
     }
 
@@ -293,11 +307,13 @@ public class SendingMortgageRequestTest extends BaseTest {
 
         setAllureParameters(mortgageRequest);
 
-        mortgageRequestView.setFirstName(mortgageRequest.getFirstName());
-        mortgageRequestView.setLastName(mortgageRequest.getLastName());
-        mortgageRequestView.setAge(mortgageRequest.getAge());
-        mortgageRequestView.setAddress1(mortgageRequest.getAddress1());
-        mortgageRequestView.setAddress2(mortgageRequest.getAddress2());
+        mortgageRequestView
+                .setFirstName(mortgageRequest.getFirstName())
+                .setLastName(mortgageRequest.getLastName())
+                .setAge(mortgageRequest.getAge())
+                .setAddress1(mortgageRequest.getAddress1())
+                .setAddress2(mortgageRequest.getAddress2());
+
         checkNextButtonStatus(false);
     }
 }

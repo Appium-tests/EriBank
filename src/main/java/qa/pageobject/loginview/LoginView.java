@@ -39,16 +39,18 @@ public class LoginView extends BaseView {
 
     @io.qameta.allure.Step("Enter an username")
     @io.qase.api.annotation.Step("Enter an username")
-    public void setUsername(CharSequence... keys) {
+    public LoginView setUsername(CharSequence... keys) {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(keys);
+        return this;
     }
 
     @io.qameta.allure.Step("Enter a password")
     @io.qase.api.annotation.Step("Enter a password")
-    public void setPassword(CharSequence... keys) {
+    public LoginView setPassword(CharSequence... keys) {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(keys);
+        return this;
     }
 
     @io.qameta.allure.Step("Remove the username")

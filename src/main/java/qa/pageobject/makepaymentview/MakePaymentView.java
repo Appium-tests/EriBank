@@ -51,33 +51,34 @@ public class MakePaymentView extends BaseView {
 
     @io.qameta.allure.Step("Enter a phone")
     @io.qase.api.annotation.Step("Enter a phone")
-    public void setPhone(String phone) {
+    public MakePaymentView setPhone(String phone) {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOf(phoneField)).sendKeys(phone);
+        return this;
     }
 
     @io.qameta.allure.Step("Enter a name")
     @io.qase.api.annotation.Step("Enter a name")
-    public void setName(String name) {
+    public MakePaymentView setName(String name) {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOf(nameField)).sendKeys(name);
-
+        return this;
     }
 
     @io.qameta.allure.Step("Enter an amount")
     @io.qase.api.annotation.Step("Enter an amount")
-    public void setAmount(String amount) {
+    public MakePaymentView setAmount(String amount) {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOf(amountField)).sendKeys(amount);
-
+        return this;
     }
 
     @io.qameta.allure.Step("Enter a country")
     @io.qase.api.annotation.Step("Enter a country")
-    public void setCountry(String country) {
+    public MakePaymentView setCountry(String country) {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOf(countryField)).sendKeys(country);
-
+        return this;
     }
 
     public boolean isSendPaymentButtonEnabled() {
@@ -94,9 +95,10 @@ public class MakePaymentView extends BaseView {
 
     @io.qameta.allure.Step("Touch the \"Send Payment\" button")
     @io.qase.api.annotation.Step("Touch the \"Send Payment\" button")
-    public void touchSendPaymentButton() {
+    public MakePaymentView touchSendPaymentButton() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(sendPaymentButton)).click();
+        return this;
     }
 
     @io.qameta.allure.Step("Touch the \"Cancel\" button")

@@ -33,8 +33,10 @@ public class LoginTest extends BaseTest {
 
     private void actions(Credentials credentials) throws IOException {
 
-        loginView.setUsername(credentials.getUsername());
-        loginView.setPassword(credentials.getPassword());
+        loginView
+                .setUsername(credentials.getUsername())
+                .setPassword(credentials.getPassword());
+
         AllureAttachments.takeScreenshot(getDriver(), "login");
         loginView.touchLoginButton();
     }
