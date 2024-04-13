@@ -83,7 +83,7 @@ public class SendingMortgageRequestTest extends BaseTest {
         MortgageSummaryView mortgageSummaryView = new MortgageSummaryView(getDriver());
 
         try {
-            mortgageSummaryView.isDisplayed();
+            mortgageSummaryView.waitForTypeOfLoanSectionListView();
         } catch (Exception e) {
             Assert.fail("The \"Mortgage summary view\" is not opened");
         }

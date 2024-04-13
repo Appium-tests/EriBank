@@ -42,12 +42,10 @@ public class MortgageSummaryView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/backButton")
     WebElement backButton;
 
-    public boolean isDisplayed() {
 
-        return !typeOfLoanSection.getParent().isDisplayed() &&
-               !numberOfYearsSection.getParent().isDisplayed() &&
-               !typeOfOccupationSection.getParent().isDisplayed() &&
-               !yearlyIncomeSection.getParent().isDisplayed();
+    public void waitForTypeOfLoanSectionListView() throws IllegalAccessException {
+
+        getWebDriverWait().until(ExpectedConditions.presenceOfElementLocated(typeOfLoanSection.getListView()));
     }
 
     public void swipeDown() {
