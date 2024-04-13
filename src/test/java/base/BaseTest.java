@@ -6,6 +6,7 @@ import qa.appiumservermanager.AppiumServerManager;
 import qa.driver.Driver;
 import qa.environmentinfo.AllureEnvironment;
 import qa.environmentinfo.EnvironmentInfo;
+import qa.support.AdbUninstallUIAutomator;
 import qa.support.TestDataLoader;
 import qa.support.FileReader;
 
@@ -25,6 +26,7 @@ public class BaseTest {
             FileReader.load(fileName);
         }
 
+        AdbUninstallUIAutomator.uninstall();
         AppiumServerManager.run();
         TestDataLoader.read();
     }
