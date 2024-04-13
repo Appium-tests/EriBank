@@ -1,10 +1,7 @@
 package mortgagerequestview;
 
 import base.CountryListBaseTest;
-import io.qameta.allure.Description;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
@@ -18,8 +15,8 @@ import qa.support.Authentication;
 import qa.support.DataProviderNames;
 import qa.support.HomeViewManager;
 
-import javax.annotation.Priority;
-
+@Epic("E2E")
+@Feature("The country list")
 public class CountryListTest extends CountryListBaseTest {
 
     private MortgageRequestView mortgageRequestView;
@@ -73,7 +70,6 @@ public class CountryListTest extends CountryListBaseTest {
     public void selectingCountry(int index) {
 
         baseSelectingCountry(index);
-
         Assert.assertEquals(mortgageRequestView.getCountryNameFromCountryField(), getCountryList().getCountryName(),"Incorrect country in the country field");
     }
 }
