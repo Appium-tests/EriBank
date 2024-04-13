@@ -9,7 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.RandomIndexesDataProvider;
-import qa.support.Authentication;
 import qa.pageobject.homeview.HomeView;
 import qa.pageobject.makepaymentview.MakePaymentView;
 import qa.support.DataProviderNames;
@@ -23,7 +22,6 @@ public class CountryListTest extends CountryListBaseTest {
     @BeforeMethod(groups = {"closed", "opened"})
     public void create() {
 
-        Authentication.perform(getDriver());
         HomeView homeView = new HomeView(getDriver());
         homeView.touchMakePaymentButton();
         makePaymentView = new MakePaymentView(getDriver());
