@@ -6,5 +6,7 @@
         <suite-file path="login.xml"/>
         <suite-file path="homeView.xml"/>
         <suite-file path="makePaymentView.xml"/>
+        <suite-file path="mortgageRequestView.xml"/>
+        <suite-file path="mortgageSummaryView.xml"/>
     </suite-files>
 </suite>

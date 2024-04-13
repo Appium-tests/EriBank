@@ -17,7 +17,7 @@
 
     <test name="Sending payment">
         <classes>
-            <class name="makepaymentview.MakePaymentViewTest"/>
+            <class name="makepaymentview.SendingPaymentTest"/>
         </classes>
     </test>
 

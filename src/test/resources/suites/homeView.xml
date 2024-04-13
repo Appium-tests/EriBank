@@ -9,7 +9,7 @@
 
     <parameter name="fileName" value="EB_Credentials.json"/>
 
-    <test name="Home view buttons">
+    <test name="The home view buttons">
         <classes>
             <class name="homeview.HomeViewTest">
                 <methods>

@@ -14,6 +14,7 @@
             <class name="login.InputTextVerificationTest"/>
         </classes>
     </test>
+
     <test name="Login to an account">
         <classes>
             <class name="login.LoginTest"/>
