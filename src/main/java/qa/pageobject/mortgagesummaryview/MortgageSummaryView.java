@@ -43,7 +43,7 @@ public class MortgageSummaryView extends BaseView {
     WebElement backButton;
 
 
-    public void waitForTypeOfLoanSectionListView() throws IllegalAccessException {
+    public void waitForTypeOfLoanSectionListView() {
 
         getWebDriverWait().until(ExpectedConditions.presenceOfElementLocated(typeOfLoanSection.getListView()));
     }
