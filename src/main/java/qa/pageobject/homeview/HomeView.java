@@ -2,21 +2,21 @@ package qa.pageobject.homeview;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.pageobject.base.BaseView;
 
-import java.util.List;
-
 public class HomeView extends BaseView {
+
+    private final By paymentHomeView;
 
     public HomeView(AndroidDriver driver) {
 
         super(driver);
-    }
 
-    @AndroidFindBy(id = "com.experitest.ExperiBank:id/paymentHomeView")
-    List<WebElement> paymentHomeView;
+        paymentHomeView = By.id("com.experitest.ExperiBank:id/paymentHomeView");
+    }
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/makePaymentButton")
     WebElement makePaymentButton;
@@ -33,9 +33,9 @@ public class HomeView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/logoutButton")
     WebElement logoutButton;
 
-    public boolean isDisplayed() {
+    public void waitForPaymentHomeView() {
 
-        return !paymentHomeView.isEmpty();
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(paymentHomeView));
     }
 
     @io.qameta.allure.Step("Touch the \"Make Payment\" button")
