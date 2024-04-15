@@ -41,6 +41,7 @@ public class ButtonsTest extends BaseTest {
     @QaseTitle("Touching the \"Save\" items")
     public void saveButton() {
 
+        mortgageSummaryView.swipeDown();
         mortgageSummaryView.clickSaveButton();
         Assert.assertTrue(mortgageRequestView.isDisplayed(), "The mortgage request view is not visible");
     }
@@ -56,7 +57,8 @@ public class ButtonsTest extends BaseTest {
     @QaseTitle("Touching the \"Back\" items")
     public void backButton() {
 
-        mortgageSummaryView.clickSaveButton();
+        mortgageSummaryView.swipeDown();
+        mortgageSummaryView.clickBackButton();
         Assert.assertTrue(mortgageRequestView.isDisplayed(), "The home view is not visible");
     }
 }
