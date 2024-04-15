@@ -79,7 +79,10 @@ public class ExpenseReportViewTest extends BaseTest {
 
         HomeView homeView = new HomeView(getDriver());
 
-        Assert.assertTrue(homeView.isDisplayed(),
-                "The \"Expense Report\" view is not closed");
+        try {
+            homeView.waitForPaymentHomeView();
+        } catch (Exception e) {
+            Assert.fail("The home view is not opened");
+        }
     }
 }

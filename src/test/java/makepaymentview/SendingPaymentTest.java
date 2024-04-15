@@ -82,7 +82,12 @@ public class SendingPaymentTest extends BaseTest {
                 .getQuestionFrame().touchButtonYES();
 
         HomeView homeView = new HomeView(getDriver());
-        Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
+
+        try {
+            homeView.waitForPaymentHomeView();
+        } catch (Exception e) {
+            Assert.fail("The home view is not opened");
+        }
     }
 
     @Test(priority = 4, dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = MakePaymentDataProviders.class)

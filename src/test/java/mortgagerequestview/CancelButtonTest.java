@@ -41,6 +41,11 @@ public class CancelButtonTest extends BaseTest {
 
         mortgageRequestView.touchCancelButton();
         HomeView homeView = new HomeView(getDriver());
-        Assert.assertTrue(homeView.isDisplayed(),"The home view is not displayed");
+
+        try {
+            homeView.waitForPaymentHomeView();
+        } catch (Exception e) {
+            Assert.fail("The home view is not opened");
+        }
     }
 }

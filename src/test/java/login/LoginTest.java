@@ -55,10 +55,13 @@ public class LoginTest extends BaseTest {
         Allure.parameter("Password", credentials.getPassword());
 
         actions(credentials);
-        Assert.assertTrue(homeView.isDisplayed(),
-                "A user is not logged in");
-    }
 
+        try {
+            homeView.waitForPaymentHomeView();
+        } catch (Exception e) {
+            Assert.fail("The home view is not opened");
+        }
+    }
 
     @Test(priority = 1, dataProvider = DataProviderNames.USERNAME_WITH_UPPER_LETTERS, dataProviderClass = CredentialsDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)

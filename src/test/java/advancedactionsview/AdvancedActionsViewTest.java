@@ -65,7 +65,10 @@ public class AdvancedActionsViewTest extends BaseTest {
         advancedActionsSteps.tapBackButton();
         HomeView homeView = new HomeView(getDriver());
 
-        Assert.assertTrue(homeView.isDisplayed(),
-                "The \"Advanced Actions\" view is not closed");
+        try {
+            homeView.waitForPaymentHomeView();
+        } catch (Exception e) {
+            Assert.fail("The home view is not opened");
+        }
     }
 }
