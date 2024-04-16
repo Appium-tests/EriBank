@@ -14,7 +14,6 @@ import qa.support.Authentication;
 import qa.support.HomeViewManager;
 import qa.pageobject.homeview.HomeView;
 import qa.pageobject.makepaymentview.MakePaymentView;
-import qa.dataproviders.MortgageRequestDataProviders;
 import qa.models.Payment;
 import qa.support.DataProviderNames;
 
@@ -200,7 +199,7 @@ public class SendingPaymentTest extends BaseTest {
         checkSendPaymentButtonStatus(false);
     }
 
-    @Test(priority = 5, dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MortgageRequestDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.INCORRECT_COUNTRY, dataProviderClass = MakePaymentDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
     @Owner("Paweł Aksman")
