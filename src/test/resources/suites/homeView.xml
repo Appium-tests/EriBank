@@ -11,11 +11,7 @@
 
     <test name="The home view buttons">
         <classes>
-            <class name="homeview.HomeViewTest">
-                <methods>
-                    <include name="expenseReportButton"/>
-                </methods>
-            </class>
+            <class name="homeview.HomeViewTest"/>
         </classes>
     </test>
 
