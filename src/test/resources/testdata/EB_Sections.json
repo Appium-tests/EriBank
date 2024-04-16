@@ -1,1 +1,31 @@
-{"typeOfLoan":["Professional","Education","Home","Personal","Car"],"numberOfYears":["1","2","5","10","15", "20"],"typeOfOccupation":["Government Job","Housewife","Business","Agricultural","Private Job"],"yearlyIncome":["2,500,000","2,000,000","1,500,000","5,000,000","500,000"]}
+{
+    "typeOfLoan": [
+        "Professional",
+        "Education",
+        "Home",
+        "Personal",
+        "Car"
+    ],
+    "numberOfYears": [
+        "1",
+        "2",
+        "5",
+        "10",
+        "15",
+        "20"
+    ],
+    "typeOfOccupation": [
+        "Government Job",
+        "Housewife",
+        "Business",
+        "Agricultural",
+        "Private Job"
+    ],
+    "yearlyIncome": [
+        "2,500,000",
+        "2,000,000",
+        "1,500,000",
+        "5,000,000",
+        "500,000"
+    ]
+}

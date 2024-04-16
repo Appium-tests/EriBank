@@ -1,1 +1,102 @@
-{"correct":[{"phone":"520-361-6734","name":"Ward","amount":"19633.8859454431","country":"Philippines"},{"phone":"508-910-8107","name":"Ernie","amount":"24444.4578871725","country":"China"}],"incorrectPhone":[{"phone":"<\\;-<>$-++&'","name":"Ambrosi","amount":"19411.1445286375","country":"Indonesia"},{"phone":"'%>-:\\l-#*\";","name":"Dud","amount":"20400.3321139658","country":"Iran"},{"phone":"%\\@-;;\"-\\,:L","name":"Nichols","amount":"27624.9562357375","country":"Indonesia"},{"phone":">Lf-#!~-g>F%","name":"Hobie","amount":"37830.4354857758","country":"China"},{"phone":"$@<-*@_-.!'&","name":"Taite","amount":"37103.7001288122","country":"Indonesia"}],"incorrectName":[{"phone":"720-812-8669","name":"'S;^;","amount":"25473.3356271779","country":"Nigeria"},{"phone":"883-650-5846","name":"@!'<","amount":"5899.59592795","country":"Brazil"},{"phone":"681-354-2346","name":";&$\\#\\;>","amount":"32294.8513841803","country":"Ukraine"},{"phone":"676-213-7502","name":";&^.a:o+'","amount":"47810.4699234962","country":"Indonesia"},{"phone":"767-988-7564","name":">:!:&^\\","amount":"22689.7398883821","country":"China"}],"incorrectAmount":[{"phone":"379-407-0325","name":"Vittorio","amount":"32%^;#","country":"Indonesia"}],"incorrectCountry":[{"phone":"819-251-9518","name":"Benson","amount":"5092.2635370256","country":"1aX4\"%4&^"},{"phone":"895-396-4082","name":"Armin","amount":"33454.696383933","country":"L<9$&;%6##5"}]}
+{
+    "correct": [
+        {
+            "phone": "520-361-6734",
+            "name": "Ward",
+            "amount": "19633.8859454431",
+            "country": "Philippines"
+        },
+        {
+            "phone": "508-910-8107",
+            "name": "Ernie",
+            "amount": "24444.4578871725",
+            "country": "China"
+        }
+    ],
+    "incorrectPhone": [
+        {
+            "phone": "<\\;-<>$-++&'",
+            "name": "Ambrosi",
+            "amount": "19411.1445286375",
+            "country": "Indonesia"
+        },
+        {
+            "phone": "'%>-:\\l-#*\";",
+            "name": "Dud",
+            "amount": "20400.3321139658",
+            "country": "Iran"
+        },
+        {
+            "phone": "%\\@-;;\"-\\,:L",
+            "name": "Nichols",
+            "amount": "27624.9562357375",
+            "country": "Indonesia"
+        },
+        {
+            "phone": ">Lf-#!~-g>F%",
+            "name": "Hobie",
+            "amount": "37830.4354857758",
+            "country": "China"
+        },
+        {
+            "phone": "$@<-*@_-.!'&",
+            "name": "Taite",
+            "amount": "37103.7001288122",
+            "country": "Indonesia"
+        }
+    ],
+    "incorrectName": [
+        {
+            "phone": "720-812-8669",
+            "name": "'S;^;",
+            "amount": "25473.3356271779",
+            "country": "Nigeria"
+        },
+        {
+            "phone": "883-650-5846",
+            "name": "@!'<",
+            "amount": "5899.59592795",
+            "country": "Brazil"
+        },
+        {
+            "phone": "681-354-2346",
+            "name": ";&$\\#\\;>",
+            "amount": "32294.8513841803",
+            "country": "Ukraine"
+        },
+        {
+            "phone": "676-213-7502",
+            "name": ";&^.a:o+'",
+            "amount": "47810.4699234962",
+            "country": "Indonesia"
+        },
+        {
+            "phone": "767-988-7564",
+            "name": ">:!:&^\\",
+            "amount": "22689.7398883821",
+            "country": "China"
+        }
+    ],
+    "incorrectAmount": [
+        {
+            "phone": "379-407-0325",
+            "name": "Vittorio",
+            "amount": "32%^;#",
+            "country": "Indonesia"
+        }
+    ],
+    "incorrectCountry": [
+        {
+            "phone": "819-251-9518",
+            "name": "Benson",
+            "amount": "5092.2635370256",
+            "country": "1aX4\"%4&^"
+        },
+        {
+            "phone": "895-396-4082",
+            "name": "Armin",
+            "amount": "33454.696383933",
+            "country": "L<9$&;%6##5"
+        }
+    ]
+}
