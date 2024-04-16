@@ -9,9 +9,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.RandomIndexesDataProvider;
-import qa.pageobject.homeview.HomeView;
+import qa.enums.View;
 import qa.pageobject.makepaymentview.MakePaymentView;
+import qa.support.Authentication;
 import qa.support.DataProviderNames;
+import qa.support.HomeViewManager;
 
 @Epic("E2E")
 @Feature("Country list")
@@ -19,15 +21,15 @@ public class CountryListTest extends CountryListBaseTest {
 
     private MakePaymentView makePaymentView;
 
-    @BeforeMethod(groups = {"closed", "opened"})
+    @BeforeMethod(onlyForGroups = {"closed", "opened"})
     public void create() {
 
-        HomeView homeView = new HomeView(getDriver());
-        homeView.touchMakePaymentButton();
+        Authentication.perform(getDriver());
+        HomeViewManager.open(getDriver(), View.MAKE_PAYMENT);
         makePaymentView = new MakePaymentView(getDriver());
     }
 
-    @BeforeMethod(groups = "opened")
+    @BeforeMethod(onlyForGroups = "opened")
     public void forOpened() {
 
         makePaymentView.touchSelectButton();
@@ -42,6 +44,7 @@ public class CountryListTest extends CountryListBaseTest {
     @QaseTitle("The \"Select\" button")
     public void selectButton() {
 
+        makePaymentView.touchSelectButton();
         baseSelectButton();
     }
 
@@ -69,7 +72,6 @@ public class CountryListTest extends CountryListBaseTest {
         Allure.parameter("List index", index);
 
         baseSelectingCountry(index);
-
         Assert.assertEquals(makePaymentView.getCountryNameFromCountryField(), getCountryList().getCountryName(),"Incorrect country in the country field");
     }
 }
