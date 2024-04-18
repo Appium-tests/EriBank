@@ -53,6 +53,11 @@ public class CountryList extends BaseView {
         countries.get(index).click();
     }
 
+    public int getNumberOfVisibleItems() {
+
+        return countries.size() - 1;
+    }
+
     public boolean isFirstItemDisplayed() {
 
         return countries.get(0).isDisplayed();
