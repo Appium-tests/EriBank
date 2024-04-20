@@ -22,9 +22,9 @@ public class DataProviderNames {
     public static final String INCORRECT_AGE = "incorrectAge";
     public static final String INCORRECT_ADDRESS_1 = "incorrectAddress1";
     public static final String INCORRECT_ADDRESS_2 = "incorrectAddress2";
-    public static final String RANDOM_INDEXES = "randomIndexes";
     public static final String TYPE_OF_LOAN = "typeOfLoan";
     public static final String NUMBER_OF_YEARS = "numberOfYears";
     public static final String TYPE_OF_OCCUPATION = "typeOfOccupation";
     public static final String YEARLY_INCOME = "yearlyIncome";
+    public static final String COUNTRIES = "country";
 }
