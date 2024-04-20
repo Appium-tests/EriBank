@@ -8,7 +8,7 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.dataproviders.RandomIndexesDataProvider;
+import qa.dataproviders.CountriesDataProvider;
 import qa.enums.View;
 import qa.pageobject.mortgagerequest.MortgageRequestView;
 import qa.support.Authentication;
@@ -60,16 +60,16 @@ public class CountryListTest extends CountryListBaseTest {
         baseSwiping();
     }
 
-    @Test(priority = 3, groups = "opened", dataProvider = DataProviderNames.RANDOM_INDEXES, dataProviderClass = RandomIndexesDataProvider.class)
+    @Test(priority = 3, groups = "opened", dataProvider = DataProviderNames.COUNTRIES, dataProviderClass = CountriesDataProvider.class)
     @Severity(SeverityLevel.CRITICAL)
     @Tag("List")
     @Owner("Paweł Aksman")
     @Description("Selecting a country")
     @QaseId(33)
     @QaseTitle("Selecting a country")
-    public void selectingCountry(int index) {
+    public void selectingCountry(String country) {
 
-        baseSelectingCountry(index);
+        baseSelectingCountry(country);
         Assert.assertEquals(mortgageRequestView.getCountryNameFromCountryField(), getCountryList().getCountryName(),"Incorrect country in the country field");
     }
 }
