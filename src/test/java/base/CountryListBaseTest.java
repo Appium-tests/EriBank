@@ -30,8 +30,9 @@ public class CountryListBaseTest extends BaseTest {
         Assert.assertTrue(countryList.isFirstItemDisplayed(), "Unable to swipe up the list");
     }
 
-    protected void baseSelectingCountry(int index) {
+    protected void baseSelectingCountry(String countryName) {
 
-        countryList.selectCountry(index);
+        countryList.swipeToDesiredItem(countryName);
+        countryList.selectCountry(countryName);
     }
 }
