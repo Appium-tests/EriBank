@@ -18,17 +18,22 @@ public class BaseTest {
 
     private AndroidDriver driver;
 
-    @Parameters({"fileName"})
-    @BeforeSuite
-    public void start(@Optional("noFile")String fileName) throws IOException {
 
-        if (!fileName.equals("noFile")) {
-            FileReader.load(fileName);
-        }
+    @BeforeSuite
+    public void start() throws IOException {
 
         AdbUninstallUIAutomator.uninstall();
         AppiumServerManager.run();
         TestDataLoader.read();
+    }
+
+    @Parameters({"fileName"})
+    @BeforeClass
+    public void loadTestData(@Optional("noFile")String fileName) {
+
+        if (!fileName.equals("noFile")) {
+            FileReader.load(fileName);
+        }
     }
 
     @AfterSuite
