@@ -1,10 +1,13 @@
 package qa.pageobject.countrylist;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.pageobject.base.BaseView;
 import qa.support.SwipingHelper;
 
@@ -14,7 +17,10 @@ import java.util.Optional;
 public class CountryList extends BaseView {
 
     @Getter
-    private String countryName;
+    private String countryName = "";
+    private final String partialUiAutomatorString = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"";
+    private final String partialXPath = "//android.widget.TextView[@resource-id='com.experitest.ExperiBank:id/rowTextView' and @text='";
+    private WebElement selectedCountry;
 
     public CountryList(AndroidDriver driver) {
 
@@ -26,6 +32,15 @@ public class CountryList extends BaseView {
 
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/rowTextView")
     List<WebElement> countries;
+
+    @io.qameta.allure.Step("Swipe to desired element")
+    @io.qase.api.annotation.Step("Swipe to desired element")
+    public void swipeToDesiredItem(String countryName) {
+
+        String uiAutomatorString = partialUiAutomatorString + countryName + "\"))";
+        //String uiAutomatorString = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"" + countryName + "\"))";
+        getDriver().findElement(new AppiumBy.ByAndroidUIAutomator(uiAutomatorString));
+    }
 
     @io.qameta.allure.Step("Touch the last visible list element and swipe to the first element")
     @io.qase.api.annotation.Step("Touch the last visible list element and swipe to the first element")
@@ -47,15 +62,11 @@ public class CountryList extends BaseView {
 
     @io.qameta.allure.Step("Select a country")
     @io.qase.api.annotation.Step("Select a country")
-    public void selectCountry(int index) {
+    public void selectCountry(String country) {
 
-        countryName = countries.get(index).getText();
-        countries.get(index).click();
-    }
-
-    public int getNumberOfVisibleItems() {
-
-        return countries.size() - 1;
+        WebElement element = getWebDriverWait().until(ExpectedConditions.elementToBeClickable(By.xpath(partialXPath + country + "']")));
+        countryName = element.getText();
+        element.click();
     }
 
     public boolean isFirstItemDisplayed() {
