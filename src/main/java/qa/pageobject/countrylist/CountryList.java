@@ -5,14 +5,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.Getter;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.pageobject.base.BaseView;
-import qa.support.SwipingHelper;
 
 import java.util.List;
-import java.util.Optional;
 
 public class CountryList extends BaseView {
 
@@ -20,7 +17,7 @@ public class CountryList extends BaseView {
     private String countryName = "";
     private final String partialUiAutomatorString = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"";
     private final String partialXPath = "//android.widget.TextView[@resource-id='com.experitest.ExperiBank:id/rowTextView' and @text='";
-    private WebElement selectedCountry;
+
 
     public CountryList(AndroidDriver driver) {
 
@@ -30,34 +27,13 @@ public class CountryList extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/countryList")
     List<WebElement> parent;
 
-    @AndroidFindBy(id = "com.experitest.ExperiBank:id/rowTextView")
-    List<WebElement> countries;
 
     @io.qameta.allure.Step("Swipe to desired element")
     @io.qase.api.annotation.Step("Swipe to desired element")
     public void swipeToDesiredItem(String countryName) {
 
         String uiAutomatorString = partialUiAutomatorString + countryName + "\"))";
-        //String uiAutomatorString = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"" + countryName + "\"))";
         getDriver().findElement(new AppiumBy.ByAndroidUIAutomator(uiAutomatorString));
-    }
-
-    @io.qameta.allure.Step("Touch the last visible list element and swipe to the first element")
-    @io.qase.api.annotation.Step("Touch the last visible list element and swipe to the first element")
-    public void swipeDown() {
-
-        Point to = countries.get(0).getLocation();
-        Optional<WebElement> from = countries.stream().filter(WebElement::isDisplayed).reduce((first, second) -> second);
-        from.ifPresent(element -> SwipingHelper.swipe(element.getLocation(), to, getDriver()));
-    }
-
-    @io.qameta.allure.Step("Touch the first visible list element and swipe to the last element")
-    @io.qase.api.annotation.Step("Touch the first visible list element and swipe to the last element")
-    public void swipeUp() {
-
-        Point to = countries.get(countries.size() - 1).getLocation();
-        Optional<WebElement> from = countries.stream().filter(WebElement::isDisplayed).findFirst();
-        from.ifPresent(element -> SwipingHelper.swipe(element.getLocation(), to, getDriver()));
     }
 
     @io.qameta.allure.Step("Select a country")
@@ -69,14 +45,9 @@ public class CountryList extends BaseView {
         element.click();
     }
 
-    public boolean isFirstItemDisplayed() {
+    public boolean isItemVisible(String country) {
 
-        return countries.get(0).isDisplayed();
-    }
-
-    public boolean isLastItemDisplayed() {
-
-        return countries.get(countries.size() - 1).isDisplayed();
+        return getWebDriverWait().until(ExpectedConditions.elementToBeClickable(By.xpath(partialXPath + country + "']"))).isDisplayed();
     }
 
     public boolean isDisplayed() {
