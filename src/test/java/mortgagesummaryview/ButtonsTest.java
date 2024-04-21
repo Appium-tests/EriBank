@@ -1,6 +1,7 @@
 package mortgagesummaryview;
 
 import base.BaseTest;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
@@ -22,7 +23,7 @@ public class ButtonsTest extends BaseTest {
     private MortgageSummaryView mortgageSummaryView;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         MortgageFormFiller.perform(getDriver());

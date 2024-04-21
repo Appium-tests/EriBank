@@ -1,5 +1,6 @@
 package expensereportview;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import org.testng.Assert;
@@ -20,7 +21,7 @@ public class ExpenseReportViewTest extends BaseTest {
     private ExpenseReportSteps expenseReportSteps;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.EXPENSE_REPORT);

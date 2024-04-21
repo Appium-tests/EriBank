@@ -1,6 +1,7 @@
 package makepaymentview;
 
 import base.BaseTest;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -19,7 +20,7 @@ public class CancelButtonTest extends BaseTest {
     private MakePaymentView makePaymentView;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeView homeView = new HomeView(getDriver());

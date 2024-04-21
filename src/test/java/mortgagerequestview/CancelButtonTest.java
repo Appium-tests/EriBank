@@ -1,6 +1,7 @@
 package mortgagerequestview;
 
 import base.BaseTest;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
@@ -22,7 +23,7 @@ public class CancelButtonTest extends BaseTest {
     private MortgageRequestView mortgageRequestView;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MORTGAGE_REQUEST);

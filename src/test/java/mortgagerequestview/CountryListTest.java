@@ -1,6 +1,7 @@
 package mortgagerequestview;
 
 import base.CountryListBaseTest;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -22,7 +23,7 @@ public class CountryListTest extends CountryListBaseTest {
     private MortgageRequestView mortgageRequestView;
 
     @BeforeMethod(onlyForGroups = {"closed", "opened"})
-    public void create() {
+    public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MORTGAGE_REQUEST);
@@ -48,16 +49,16 @@ public class CountryListTest extends CountryListBaseTest {
         baseSelectButton();
     }
 
-    @Test(priority = 2, groups = "opened")
+    @Test(priority = 2, groups = "opened", dataProvider = DataProviderNames.SCROLLABLE_COUNTRIES, dataProviderClass = CountriesDataProvider.class)
     @Severity(SeverityLevel.CRITICAL)
     @Tag("List")
     @Owner("Paweł Aksman")
     @Description("Swiping the list")
     @QaseId(32)
     @QaseTitle("Swiping the list")
-    public void swiping() {
+    public void swiping(String country) {
 
-        baseSwiping();
+        baseSwiping(country);
     }
 
     @Test(priority = 3, groups = "opened", dataProvider = DataProviderNames.COUNTRIES, dataProviderClass = CountriesDataProvider.class)

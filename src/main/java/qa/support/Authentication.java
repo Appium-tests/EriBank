@@ -1,12 +1,13 @@
 package qa.support;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.appium.java_client.android.AndroidDriver;
 import qa.pageobject.loginview.LoginView;
 import qa.models.Credentials;
 
 public class Authentication {
 
-    public static void perform(AndroidDriver driver) {
+    public static void perform(AndroidDriver driver) throws JsonProcessingException {
 
         String source = FileReader.loadCredentials();
         Credentials[] credentials = TestDataLoader.getCredentialsFromSource(source, DataProviderNames.CORRECT);

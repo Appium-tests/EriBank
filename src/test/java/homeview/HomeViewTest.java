@@ -1,5 +1,6 @@
 package homeview;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
@@ -23,7 +24,7 @@ public class HomeViewTest extends BaseTest {
     private HomeView homeView;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         homeView = new HomeView(getDriver());

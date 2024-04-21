@@ -1,5 +1,6 @@
 package makepaymentview;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -24,7 +25,7 @@ public class SendingPaymentTest extends BaseTest {
     private MakePaymentView makePaymentView;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MAKE_PAYMENT);

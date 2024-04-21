@@ -1,5 +1,6 @@
 package mortgagerequestview;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -24,7 +25,7 @@ public class SendingMortgageRequestTest extends BaseTest {
     private MortgageRequestView mortgageRequestView;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MORTGAGE_REQUEST);

@@ -1,5 +1,6 @@
 package advancedactionsview;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -23,7 +24,7 @@ public class AdvancedActionsViewTest extends BaseTest {
     private AdvancedActionsSteps advancedActionsSteps;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.ADVANCED_ACTIONS);
