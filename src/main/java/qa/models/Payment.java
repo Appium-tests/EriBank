@@ -5,16 +5,10 @@ import lombok.Getter;
 @Getter
 public class Payment {
 
-    private final String phone;
-    private final String name;
-    private final String amount;
-    private final String country;
+    private String phone;
+    private String name;
+    private String amount;
+    private String country;
 
-    public Payment(String phone, String name, String amount, String country) {
-
-        this.phone = phone;
-        this.name = name;
-        this.amount = amount;
-        this.country = country;
-    }
+    public Payment() { }
 }
