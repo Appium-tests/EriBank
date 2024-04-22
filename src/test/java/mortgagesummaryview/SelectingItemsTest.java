@@ -76,7 +76,7 @@ public class SelectingItemsTest extends BaseTest {
 
         Allure.parameter("Item", itemName);
 
-        mortgageSummaryView.swipeDown();
+        mortgageSummaryView.getTypeOfOccupationSection().swipeToDesiredItem(itemName);
         mortgageSummaryView.getTypeOfOccupationSection().touchItem(itemName);
         Assert.assertEquals(mortgageSummaryView.getTypeOfOccupationSection().getItemCheckedStatus(itemName), "true",
                 "The + \"" + itemName + "\" item is not checked");
@@ -94,7 +94,7 @@ public class SelectingItemsTest extends BaseTest {
 
         Allure.parameter("Item", itemName);
 
-        mortgageSummaryView.swipeDown();
+        mortgageSummaryView.getYearlyIncomeSection().swipeToDesiredItem(itemName);
         mortgageSummaryView.getYearlyIncomeSection().touchItem(itemName);
         Assert.assertEquals(mortgageSummaryView.getYearlyIncomeSection().getItemCheckedStatus(itemName), "true",
                 "The + \"" + itemName + "\" item is not checked");
