@@ -22,17 +22,15 @@ public class CountryListBaseTest extends BaseTest {
                 "The country list is not displayed");
     }
 
-    protected void baseSwiping() {
+    protected void baseSwiping(String country) {
 
-        countryList.swipeDown();
-        Assert.assertTrue(countryList.isLastItemDisplayed(), "Unable to swipe down the list");
-        countryList.swipeUp();
-        Assert.assertTrue(countryList.isFirstItemDisplayed(), "Unable to swipe up the list");
+        countryList.swipeToDesiredItem(country);
+        Assert.assertTrue(countryList.isItemVisible(country), "The \"" + country + "\" item is not visible");
     }
 
-    protected void baseSelectingCountry(String countryName) {
+    protected void baseSelectingCountry(String country) {
 
-        countryList.swipeToDesiredItem(countryName);
-        countryList.selectCountry(countryName);
+        countryList.swipeToDesiredItem(country);
+        countryList.selectCountry(country);
     }
 }
