@@ -12,8 +12,10 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.dataproviders.SectionsDataProvider;
 import qa.pageobject.mortgagesummaryview.MortgageSummaryView;
 import qa.support.Authentication;
+import qa.support.DataProviderNames;
 import qa.support.MortgageFormFiller;
 
 public class SwipingTest extends BaseTest {
@@ -28,18 +30,16 @@ public class SwipingTest extends BaseTest {
         mortgageSummaryView = new MortgageSummaryView(getDriver());
     }
 
-    @Test
+    @Test(dataProvider = DataProviderNames.YEARLY_INCOME, dataProviderClass = SectionsDataProvider.class)
     @Tag("List")
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Paweł Aksman")
     @Description("Swiping the list")
     @QaseId(48)
     @QaseTitle("Swiping the list")
-    public void example() {
+    public void example(String itemName) {
 
-        mortgageSummaryView.swipeDown();
-        Assert.assertTrue(mortgageSummaryView.isLastItemVisible(), "Unable to swipe down the list");
-        mortgageSummaryView.swipeUp();
-        Assert.assertTrue(mortgageSummaryView.isFirstItemVisible(), "Unable to swipe up the list");
+        mortgageSummaryView.getYearlyIncomeSection().swipeToDesiredItem(itemName);
+        Assert.assertTrue(mortgageSummaryView.getYearlyIncomeSection().isItemVisible(itemName), "Unable to swipe up the list");
     }
 }
