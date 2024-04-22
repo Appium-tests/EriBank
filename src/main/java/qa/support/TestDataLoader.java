@@ -1,111 +1,62 @@
 package qa.support;
 
-import com.google.common.io.Resources;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import qa.models.Credentials;
 import qa.models.MortgageRequest;
 import qa.models.Payment;
-
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Random;
 import java.util.stream.IntStream;
 
 public class TestDataLoader {
 
-    private static JSONObject jsonObject;
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    private static JSONArray getJSONArray(String key, String node) {
+    private static JSONArray getJSONArray(String source, String key) {
 
-        Object object = jsonObject.get(key);
-        JSONObject jsonObject1 = (JSONObject) object;
-
-        return jsonObject1.getJSONArray(node);
+        JSONObject jsonObject = new JSONObject(source);
+        return jsonObject.getJSONArray(key);
     }
 
-    public static void read() throws IOException {
+    private static <T> T[] getObjectArray(String source, String key, Class<T> clazz) throws JsonProcessingException {
 
-        URL url = Resources.getResource("testdata.json");
-        jsonObject = new JSONObject(Resources.toString(url, StandardCharsets.UTF_8));
+        JSONArray jsonArray = getJSONArray(source, key);
+        T[] objects = (T[]) java.lang.reflect.Array.newInstance(clazz, jsonArray.length());
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            objects[i] = objectMapper.readValue(jsonArray.getJSONObject(i).toString(), clazz);
+        }
+
+        return objects;
     }
 
-    public static String[] getStringArray(String key) {
+    public static String[] getStringArray(String key, int startInclusive) {
 
-        JSONObject jsonObject = new JSONObject(FileReader.getSource());
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
+        JSONArray jsonArray = getJSONArray(FileReader.getSource(), key);
 
-        return IntStream.range(0, jsonArray.length())
+        return IntStream.range(startInclusive, jsonArray.length())
                 .mapToObj(jsonArray::getString)
                 .toArray(String[]::new);
     }
 
-    public static Credentials[] getCredentials(String key) {
+    public static Credentials[] getCredentialsFromSource(String source, String key) throws JsonProcessingException {
 
-        JSONObject jsonObject = new JSONObject(FileReader.getSource());
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new Credentials(
-                        jsonArray.getJSONObject(i).getString("username"),
-                        jsonArray.getJSONObject(i).getString("password")
-                ))
-                .toArray(Credentials[]::new);
+        return getObjectArray(source, key, Credentials.class);
     }
 
-    public static Credentials[] getCredentialsFromSource(String source, String key) {
+    public static Credentials[] getCredentials(String key) throws JsonProcessingException {
 
-        JSONObject jsonObject = new JSONObject(source);
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new Credentials(
-                        jsonArray.getJSONObject(i).getString("username"),
-                        jsonArray.getJSONObject(i).getString("password")
-                ))
-                .toArray(Credentials[]::new);
+        return getCredentialsFromSource(FileReader.getSource(), key);
     }
 
-    public static Payment[] getPayments(String key) {
+    public static Payment[] getPayments(String key) throws JsonProcessingException {
 
-        JSONObject jsonObject = new JSONObject(FileReader.getSource());
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new Payment(
-                        jsonArray.getJSONObject(i).getString("phone"),
-                        jsonArray.getJSONObject(i).getString("name"),
-                        jsonArray.getJSONObject(i).getString("amount"),
-                        jsonArray.getJSONObject(i).getString("country")
-                ))
-                .toArray(Payment[]::new);
+        return getObjectArray(FileReader.getSource(), key, Payment.class);
     }
 
-    public static MortgageRequest[] getMortgageRequests(String key) {
+    public static MortgageRequest[] getMortgageRequests(String key) throws JsonProcessingException {
 
-        JSONObject jsonObject = new JSONObject(FileReader.getSource());
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new MortgageRequest(
-                        jsonArray.getJSONObject(i).getString("firstName"),
-                        jsonArray.getJSONObject(i).getString("lastName"),
-                        jsonArray.getJSONObject(i).getString("age"),
-                        jsonArray.getJSONObject(i).getString("address1"),
-                        jsonArray.getJSONObject(i).getString("address2"),
-                        jsonArray.getJSONObject(i).getString("country")
-                ))
-                .toArray(MortgageRequest[]::new);
-    }
-
-    public static Integer[] getIndexes() {
-
-        Random random = new Random();
-        int size = 5;
-        int min = 0;
-        int max = 18;
-
-        return IntStream.of(random.ints(size, min, max).toArray()).boxed().toArray(Integer[]::new);
+        return getObjectArray(FileReader.getSource(), key, MortgageRequest.class);
     }
 }
