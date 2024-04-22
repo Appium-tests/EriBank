@@ -7,10 +7,8 @@ import qa.driver.Driver;
 import qa.environmentinfo.AllureEnvironment;
 import qa.environmentinfo.EnvironmentInfo;
 import qa.support.AdbUninstallUIAutomator;
-import qa.support.TestDataLoader;
 import qa.support.FileReader;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 
 
@@ -20,11 +18,10 @@ public class BaseTest {
 
 
     @BeforeSuite
-    public void start() throws IOException {
+    public void start() {
 
         AdbUninstallUIAutomator.uninstall();
         AppiumServerManager.run();
-        TestDataLoader.read();
     }
 
     @Parameters({"fileName"})
