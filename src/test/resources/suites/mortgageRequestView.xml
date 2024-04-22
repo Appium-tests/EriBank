@@ -7,15 +7,17 @@
         <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
-    <parameter name="fileName" value="EB_Mortgage.json"/>
-
     <test name="The country list">
+        <parameter name="fileName" value="EB_Countries.json"/>
+
         <classes>
             <class name="mortgagerequestview.CountryListTest"/>
         </classes>
     </test>
 
     <test name="Sending Mortgage Request">
+        <parameter name="fileName" value="EB_Mortgage.json"/>
+
         <classes>
             <class name="mortgagerequestview.SendingMortgageRequestTest"/>
         </classes>

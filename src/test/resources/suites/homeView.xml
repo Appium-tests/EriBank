@@ -7,9 +7,9 @@
         <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
-    <parameter name="fileName" value="EB_Credentials.json"/>
-
     <test name="The home view buttons">
+        <parameter name="fileName" value="EB_Credentials.json"/>
+
         <classes>
             <class name="homeview.HomeViewTest"/>
         </classes>

@@ -7,15 +7,21 @@
         <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
-    <parameter name="fileName" value="EB_MakePayment.json"/>
-
     <test name="The country dropdown list">
+        <parameter name="fileName" value="EB_Countries.json"/>
+
         <classes>
-            <class name="makepaymentview.CountryListTest"/>
+            <class name="makepaymentview.CountryListTest">
+                <methods>
+                    <include name="swiping"/>
+                </methods>
+            </class>
         </classes>
     </test>
 
     <test name="Sending payment">
+        <parameter name="fileName" value="EB_MakePayment.json"/>
+
         <classes>
             <class name="makepaymentview.SendingPaymentTest"/>
         </classes>
@@ -26,4 +32,5 @@
             <class name="makepaymentview.CancelButtonTest"/>
         </classes>
     </test>
+
 </suite>

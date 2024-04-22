@@ -7,15 +7,18 @@
         <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
-    <parameter name="fileName" value="EB_Sections.json"/>
 
     <test name="Swipping the list">
+        <parameter name="fileName" value="EB_Sections.json"/>
+
         <classes>
             <class name="mortgagesummaryview.SwipingTest"/>
         </classes>
     </test>
 
     <test name="Selecting items">
+        <parameter name="fileName" value="EB_Sections.json"/>
+
         <classes>
             <class name="mortgagesummaryview.SelectingItemsTest"/>
         </classes>
@@ -23,7 +26,7 @@
 
     <test name="Buttons">
         <classes>
-            <class name="mortgagesummaryview.ButtonsTest"/>
+            <class name="factories.TestMortgageSummaryFactory"/>
         </classes>
     </test>
 
