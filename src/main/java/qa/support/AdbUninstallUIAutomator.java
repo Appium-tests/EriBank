@@ -8,8 +8,8 @@ public class AdbUninstallUIAutomator {
 
         try {
             Runtime runtime = Runtime.getRuntime();
-            Process uiautomatorServer = runtime.exec("adb uninstall io.appium.uiautomator2.server");
-            Process uiautomatorServerTest = runtime.exec("adb uninstall io.appium.uiautomator2.server.test");
+            runtime.exec("adb uninstall io.appium.uiautomator2.server");
+            runtime.exec("adb uninstall io.appium.uiautomator2.server.test");
         } catch (IOException | RuntimeException e) {
             e.printStackTrace();
         }
