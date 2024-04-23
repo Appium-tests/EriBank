@@ -26,7 +26,7 @@
 
     <test name="Buttons">
         <classes>
-            <class name="factories.TestMortgageSummaryFactory"/>
+            <class name="mortgagesummaryview.ButtonsTest"/>
         </classes>
     </test>
 
