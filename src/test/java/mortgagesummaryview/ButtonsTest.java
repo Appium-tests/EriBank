@@ -21,12 +21,6 @@ public class ButtonsTest extends BaseTest {
 
     private MortgageRequestView mortgageRequestView;
     private MortgageSummaryView mortgageSummaryView;
-    private final String itemName;
-
-    public ButtonsTest(String itemName) {
-
-        this.itemName = itemName;
-    }
 
     @BeforeMethod
     public void create() throws JsonProcessingException {
@@ -48,7 +42,7 @@ public class ButtonsTest extends BaseTest {
     @QaseTitle("Touching the \"Save\" items")
     public void saveButton() {
 
-        mortgageSummaryView.getYearlyIncomeSection().swipeToDesiredItem(itemName);
+        mortgageSummaryView.swipeToElement("Save");
         mortgageSummaryView.clickSaveButton();
         Assert.assertTrue(mortgageRequestView.isDisplayed(), "The mortgage request view is not visible");
     }
@@ -64,7 +58,7 @@ public class ButtonsTest extends BaseTest {
     @QaseTitle("Touching the \"Back\" items")
     public void backButton() {
 
-        mortgageSummaryView.getYearlyIncomeSection().swipeToDesiredItem(itemName);
+        mortgageSummaryView.swipeToElement("Back");
         mortgageSummaryView.clickBackButton();
         Assert.assertTrue(mortgageRequestView.isDisplayed(), "The home view is not visible");
     }
