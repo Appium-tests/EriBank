@@ -24,13 +24,13 @@ public class CountryListBaseTest extends BaseTest {
 
     protected void baseSwiping(String country) {
 
-        countryList.swipeToDesiredItem(country);
+        countryList.swipeToElement(country);
         Assert.assertTrue(countryList.isItemVisible(country), "The \"" + country + "\" item is not visible");
     }
 
     protected void baseSelectingCountry(String country) {
 
-        countryList.swipeToDesiredItem(country);
+        countryList.swipeToElement(country);
         countryList.selectCountry(country);
     }
 }
