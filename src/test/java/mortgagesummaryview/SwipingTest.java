@@ -39,7 +39,7 @@ public class SwipingTest extends BaseTest {
     @QaseTitle("Swiping the list")
     public void example(String itemName) {
 
-        mortgageSummaryView.getYearlyIncomeSection().swipeToDesiredItem(itemName);
+        mortgageSummaryView.getYearlyIncomeSection().swipeToElement(itemName);
         Assert.assertTrue(mortgageSummaryView.getYearlyIncomeSection().isItemVisible(itemName), "Unable to swipe up the list");
     }
 }
