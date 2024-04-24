@@ -3,6 +3,7 @@ package qa.pageobject.expensereportview;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.pageobject.base.BaseView;
 
 import java.util.List;
@@ -26,14 +27,18 @@ public class ExpenseReportView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/titleTextView")
     List<WebElement> expenseTitles;
 
-    public void tapAddButton() {
+    @io.qameta.allure.Step("Touch the \"Add\" button")
+    @io.qase.api.annotation.Step("Touch the \"Add\" button")
+    public void touchAddButton() {
 
-        addButton.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(addButton)).click();
     }
 
-    public void tapBackButton() {
+    @io.qameta.allure.Step("Touch the \"Add\" button")
+    @io.qase.api.annotation.Step("Touch the \"Add\" button")
+    public void touchBackButton() {
 
-        backButton.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(backButton)).click();
     }
 
     public int getCount() {
@@ -41,9 +46,11 @@ public class ExpenseReportView extends BaseView {
         return expenseTitles.size();
     }
 
-    public void tapOnRow(int row) {
+    @io.qameta.allure.Step("Touch the element")
+    @io.qase.api.annotation.Step("Touch the element")
+    public void touchElement(int index) {
 
-        expenseTitles.get(row).click();
+        expenseTitles.get(index).click();
     }
 
     public boolean isDisplayed() {
