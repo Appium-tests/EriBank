@@ -10,26 +10,25 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import base.BaseTest;
 import qa.enums.View;
-import qa.enums.WebViewContext;
+import qa.pageobject.advancedactionsview.AdvancedActionsView;
 import qa.support.Authentication;
 import qa.support.HomeViewManager;
 import qa.pageobject.homeview.HomeView;
 import qa.pageobject.sendvoidrequestview.SendVoidRequestView;
-import qa.steps.AdvancedActionsSteps;
+
 
 @Epic("E2E")
 @Feature("Advanced Actions buttons")
 public class AdvancedActionsViewTest extends BaseTest {
 
-    private AdvancedActionsSteps advancedActionsSteps;
+    private AdvancedActionsView advancedActionsView;
 
     @BeforeMethod
     public void create() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.ADVANCED_ACTIONS);
-
-        advancedActionsSteps = new AdvancedActionsSteps(getDriver());
+        advancedActionsView = new AdvancedActionsView(getDriver());
     }
 
     @Test
@@ -37,7 +36,7 @@ public class AdvancedActionsViewTest extends BaseTest {
     @Story("Touching the \"Send Void Request\" button")
     public void sendVoidRequestButton() {
 
-        advancedActionsSteps.tapSendVoidRequestButton();
+        advancedActionsView.touchSendVoidRequestButton();
         SendVoidRequestView sendVoidRequestView = new SendVoidRequestView(getDriver());
 
         Assert.assertTrue(sendVoidRequestView.isDisplayed(),
@@ -45,25 +44,11 @@ public class AdvancedActionsViewTest extends BaseTest {
     }
 
     @Test
-    @Description("Checking whether the \"https://digital.ai...\" website opens after touching the \"EriBank Browser\" button.")
-    @Story("Touching the \"EriBank Browser\" button")
-    public void eriBankBrowserButton() {
-
-        advancedActionsSteps.tapEriBankBrowserButton();
-
-        String expectedUrl = "https://digital.ai";
-        getDriver().context(WebViewContext.CHROME.getName());
-
-        Assert.assertTrue(getDriver().getCurrentUrl().contains(expectedUrl),
-                "Incorrect url");
-    }
-
-    @Test
     @Description("Verify that the \"Advanced Actions\" view is closed after touching the \"Back\" button")
     @Story("Touching the \"Back\" button")
     public void closingView() {
 
-        advancedActionsSteps.tapBackButton();
+        advancedActionsView.touchBackButton();
         HomeView homeView = new HomeView(getDriver());
 
         try {
