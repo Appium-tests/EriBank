@@ -17,29 +17,25 @@ public class AdvancedActionsView extends BaseView {
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/RecordAudioutton")
     List<WebElement> sendVoidRequestButton;
 
-    @AndroidFindBy(id = "com.experitest.ExperiBank:id/OpenBrowserButton")
-    List<WebElement> eriBankBrowserButton;
-
     @AndroidFindBy(id = "com.experitest.ExperiBank:id/BackButton")
     List<WebElement> backButton;
 
-    public void tapSendVoidRequestButton() {
+    @io.qameta.allure.Step("Touch the \"Send Void Request\" button")
+    @io.qase.api.annotation.Step("Touch the \"Send Void Request\" button")
+    public void touchSendVoidRequestButton() {
 
         sendVoidRequestButton.get(0).click();
     }
 
-    public void tapEriBankBrowserButton() {
-
-        eriBankBrowserButton.get(0).click();
-    }
-
-    public void tapBackButton() {
+    @io.qameta.allure.Step("Touch the \"Back\" button")
+    @io.qase.api.annotation.Step("Touch the \"Back\" button")
+    public void touchBackButton() {
 
         backButton.get(0).click();
     }
 
     public boolean isDisplayed() {
 
-        return !sendVoidRequestButton.isEmpty() && !eriBankBrowserButton.isEmpty() && !backButton.isEmpty();
+        return !sendVoidRequestButton.isEmpty() && !backButton.isEmpty();
     }
 }
