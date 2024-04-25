@@ -4,12 +4,18 @@
 <suite name="The Expense Report view">
 
     <listeners>
-        <listener class-name="expensereportview.ExpenseReportViewTest"/>
+        <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
-    <test name="'Expense Report' view ">
+    <test name="Adding and removing expenses">
         <classes>
-            <class name="advancedactionsview.AdvancedActionsViewTest"/>
+            <class name="factories.ExpenseReportViewFactory"/>
+        </classes>
+    </test>
+
+    <test name="The 'Back' button">
+        <classes>
+            <class name="expensereportview.BackButtonTest"/>
         </classes>
     </test>
 
