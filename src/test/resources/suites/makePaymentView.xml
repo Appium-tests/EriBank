@@ -11,11 +11,7 @@
         <parameter name="fileName" value="EB_Countries.json"/>
 
         <classes>
-            <class name="makepaymentview.CountryListTest">
-                <methods>
-                    <include name="swiping"/>
-                </methods>
-            </class>
+            <class name="makepaymentview.CountryListTest"/>
         </classes>
     </test>
 
