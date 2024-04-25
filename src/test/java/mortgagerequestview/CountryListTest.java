@@ -22,21 +22,27 @@ public class CountryListTest extends CountryListBaseTest {
 
     private MortgageRequestView mortgageRequestView;
 
-    @BeforeMethod(onlyForGroups = {"closed", "opened"})
-    public void create() throws JsonProcessingException {
+    @BeforeMethod(onlyForGroups = {"withoutOpenedList"})
+    public void prepare() throws JsonProcessingException {
+
+        initialize();
+    }
+
+    @BeforeMethod(onlyForGroups = "withOpenedList")
+    public void prepareWithOpenedList() throws JsonProcessingException {
+
+        initialize();
+        mortgageRequestView.touchSelectButton();
+    }
+
+    private void initialize() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MORTGAGE_REQUEST);
         mortgageRequestView = new MortgageRequestView(getDriver());
     }
 
-    @BeforeMethod(onlyForGroups = "opened")
-    public void forOpened() {
-
-        mortgageRequestView.touchSelectButton();
-    }
-
-    @Test(priority = 1, groups = "closed")
+    @Test(priority = 1, groups = "withoutOpenedList")
     @Severity(SeverityLevel.CRITICAL)
     @Tag("List")
     @Owner("Paweł Aksman")
@@ -49,7 +55,7 @@ public class CountryListTest extends CountryListBaseTest {
         baseSelectButton();
     }
 
-    @Test(priority = 2, groups = "opened", dataProvider = DataProviderNames.SCROLLABLE_COUNTRIES, dataProviderClass = CountriesDataProvider.class)
+    @Test(priority = 2, groups = "withOpenedList", dataProvider = DataProviderNames.SCROLLABLE_COUNTRIES, dataProviderClass = CountriesDataProvider.class)
     @Severity(SeverityLevel.CRITICAL)
     @Tag("List")
     @Owner("Paweł Aksman")
@@ -61,7 +67,7 @@ public class CountryListTest extends CountryListBaseTest {
         baseSwiping(country);
     }
 
-    @Test(priority = 3, groups = "opened", dataProvider = DataProviderNames.COUNTRIES, dataProviderClass = CountriesDataProvider.class)
+    @Test(priority = 3, groups = "withOpenedList", dataProvider = DataProviderNames.COUNTRIES, dataProviderClass = CountriesDataProvider.class)
     @Severity(SeverityLevel.CRITICAL)
     @Tag("List")
     @Owner("Paweł Aksman")

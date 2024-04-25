@@ -22,21 +22,27 @@ public class CountryListTest extends CountryListBaseTest {
 
     private MakePaymentView makePaymentView;
 
-    @BeforeMethod(onlyForGroups = {"closed", "opened"})
-    public void create() throws JsonProcessingException {
+    @BeforeMethod(onlyForGroups = {"withoutOpenedList"})
+    public void prepare() throws JsonProcessingException {
+
+        initialize();
+    }
+
+    @BeforeMethod(onlyForGroups = "withOpenedList")
+    public void prepareWithOpenedList() throws JsonProcessingException {
+
+        initialize();
+        makePaymentView.touchSelectButton();
+    }
+
+    private void initialize() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MAKE_PAYMENT);
         makePaymentView = new MakePaymentView(getDriver());
     }
 
-    @BeforeMethod(onlyForGroups = "opened")
-    public void forOpened() {
-
-        makePaymentView.touchSelectButton();
-    }
-
-    @Test(priority = 1, groups = "closed")
+    @Test(priority = 1, groups = "withoutOpenedList")
     @Severity(SeverityLevel.NORMAL)
     @Tag("List")
     @Owner("Paweł Aksman")
@@ -49,7 +55,7 @@ public class CountryListTest extends CountryListBaseTest {
         baseSelectButton();
     }
 
-    @Test(priority = 2, groups = "opened", dataProvider = DataProviderNames.SCROLLABLE_COUNTRIES, dataProviderClass = CountriesDataProvider.class)
+    @Test(priority = 2, groups = "withOpenedList", dataProvider = DataProviderNames.SCROLLABLE_COUNTRIES, dataProviderClass = CountriesDataProvider.class)
     @Severity(SeverityLevel.NORMAL)
     @Tag("List")
     @Owner("Paweł Aksman")
@@ -61,7 +67,7 @@ public class CountryListTest extends CountryListBaseTest {
         baseSwiping(country);
     }
 
-    @Test(priority = 3, groups = "opened", dataProvider = DataProviderNames.COUNTRIES, dataProviderClass = CountriesDataProvider.class)
+    @Test(priority = 3, groups = "withOpenedList", dataProvider = DataProviderNames.COUNTRIES, dataProviderClass = CountriesDataProvider.class)
     @Severity(SeverityLevel.NORMAL)
     @Tag("List")
     @Owner("Paweł Aksman")
