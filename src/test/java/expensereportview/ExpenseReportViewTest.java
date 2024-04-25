@@ -3,25 +3,32 @@ package expensereportview;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import base.BaseTest;
 import qa.enums.View;
 import qa.pageobject.expensereportview.ExpenseReportView;
-import qa.pageobject.homeview.HomeView;
 import qa.support.Authentication;
 import qa.support.HomeViewManager;
 import qa.support.RandomValue;
 
 @Epic("E2E")
-@Feature("Expense Report functionalities")
+@Feature("Adding and removing expenses")
 public class ExpenseReportViewTest extends BaseTest {
 
     private ExpenseReportView expenseReportView;
     private int maxElementsToAdd;
     private int maxElementsToRemove;
 
+    public ExpenseReportViewTest() { }
+
+    public ExpenseReportViewTest(int maxElementsToAdd) {
+
+        this.maxElementsToAdd = maxElementsToAdd;
+    }
 
     @BeforeMethod(onlyForGroups = "withoutAddedElements")
     public void prepare() throws JsonProcessingException {
@@ -34,7 +41,6 @@ public class ExpenseReportViewTest extends BaseTest {
     public void prepareWithAddedElements() throws JsonProcessingException {
 
         initialize();
-        maxElementsToAdd = RandomValue.get(2, 5);
         addRows();
         maxElementsToRemove = RandomValue.get(1, expenseReportView.getCount() - 2);
     }
@@ -53,20 +59,28 @@ public class ExpenseReportViewTest extends BaseTest {
         }
     }
 
-    @Test(groups = "withoutAddedElements")
+    @Test(priority = 1, groups = "withoutAddedElements")
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
+    @Tag("Adding")
     @Owner("Paweł Aksman")
-    @Description("Adding an element")
+    @Description("Adding an expense")
+    @QaseId(55)
+    @QaseTitle("Adding an expense")
     public void addingElements() {
 
         addRows();
         Assert.assertEquals(expenseReportView.getCount(), maxElementsToAdd + 1,"Incorrect number of elements");
     }
 
-    @Test(groups = "withAddedElements")
+    @Test(priority = 2, groups = "withAddedElements")
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("View")
+    @Tag("Removing")
     @Owner("Paweł Aksman")
-    @Description("Removing an element")
+    @Description("Removing an expense")
+    @QaseId(56)
+    @QaseTitle("Removing an expense")
     public void removingElements() {
 
         int previousSize = expenseReportView.getCount();
@@ -76,21 +90,5 @@ public class ExpenseReportViewTest extends BaseTest {
         }
 
         Assert.assertTrue(expenseReportView.getCount() < previousSize ,"The actual number of elements is not less than previous number");
-    }
-
-    @Test(groups = "withoutAddedElements")
-    @Tag("View")
-    @Owner("Paweł Aksman")
-    @Description("The \"Back\" button")
-    public void backButton() {
-
-        expenseReportView.touchBackButton();
-        HomeView homeView = new HomeView(getDriver());
-
-        try {
-            homeView.waitForPaymentHomeView();
-        } catch (Exception e) {
-            Assert.fail("The home view is not opened");
-        }
     }
 }
