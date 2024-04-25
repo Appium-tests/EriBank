@@ -25,7 +25,7 @@ public class LoginTest extends BaseTest {
     private HomeView homeView;
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         loginView = new LoginView(getDriver());
         homeView = new HomeView(getDriver());

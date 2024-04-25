@@ -23,7 +23,7 @@ public class BackButtonTest extends BaseTest {
     private ExpenseReportView expenseReportView;
 
     @BeforeMethod
-    public void create() throws JsonProcessingException {
+    public void prepare() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.EXPENSE_REPORT);

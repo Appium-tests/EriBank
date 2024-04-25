@@ -25,7 +25,7 @@ public class SendingPaymentTest extends BaseTest {
     private MakePaymentView makePaymentView;
 
     @BeforeMethod
-    public void create() throws JsonProcessingException {
+    public void prepare() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MAKE_PAYMENT);

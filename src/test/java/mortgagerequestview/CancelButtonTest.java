@@ -23,7 +23,7 @@ public class CancelButtonTest extends BaseTest {
     private MortgageRequestView mortgageRequestView;
 
     @BeforeMethod
-    public void create() throws JsonProcessingException {
+    public void prepare() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.MORTGAGE_REQUEST);

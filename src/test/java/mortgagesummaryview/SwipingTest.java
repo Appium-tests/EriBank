@@ -23,7 +23,7 @@ public class SwipingTest extends BaseTest {
     private MortgageSummaryView mortgageSummaryView;
 
     @BeforeMethod
-    public void create() throws JsonProcessingException {
+    public void prepare() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         MortgageFormFiller.perform(getDriver());

@@ -24,7 +24,7 @@ public class AdvancedActionsViewTest extends BaseTest {
     private AdvancedActionsView advancedActionsView;
 
     @BeforeMethod
-    public void create() throws JsonProcessingException {
+    public void prepare() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         HomeViewManager.open(getDriver(), View.ADVANCED_ACTIONS);

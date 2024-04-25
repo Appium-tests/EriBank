@@ -23,7 +23,7 @@ public class InputTextVerificationTest extends BaseTest {
     private final String PASSWORD_HINT = "Password";
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         loginView = new LoginView(getDriver());
     }

@@ -11,7 +11,7 @@ public class CountryListBaseTest extends BaseTest {
     private CountryList countryList;
 
     @BeforeMethod
-    public void baseCreate() {
+    public void basePrepare() {
 
         countryList = new CountryList(getDriver());
     }

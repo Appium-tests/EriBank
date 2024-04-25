@@ -24,7 +24,7 @@ public class HomeViewTest extends BaseTest {
     private HomeView homeView;
 
     @BeforeMethod
-    public void create() throws JsonProcessingException {
+    public void prepare() throws JsonProcessingException {
 
         Authentication.perform(getDriver());
         homeView = new HomeView(getDriver());
