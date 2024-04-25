@@ -34,8 +34,8 @@ public class ExpenseReportView extends BaseView {
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(addButton)).click();
     }
 
-    @io.qameta.allure.Step("Touch the \"Add\" button")
-    @io.qase.api.annotation.Step("Touch the \"Add\" button")
+    @io.qameta.allure.Step("Touch the \"Back\" button")
+    @io.qase.api.annotation.Step("Touch the \"Back\" button")
     public void touchBackButton() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(backButton)).click();
@@ -46,8 +46,8 @@ public class ExpenseReportView extends BaseView {
         return expenseTitles.size();
     }
 
-    @io.qameta.allure.Step("Touch the element")
-    @io.qase.api.annotation.Step("Touch the element")
+    @io.qameta.allure.Step("Touch the expense item")
+    @io.qase.api.annotation.Step("Touch the expense item")
     public void touchElement(int index) {
 
         expenseTitles.get(index).click();
