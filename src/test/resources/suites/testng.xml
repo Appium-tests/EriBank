@@ -8,5 +8,7 @@
         <suite-file path="makePaymentView.xml"/>
         <suite-file path="mortgageRequestView.xml"/>
         <suite-file path="mortgageSummaryView.xml"/>
+        <suite-file path="expenseReportView.xml"/>
+        <suite-file path="advancedActionsView.xml"/>
     </suite-files>
 </suite>
