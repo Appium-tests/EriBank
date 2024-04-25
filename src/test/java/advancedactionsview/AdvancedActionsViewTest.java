@@ -1,10 +1,10 @@
 package advancedactionsview;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,7 +18,7 @@ import qa.pageobject.sendvoidrequestview.SendVoidRequestView;
 
 
 @Epic("E2E")
-@Feature("Advanced Actions buttons")
+@Feature("Advanced Actions view buttons")
 public class AdvancedActionsViewTest extends BaseTest {
 
     private AdvancedActionsView advancedActionsView;
@@ -31,21 +31,28 @@ public class AdvancedActionsViewTest extends BaseTest {
         advancedActionsView = new AdvancedActionsView(getDriver());
     }
 
-    @Test
-    @Description("Checking whether the \"Send Void Request\" view opens after touching the \"Send Void Request\" button.")
-    @Story("Touching the \"Send Void Request\" button")
+    @Test(priority = 1)
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("View")
+    @Tag("Buttons")
+    @Description("The \"Send Void Request\" button")
+    @QaseId(58)
+    @QaseTitle("The \"Send Void Request\" button")
     public void sendVoidRequestButton() {
 
         advancedActionsView.touchSendVoidRequestButton();
         SendVoidRequestView sendVoidRequestView = new SendVoidRequestView(getDriver());
 
-        Assert.assertTrue(sendVoidRequestView.isDisplayed(),
-                "The \"Send Void Request\" view is not displayed");
+        Assert.assertTrue(sendVoidRequestView.isDisplayed(),"The \"Send Void Request\" view is not displayed");
     }
 
-    @Test
-    @Description("Verify that the \"Advanced Actions\" view is closed after touching the \"Back\" button")
-    @Story("Touching the \"Back\" button")
+    @Test(priority = 2)
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("View")
+    @Tag("Buttons")
+    @Description("The \"Back\" button")
+    @QaseId(59)
+    @QaseTitle("The \"Back\" button")
     public void closingView() {
 
         advancedActionsView.touchBackButton();
