@@ -22,8 +22,8 @@ public class BaseView {
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-    @io.qameta.allure.Step("Swipe to desired element")
-    @io.qase.api.annotation.Step("Swipe to desired element")
+    @io.qameta.allure.Step("Swipe the list to the desired element")
+    @io.qase.api.annotation.Step("Swipe the list to the desired element")
     public void swipeToElement(String name) {
 
         driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\""
